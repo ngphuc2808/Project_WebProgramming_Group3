@@ -1,0 +1,13 @@
+#divMain {
+    width: 100vw;
+    height: 100vh;
+    background-color: whitesmoke;
+}
+.textDiv {
+    font-style: italic;
+    font-weight: bold;
+    color: red;
+}
+.myHover:hover {
+    color: cornsilk;
+}
