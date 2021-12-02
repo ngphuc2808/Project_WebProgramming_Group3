@@ -47,15 +47,16 @@ DROP TABLE IF EXISTS `auction`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `auction` (
-  `idBidder` int NOT NULL,
+  `idUser` int NOT NULL,
   `idProduct` int NOT NULL,
   `startDate` datetime DEFAULT NULL,
   `endDate` datetime DEFAULT NULL,
   `priceBidder` int DEFAULT NULL,
+  PRIMARY KEY (`idProduct`,`idUser`),
   KEY `id_product_idx` (`idProduct`),
-  KEY `idBidder_idx` (`idBidder`),
-  CONSTRAINT `idBidder` FOREIGN KEY (`idBidder`) REFERENCES `bidder` (`idBidder`),
-  CONSTRAINT `idProduct` FOREIGN KEY (`idProduct`) REFERENCES `product` (`idProduct`)
+  KEY `idBidder_idx` (`idUser`),
+  CONSTRAINT `idProduct` FOREIGN KEY (`idProduct`) REFERENCES `product` (`idProduct`),
+  CONSTRAINT `idUser` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -66,34 +67,6 @@ CREATE TABLE `auction` (
 LOCK TABLES `auction` WRITE;
 /*!40000 ALTER TABLE `auction` DISABLE KEYS */;
 /*!40000 ALTER TABLE `auction` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `bidder`
---
-
-DROP TABLE IF EXISTS `bidder`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `bidder` (
-  `idBidder` int NOT NULL AUTO_INCREMENT,
-  `nameBidder` varchar(100) DEFAULT NULL,
-  `password` varchar(100) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `phone` varchar(100) DEFAULT NULL,
-  `dob` datetime DEFAULT NULL,
-  `role` int DEFAULT NULL,
-  PRIMARY KEY (`idBidder`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `bidder`
---
-
-LOCK TABLES `bidder` WRITE;
-/*!40000 ALTER TABLE `bidder` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bidder` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -147,6 +120,35 @@ LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user` (
+  `idUser` int NOT NULL AUTO_INCREMENT,
+  `nameUser` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `phone` varchar(100) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `dob` datetime DEFAULT NULL,
+  `role` int DEFAULT NULL,
+  PRIMARY KEY (`idUser`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -157,4 +159,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-30 20:54:53
+-- Dump completed on 2021-12-02 23:07:48
