@@ -3,6 +3,10 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+#myDiv {
+    width: 75vw;
+    height: 400px;
+}
 .textDiv {
     font-style: italic;
     font-weight: bold;

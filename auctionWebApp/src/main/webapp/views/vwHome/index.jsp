@@ -2,7 +2,7 @@
 <%@ taglib prefix="i" tagdir="/WEB-INF/tags" %>
 <i:main>
     <jsp:body>
-        <div class="mx-auto mt-5 d-flex justify-content-between" style="width: 75vw; height: 400px">
+        <div id="myDiv" class="mx-auto mt-5 d-flex justify-content-between">
             <div id="carouselExampleIndicators" class="carousel slide" style="width: 50%; height: 100vh" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -30,10 +30,10 @@
                 </a>
             </div>
             <div class="ml-3" style="width: 50%; height: 100vh">
-                <div style="height: 200px;">
+                <div style="height: 197px; margin-bottom: 6px">
                     <img style="width: 100%; height: 100%" src="${pageContext.request.contextPath}/public/image/thongbao.jpg" alt="thongbao" type="button">
                 </div>
-                <div style="height: 200px;">
+                <div style="height: 197px;">
                     <img style="width: 100%; height: 100%" src="${pageContext.request.contextPath}/public/image/auction.jpg" alt="thongbao" type="button">
                 </div>
             </div>
@@ -41,23 +41,23 @@
         <div class="mx-auto mt-5 w-75 d-flex justify-content-between">
             <div class="card h-100" style="width: 14rem;border-radius: 0" type="button">
                 <img class="card-img-top" src="${pageContext.request.contextPath}/public/image/phone.jpg" alt="Card image cap">
-                <div class="card-footer" style="background-color: coral; font-weight: bold">Điện thoại</div>
+                <div class="card-footer" style="background-color: powderblue; font-weight: bold">Điện thoại</div>
             </div>
             <div class="card h-100" style="width: 14rem;border-radius: 0" type="button">
                 <img class="card-img-top" src="${pageContext.request.contextPath}/public/image/laptop1.jpg" alt="Card image cap">
-                <div class="card-footer" style="background-color: coral; font-weight: bold">Laptop</div>
+                <div class="card-footer" style="background-color: powderblue; font-weight: bold">Laptop</div>
             </div>
             <div class="card h-100" style="width: 14rem;border-radius: 0" type="button">
                 <img class="card-img-top" src="${pageContext.request.contextPath}/public/image/tablet.jpg" alt="Card image cap">
-                <div class="card-footer" style="background-color: coral; font-weight: bold">Máy tính bảng</div>
+                <div class="card-footer" style="background-color: powderblue; font-weight: bold">Máy tính bảng</div>
             </div>
             <div class="card h-100" style="width: 14rem;border-radius: 0" type="button">
                 <img class="card-img-top" src="${pageContext.request.contextPath}/public/image/mayanh.jpg" alt="Card image cap">
-                <div class="card-footer" style="background-color: coral; font-weight: bold">Máy ảnh</div>
+                <div class="card-footer" style="background-color: powderblue; font-weight: bold">Máy ảnh</div>
             </div>
             <div class="card h-100" style="width: 14rem;border-radius: 0" type="button">
                 <img class="card-img-top" src="${pageContext.request.contextPath}/public/image/nuochoa.jpg" alt="Card image cap">
-                <div class="card-footer" style="background-color: coral; font-weight: bold">Nước hoa</div>
+                <div class="card-footer" style="background-color: powderblue; font-weight: bold">Nước hoa</div>
             </div>
         </div>
         <div class="mx-auto w-75">
