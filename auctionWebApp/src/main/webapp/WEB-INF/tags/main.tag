@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/styles.css" />
 </head>
-<body style="max-width: 100%; overflow-x: hidden">
-    <div id="divMain" class="w-100">
+<body>
+    <div id="divMain">
         <div class="d-flex bd-highlight navbar-dark bg-dark justify-content-end" style="color: white; font-size: 14px">
             <div class="p-2 myHover" type="button">Đăng nhập</div>
             <div class="p-2 mr-2 myHover" type="button">Đăng ký</div>
