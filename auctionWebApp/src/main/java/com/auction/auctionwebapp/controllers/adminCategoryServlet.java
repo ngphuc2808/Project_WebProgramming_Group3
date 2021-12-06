@@ -1,28 +1,28 @@
 package com.auction.auctionwebapp.controllers;
 
+import com.auction.auctionwebapp.beans.category;
+import com.auction.auctionwebapp.models.categoryModel;
 import com.auction.auctionwebapp.utils.servletUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
-@WebServlet(name = "homeServlet", value = "/home/*")
-public class homeServlet extends HttpServlet {
+@WebServlet(name = "AdminCategoryServlet", value = "/admin/category/*")
+public class adminCategoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
-        if (path == null || path.equals("/")){
-            path = "/index";
+        if (path == null || path.equals("/")) {
+            path = "/category";
         }
+
         switch (path) {
-            case "/index":
-                servletUtils.forward("/views/vwHome/index.jsp", request, response);
-                break;
-            case "/login":
-                servletUtils.forward("/views/vwLogin/login.jsp", request, response);
-                break;
             case "/category":
+                List<category> list = categoryModel.findAll();
+                request.setAttribute("categories", list);
                 servletUtils.forward("/views/vwCategory/category.jsp", request, response);
                 break;
             default:

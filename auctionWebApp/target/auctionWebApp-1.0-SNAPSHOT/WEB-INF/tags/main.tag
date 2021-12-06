@@ -14,7 +14,7 @@
             <div class="p-2 myHover" type="button">Đăng nhập</div>
             <div class="p-2 mr-2 myHover" type="button">Đăng ký</div>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
             <a class="navbar-brand" style="margin-left: 230px" href="#">Auction.com</a>
             <div class="collapse navbar-collapse" style="margin-right: 230px" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">

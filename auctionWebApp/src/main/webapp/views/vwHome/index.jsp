@@ -3,7 +3,7 @@
 <i:main>
     <jsp:body>
         <div class="container-fluid" style="width: 75vw">
-            <div id="myDiv" class="mx-auto mt-5 d-flex justify-content-between" style="width: 75vw">
+            <div id="myDiv" class="mx-auto mt-3 d-flex justify-content-between" style="width: 75vw">
                 <div id="carouselExampleIndicators" class="carousel slide" style="width: 50%; height: 100vh" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
