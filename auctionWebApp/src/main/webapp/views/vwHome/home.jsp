@@ -46,14 +46,14 @@
                 <h:forEach items="${categories}" var="h">
                     <div class="card h-100" style="width: 14rem;border-radius: 0" type="button">
                         <img class="card-img-top" src="${pageContext.request.contextPath}/public/image/${h.idCategory}/main_pic.jpg" alt="Card image cap">
-                        <div class="card-footer" style="background-color: powderblue; font-weight: bold">${h.nameCategory}</div>
+                        <div class="card-footer" style="background-color: powderblue; font-weight: bold; text-align: center">${h.nameCategory}</div>
                     </div>
                 </h:forEach>
             </div>
             <div class="mx-auto" style="width: 75vw">
                 <div class="card mt-5">
                     <div class="card-header textDiv">
-                        Sắp hết hạn!!!
+                        About to expire!!!
                     </div>
                     <div class="card-body">
 
@@ -61,7 +61,7 @@
                 </div>
                 <div class="card mt-5">
                     <div class="card-header textDiv">
-                        Sản phẩm nổi bật!!!
+                        Hot!!!
                     </div>
                     <div class="card-body">
 
@@ -69,7 +69,7 @@
                 </div>
                 <div class="card mt-5">
                     <div class="card-header textDiv">
-                        Top giá !!!
+                        The highest prices !!!
                     </div>
                     <div class="card-body">
 
