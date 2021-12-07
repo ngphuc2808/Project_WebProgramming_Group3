@@ -18,7 +18,7 @@
         <div class="col-sm-12">
             <div class="card shadow w-50 mx-auto">
                 <div class="card-body">
-                    <h1 class="card-title">Ooops!</h1>
+                    <h1 class="card-title">ERROR!</h1>
                     <h2 class="text-danger">404. Page not found.</h2>
                     <p class="card-text">
                         Sorry, an error has occured. The requested page not found.

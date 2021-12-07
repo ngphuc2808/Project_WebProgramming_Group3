@@ -53,7 +53,7 @@
             <div class="mx-auto" style="width: 75vw">
                 <div class="card mt-5">
                     <div class="card-header textDiv">
-                        Sắp hết hạn!!!
+                        About to expire!!!
                     </div>
                     <div class="card-body">
 
@@ -61,7 +61,7 @@
                 </div>
                 <div class="card mt-5">
                     <div class="card-header textDiv">
-                        Sản phẩm nổi bật!!!
+                        Hot!!!
                     </div>
                     <div class="card-body">
 
@@ -69,7 +69,7 @@
                 </div>
                 <div class="card mt-5">
                     <div class="card-header textDiv">
-                        Top giá !!!
+                        The highest prices !!!
                     </div>
                     <div class="card-body">
 
