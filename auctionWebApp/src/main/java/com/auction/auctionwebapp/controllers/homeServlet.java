@@ -1,11 +1,14 @@
 package com.auction.auctionwebapp.controllers;
 
+import com.auction.auctionwebapp.beans.category;
+import com.auction.auctionwebapp.models.categoryModel;
 import com.auction.auctionwebapp.utils.servletUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "homeServlet", value = "/home/*")
 public class homeServlet extends HttpServlet {
@@ -17,7 +20,9 @@ public class homeServlet extends HttpServlet {
         }
         switch (path) {
             case "/index":
-                servletUtils.forward("/views/vwHome/index.jsp", request, response);
+                List<category> list = categoryModel.findAll();
+                request.setAttribute("categories", list);
+                servletUtils.forward("/views/vwHome/home.jsp", request, response);
                 break;
             case "/login":
                 servletUtils.forward("/views/vwLogin/login.jsp", request, response);

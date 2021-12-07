@@ -20,11 +20,9 @@ public class categoryModel {
             List<category> list = con.createQuery(query)
                     .addParameter("idCategory", id)
                     .executeAndFetch(category.class);
-
             if (list.size() == 0) {
                 return null;
             }
-
             return list.get(0);
         }
     }
