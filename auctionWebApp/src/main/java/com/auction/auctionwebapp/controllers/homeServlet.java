@@ -27,6 +27,9 @@ public class homeServlet extends HttpServlet {
             case "/login":
                 servletUtils.forward("/views/vwLogin/login.jsp", request, response);
                 break;
+            case "/register":
+                servletUtils.forward("/views/vwLogin/register.jsp", request, response);
+                break;
             case "/category":
                 servletUtils.forward("/views/vwCategory/category.jsp", request, response);
                 break;

@@ -11,17 +11,17 @@
                             Danh mục quản lý
                         </h4>
                         <a href="" class="list-group-item list-group-item-action">
-                            Tài khoản người dùng
+                            Quản lý danh sách người dùng
                         </a>
                         <a href="" class="list-group-item list-group-item-action">
-                            Đơn xin đăng bài
+                            Đơn xin đăng bán
                         </a>
                     </div>
                 </div>
                 <div class="col-sm-9">
                     <div class="card">
                         <h4 class="card-header d-flex justify-content-between">
-                            Quản lý người dùng
+                            Thông tin
                         </h4>
                         <div class="card-body">
 
