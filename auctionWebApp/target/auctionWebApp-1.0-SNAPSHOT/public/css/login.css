@@ -7,7 +7,8 @@
 button {
   text-decoration: none;
   border: none;
-  outline: none; }
+  outline: none;
+  background: none; }
 
 i {
   list-style: none; }
@@ -60,66 +61,34 @@ h1 {
       text-align: right;
       margin-top: 10px;
       color: #fff; }
-    .login .form p {
-      text-align: center; }
-      .login .form p a {
-        display: inline-block;
-        color: #fff;
-        background: #537b35;
-        padding: 15px 40px;
-        text-align: center;
-        transition: all .5s;
-        font-family: Arial, Helvetica, sans-serif;
-        margin: 20px auto; }
-        .login .form p a:hover {
-          background: #fff;
-          color: #537b35; }
-    .login .form .register {
-      margin-top: 20px;
-      letter-spacing: 1px; }
-      .login .form .register button {
-        color: #fff;
-        font-size: 20px;
-        margin-left: 30px;
-        border: 2px solid #fff;
-        padding: 10px 15px;
-        transition: all .5s;
-        background: none; }
-        .login .form .register button:hover {
-          color: #537b35;
-          border-color: #537b35; }
-
-.register-form {
-  background: #537b35;
-  position: absolute;
-  padding: 30px 50px;
-  display: none;
-  top: 20%;
-  right: 50%;
-  transform: translateX(50%); }
-  .register-form h3 {
-    color: #fff;
-    font-size: 30px;
-    text-align: center;
-    font-family: 'Raleway', sans-serif;
-    margin-bottom: 30px; }
-  .register-form .inform form input {
-    display: block;
-    margin-bottom: 15px;
-    width: 350px;
-    padding: 15px 10px;
-    border: 2px solid #fff; }
-  .register-form p {
+  .login p {
     text-align: center; }
-    .register-form p button {
+    .login p button {
+      cursor: pointer;
       display: inline-block;
-      color: #537b35;
-      background: #fff;
-      padding: 12px 40px;
+      color: #fff;
+      background: white;
+      padding: 15px 40px;
+      text-align: center;
       transition: all .5s;
       font-family: Arial, Helvetica, sans-serif;
-      margin-top: 10px; }
-      .register-form p button:hover {
-        color: #000; }
+      margin: 20px auto; }
+      .login p button:hover {
+        background: #fff;
+        color: #537b35; }
+  .login .register {
+    margin-top: 20px;
+    letter-spacing: 1px; }
+    .login .register button {
+      color: #fff;
+      font-size: 20px;
+      margin-left: 30px;
+      border: 2px solid #fff;
+      padding: 10px 15px;
+      transition: all .5s;
+      background: none; }
+      .login .register button:hover {
+        color: #537b35;
+        border-color: #537b35; }
 
 /*# sourceMappingURL=login.css.map */

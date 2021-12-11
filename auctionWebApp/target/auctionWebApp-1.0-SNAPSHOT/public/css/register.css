@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap; }
+
+button {
+  text-decoration: none;
+  border: none;
+  outline: none; }
+
+i {
+  list-style: none; }
+
+ol, ul, li, a {
+  text-decoration: none;
+  list-style: none; }
+
+input {
+  border: none;
+  outline: none; }
+
+body {
+  background: url(../image/bg-login2.jpg) no-repeat;
+  background-size: cover; }
+  body .register-form {
+    position: absolute;
+    width: 30%;
+    right: 50px;
+    top: 100px;
+    background: darkgoldenrod; }
+    body .register-form h3 {
+      color: #fff;
+      font-size: 30px;
+      text-align: center;
+      font-family: 'Raleway', sans-serif;
+      margin-bottom: 30px; }
+    body .register-form .inform {
+      padding: 60px 30px; }
+      body .register-form .inform form {
+        text-align: center; }
+        body .register-form .inform form input {
+          display: block;
+          margin-bottom: 15px;
+          padding: 15px 10px;
+          border: 2px solid #fff;
+          width: 100%; }
+    body .register-form p {
+      text-align: center; }
+      body .register-form p button {
+        cursor: pointer;
+        display: inline-block;
+        color: #537b35;
+        background: #fff;
+        padding: 12px 40px;
+        transition: all .5s;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-top: 10px;
+        margin-bottom: 60px; }
+        body .register-form p button:hover {
+          color: #000; }
+
+/*# sourceMappingURL=register.css.map */
