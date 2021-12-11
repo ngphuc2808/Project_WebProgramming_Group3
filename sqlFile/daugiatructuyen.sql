@@ -55,8 +55,8 @@ CREATE TABLE `auction` (
   PRIMARY KEY (`idProduct`,`idUser`),
   KEY `id_product_idx` (`idProduct`),
   KEY `idBidder_idx` (`idUser`),
-  CONSTRAINT `idProduct` FOREIGN KEY (`idProduct`) REFERENCES `product` (`idProduct`),
-  CONSTRAINT `idUser` FOREIGN KEY (`idUser`) REFERENCES `user` (`idUser`)
+  CONSTRAINT `idProduct` FOREIGN KEY (`idProduct`) REFERENCES `products` (`idProduct`),
+  CONSTRAINT `idUser` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -70,36 +70,37 @@ LOCK TABLES `auction` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `category`
+-- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `category`;
+DROP TABLE IF EXISTS `categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `category` (
+CREATE TABLE `categories` (
   `idCategory` int NOT NULL AUTO_INCREMENT,
   `nameCategory` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idCategory`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `category`
+-- Dumping data for table `categories`
 --
 
-LOCK TABLES `category` WRITE;
-/*!40000 ALTER TABLE `category` DISABLE KEYS */;
-/*!40000 ALTER TABLE `category` ENABLE KEYS */;
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (1,'Phone'),(2,'Laptop'),(3,'Tablet'),(4,'Camera'),(5,'Perfume');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `product`
+-- Table structure for table `products`
 --
 
-DROP TABLE IF EXISTS `product`;
+DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `product` (
+CREATE TABLE `products` (
   `idProduct` int NOT NULL AUTO_INCREMENT,
   `nameProduct` varchar(100) DEFAULT NULL,
   `price` int DEFAULT NULL,
@@ -108,46 +109,49 @@ CREATE TABLE `product` (
   `idCategory` int DEFAULT NULL,
   PRIMARY KEY (`idProduct`),
   KEY `id_category_idx` (`idCategory`),
-  CONSTRAINT `id_category` FOREIGN KEY (`idCategory`) REFERENCES `category` (`idCategory`)
+  CONSTRAINT `id_category` FOREIGN KEY (`idCategory`) REFERENCES `categories` (`idCategory`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `product`
+-- Dumping data for table `products`
 --
 
-LOCK TABLES `product` WRITE;
-/*!40000 ALTER TABLE `product` DISABLE KEYS */;
-/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+LOCK TABLES `products` WRITE;
+/*!40000 ALTER TABLE `products` DISABLE KEYS */;
+/*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `idUser` int NOT NULL AUTO_INCREMENT,
-  `nameUser` varchar(100) DEFAULT NULL,
+  `username` varchar(100) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `phone` varchar(100) DEFAULT NULL,
   `address` varchar(100) DEFAULT NULL,
   `dob` datetime DEFAULT NULL,
+  `point` int DEFAULT NULL,
   `role` int DEFAULT NULL,
+  `queue` int DEFAULT NULL,
   PRIMARY KEY (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -159,4 +163,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-02 23:07:48
+-- Dump completed on 2021-12-13 18:16:12

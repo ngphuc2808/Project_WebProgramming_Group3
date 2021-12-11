@@ -21,12 +21,12 @@ input {
 
 body {
   background: url(../image/bg-login2.jpg) no-repeat;
-  background-size: cover; }
+  background-size: cover;
+  height: 100%;}
   body .register-form {
     position: absolute;
     width: 30%;
     right: 50px;
-    top: 100px;
     background: darkgoldenrod; }
     body .register-form h3 {
       color: #fff;
@@ -59,4 +59,3 @@ body {
         body .register-form p button:hover {
           color: #000; }
 
-/*# sourceMappingURL=register.css.map */

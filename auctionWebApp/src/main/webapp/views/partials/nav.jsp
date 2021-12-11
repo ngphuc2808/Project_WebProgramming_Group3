@@ -1,6 +1,6 @@
 <div class="d-flex bd-highlight navbar-dark bg-dark justify-content-end" style="color: white; font-size: 14px">
-    <div class="p-2 myHover" type="button">Login</div>
-    <div class="p-2 mr-2 myHover" type="button">Register</div>
+    <a class="p-2 myHover" href="${pageContext.request.contextPath}/account/login">Login</a>
+    <a class="p-2 mr-2 myHover" href="${pageContext.request.contextPath}/account/register">Register</a>
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
     <a class="navbar-brand" style="margin-left: 230px" href="#">Auction.com</a>
