@@ -1,14 +1,11 @@
 package com.auction.auctionwebapp.controllers;
 
-import com.auction.auctionwebapp.beans.category;
-import com.auction.auctionwebapp.models.categoryModel;
 import com.auction.auctionwebapp.utils.servletUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.List;
 
 @WebServlet(name = "homeServlet", value = "/home/*")
 public class homeServlet extends HttpServlet {
@@ -20,18 +17,19 @@ public class homeServlet extends HttpServlet {
         }
         switch (path) {
             case "/index":
-                List<category> list = categoryModel.findAll();
-                request.setAttribute("categories", list);
-                servletUtils.forward("/views/vwHome/home.jsp", request, response);
+                servletUtils.forward("/views/vwHome/index.jsp", request, response);
                 break;
             case "/login":
                 servletUtils.forward("/views/vwLogin/login.jsp", request, response);
                 break;
-            case "/register":
-                servletUtils.forward("/views/vwLogin/register.jsp", request, response);
-                break;
             case "/category":
                 servletUtils.forward("/views/vwCategory/category.jsp", request, response);
+                break;
+            case "/account":
+                servletUtils.forward("/views/vwAccount/infoAccount.jsp", request, response);
+                break;
+            case "/address":
+                servletUtils.forward("/views/vwAccount/address.jsp", request, response);
                 break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
