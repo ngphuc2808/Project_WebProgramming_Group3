@@ -30,7 +30,20 @@ public class accountServlet extends HttpServlet {
                 servletUtils.forward("/views/vwLogin/login.jsp", request, response);
                 break;
             case "/profile":
-                servletUtils.forward("/views/vwLogin/profile.jsp", request, response);
+                servletUtils.forward("/views/vwAccount/infoAccount.jsp", request, response);
+                break;
+            case "/address":
+                servletUtils.forward("/views/vwAccount/address.jsp", request, response);
+                break;
+            case "/isAvailable":
+                String username = request.getParameter("user");
+                user user = userModel.findByUsername(username);
+                boolean isAvailable = (user == null);
+                PrintWriter out = response.getWriter();
+                response.setContentType("application/json");
+                response.setCharacterEncoding("utf-8");
+                out.print(isAvailable);
+                out.flush();
                 break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);

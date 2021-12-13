@@ -63,14 +63,30 @@
         e.preventDefault();
 
         const username = $('#txtUsername').val();
+        const confirm = $('#txtConfirm').val();
+        const rawpass = $('#txtPassword').val();
+        const email = $('#txtEmail').val();
+        const phone = $('#txtPhone').val();
         if (username.length === 0) {
             alert('Invalid username.');
             return;
         }
-
+        if (confirm !== rawpass) {
+            alert('Please re-enter password');
+            return;
+        }
+        if (!isValidEmailAddress(email)) {
+            alert('Please re-enter email');
+            return;
+        }
+        if (!validatePhone(phone)) {
+            alert('Please re-enter number phone');
+            return;
+        }
         $.getJSON('${pageContext.request.contextPath}/account/isAvailable?user=' + username, function (data) {
             if (data === true) {
                 $('#frmRegister').off('submit').submit();
+                alert('Register succeed!');
             } else {
                 alert('Username is not available.');
             }
@@ -82,6 +98,14 @@
         mask: true
     });
     $('#txtUsername').select();
+    function isValidEmailAddress(emailAddress) {
+        let pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        return pattern.test(emailAddress);
+    }
+    function validatePhone(numberPhone) {
+        let filter = new RegExp(/^[0-9-+]+$/);
+        return filter.test(numberPhone);
+    }
 </script>
 </body>
 </html>
