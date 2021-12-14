@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
@@ -35,6 +36,16 @@ public class accountServlet extends HttpServlet {
             case "/address":
                 servletUtils.forward("/views/vwAccount/address.jsp", request, response);
                 break;
+            case "/isAvailable":
+                String username = request.getParameter("user");
+                user user = userModel.findByUsername(username);
+                boolean isAvailable = (user == null);
+                PrintWriter out = response.getWriter();
+                response.setContentType("application/json");
+                response.setCharacterEncoding("utf-8");
+                out.print(isAvailable);
+                out.flush();
+                break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
                 break;
@@ -51,11 +62,11 @@ public class accountServlet extends HttpServlet {
                 break;
 
             case "/login":
-//                login(request, response);
+                login(request, response);
                 break;
 
             case "/logout":
-//                logout(request, response);
+                logout(request, response);
                 break;
 
             default:
@@ -84,5 +95,42 @@ public class accountServlet extends HttpServlet {
         user c = new user(0, username, bcryptHashString, name, email, phone, address, dob, point, role, queue);
         userModel.add(c);
         servletUtils.forward("/views/vwLogin/register.jsp", request, response);
+    }
+    private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        user user = userModel.findByUsername(username);
+        if (user != null) {
+            BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
+            if (result.verified) {
+                HttpSession session = request.getSession();
+                session.setAttribute("auth", true);
+                session.setAttribute("authUser", user);
+
+                String url = (String) session.getAttribute("retUrl");
+                if (url == null)
+                    url = "/home";
+                servletUtils.redirect(url, request, response);
+            } else {
+                request.setAttribute("hasError", true);
+                request.setAttribute("errorMessage", "Invalid login.");
+                servletUtils.forward("/views/vwLogin/login.jsp", request, response);
+            }
+        } else {
+            request.setAttribute("hasError", true);
+            request.setAttribute("errorMessage", "Invalid login.");
+            servletUtils.forward("/views/vwLogin/login.jsp", request, response);
+        }
+    }
+    private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        session.setAttribute("auth", false);
+        session.setAttribute("authUser", new user());
+
+        String url = request.getHeader("referer");
+        if (url == null)
+            url = "/home";
+        servletUtils.redirect(url, request, response);
     }
 }

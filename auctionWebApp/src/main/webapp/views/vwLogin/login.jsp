@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -9,10 +10,18 @@
 <h1>AUCTION.COM</h1>
 <div class="login">
     <div class="form">
-        <form action="">
+        <c:if test="${hasError}">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Login failed!</strong> ${errorMessage}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </c:if>
+        <form action="" method="post" >
             <h3>ĐĂNG NHẬP</h3>
-            <input type="text" placeholder="EMAIL">
-            <input type="text" placeholder="PASSWORD">
+            <input type="text" id="txtUsername" name="username" autofocus placeholder="Username">
+            <input type="password" id="txtPassword" name="password" placeholder="Password">
             <a href="">Quên mật khẩu</a>
             <p><button type="submit">ĐĂNG NHẬP</button></p>
         </form>
@@ -21,7 +30,6 @@
             <a href="${pageContext.request.contextPath}/views/vwLogin/register.jsp" style="font-size: 20px; color: yellow">Đăng ký ngay</a>
         </div>
     </div>
-
 </div>
 </body>
 </html>
