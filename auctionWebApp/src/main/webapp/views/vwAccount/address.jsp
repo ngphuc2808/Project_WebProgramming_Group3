@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Thông tin tài khoản</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css_account/style_account.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css_account/reset_account.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css_Account/style_account.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css_Account/reset_account.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
