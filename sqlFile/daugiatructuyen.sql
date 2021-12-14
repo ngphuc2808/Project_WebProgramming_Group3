@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
--- Host: localhost    Database: daugiatructuyen
+-- Host: 127.0.0.1    Database: daugiatructuyen
 -- ------------------------------------------------------
 -- Server version	8.0.27
 
@@ -24,8 +24,8 @@ DROP TABLE IF EXISTS `admin`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `admin` (
   `idAdmin` int NOT NULL AUTO_INCREMENT,
-  `nameAdmin` varchar(100) DEFAULT NULL,
-  `password` varchar(100) DEFAULT NULL,
+  `nameAdmin` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
   PRIMARY KEY (`idAdmin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -49,9 +49,9 @@ DROP TABLE IF EXISTS `auction`;
 CREATE TABLE `auction` (
   `idUser` int NOT NULL,
   `idProduct` int NOT NULL,
-  `startDate` datetime DEFAULT NULL,
-  `endDate` datetime DEFAULT NULL,
-  `priceBidder` int DEFAULT NULL,
+  `startDate` datetime NOT NULL,
+  `endDate` datetime NOT NULL,
+  `priceBidder` int NOT NULL,
   PRIMARY KEY (`idProduct`,`idUser`),
   KEY `id_product_idx` (`idProduct`),
   KEY `idBidder_idx` (`idUser`),
@@ -78,7 +78,7 @@ DROP TABLE IF EXISTS `categories`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categories` (
   `idCategory` int NOT NULL AUTO_INCREMENT,
-  `nameCategory` varchar(100) DEFAULT NULL,
+  `nameCategory` varchar(100) NOT NULL,
   PRIMARY KEY (`idCategory`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -102,11 +102,12 @@ DROP TABLE IF EXISTS `products`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `products` (
   `idProduct` int NOT NULL AUTO_INCREMENT,
-  `nameProduct` varchar(100) DEFAULT NULL,
-  `price` int DEFAULT NULL,
-  `detail` varchar(500) DEFAULT NULL,
-  `quantity` int DEFAULT NULL,
-  `idCategory` int DEFAULT NULL,
+  `idCategory` int NOT NULL,
+  `nameProduct` varchar(100) NOT NULL,
+  `price` int NOT NULL,
+  `detail` varchar(500) NOT NULL,
+  `quantity` int NOT NULL,
+  `priceStep` int NOT NULL,
   PRIMARY KEY (`idProduct`),
   KEY `id_category_idx` (`idCategory`),
   CONSTRAINT `id_category` FOREIGN KEY (`idCategory`) REFERENCES `categories` (`idCategory`)
@@ -131,16 +132,16 @@ DROP TABLE IF EXISTS `users`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `users` (
   `idUser` int NOT NULL AUTO_INCREMENT,
-  `username` varchar(100) DEFAULT NULL,
-  `password` varchar(100) DEFAULT NULL,
-  `name` varchar(100) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `phone` varchar(100) DEFAULT NULL,
-  `address` varchar(100) DEFAULT NULL,
-  `dob` datetime DEFAULT NULL,
-  `point` int DEFAULT NULL,
-  `role` int DEFAULT NULL,
-  `queue` int DEFAULT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(100) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `dob` datetime NOT NULL,
+  `point` int NOT NULL,
+  `role` int NOT NULL,
+  `queue` int NOT NULL,
   PRIMARY KEY (`idUser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -163,4 +164,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-13 18:16:12
+-- Dump completed on 2021-12-14 22:35:06

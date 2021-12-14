@@ -13,17 +13,15 @@ public class userModel {
             List<user> list = con.createQuery(query)
                     .addParameter("username", username)
                     .executeAndFetch(user.class);
-
             if (list.size() == 0) {
                 return null;
             }
-
             return list.get(0);
         }
     }
 
     public static void add(user c) {
-        String insertSql = "INSERT INTO users (username, password, name, email, phone, address, dob, point, role, queue) VALUES (:username,:password,:name,:email,:phone,:address,:dob,:point,:role,:queue)";
+        String insertSql = "insert into users (username, password, name, email, phone, address, dob, point, role, queue) values (:username,:password,:name,:email,:phone,:address,:dob,:point,:role,:queue)";
         try (Connection con = dbUtils.getConnection()) {
             con.createQuery(insertSql)
                     .addParameter("username", c.getUsername())
