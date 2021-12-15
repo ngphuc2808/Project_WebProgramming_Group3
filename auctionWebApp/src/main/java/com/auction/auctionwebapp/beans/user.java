@@ -4,20 +4,19 @@ import java.time.LocalDateTime;
 
 public class user {
     private int idUser;
-    private String username, password, name, email, phone, address;
+    private String username, password, name, email, address;
     private LocalDateTime dob;
     private int point, role, queue;
 
     public user() {
     }
 
-    public user(int idUser, String username, String password, String name, String email, String phone, String address, LocalDateTime dob, int point, int role, int queue) {
+    public user(int idUser, String username, String password, String name, String email, String address, LocalDateTime dob, int point, int role, int queue) {
         this.idUser = idUser;
         this.username = username;
         this.password = password;
         this.name = name;
         this.email = email;
-        this.phone = phone;
         this.address = address;
         this.dob = dob;
         this.point = point;
@@ -45,9 +44,6 @@ public class user {
         return email;
     }
 
-    public String getPhone() {
-        return phone;
-    }
 
     public String getAddress() {
         return address;

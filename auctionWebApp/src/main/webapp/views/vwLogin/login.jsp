@@ -11,7 +11,7 @@
 <div class="login">
     <div class="form">
         <c:if test="${hasError}">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div style="margin-bottom: 30px; margin-left: 80px" role="alert">
                 <strong>Login failed!</strong> ${errorMessage}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

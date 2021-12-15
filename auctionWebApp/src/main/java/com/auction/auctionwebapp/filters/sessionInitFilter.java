@@ -1,6 +1,7 @@
 package com.auction.auctionwebapp.filters;
 
 import com.auction.auctionwebapp.beans.user;
+import com.auction.auctionwebapp.beans.admin;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -24,7 +25,10 @@ public class sessionInitFilter implements Filter {
             session.setAttribute("auth", false);
             session.setAttribute("authUser", new user());
         }
-
+        if (session.getAttribute("authAd") == null) {
+            session.setAttribute("authAd", false);
+            session.setAttribute("authAdmin", new admin());
+        }
         chain.doFilter(req, res);
     }
 }

@@ -86,13 +86,12 @@ public class accountServlet extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String address = request.getParameter("address");
-        String phone = request.getParameter("phone");
 
         int point = 0;
         int role = 0;
         int queue = 0;
 
-        user c = new user(0, username, bcryptHashString, name, email, phone, address, dob, point, role, queue);
+        user c = new user(0, username, bcryptHashString, name, email, address, dob, point, role, queue);
         userModel.add(c);
         servletUtils.forward("/views/vwLogin/register.jsp", request, response);
     }

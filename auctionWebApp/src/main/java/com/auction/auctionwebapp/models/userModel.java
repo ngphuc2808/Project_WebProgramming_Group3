@@ -21,14 +21,13 @@ public class userModel {
     }
 
     public static void add(user c) {
-        String insertSql = "insert into users (username, password, name, email, phone, address, dob, point, role, queue) values (:username,:password,:name,:email,:phone,:address,:dob,:point,:role,:queue)";
+        String insertSql = "insert into users (username, password, name, email, address, dob, point, role, queue) values (:username,:password,:name,:email,:address,:dob,:point,:role,:queue)";
         try (Connection con = dbUtils.getConnection()) {
             con.createQuery(insertSql)
                     .addParameter("username", c.getUsername())
                     .addParameter("password", c.getPassword())
                     .addParameter("name", c.getName())
                     .addParameter("email", c.getEmail())
-                    .addParameter("phone", c.getPhone())
                     .addParameter("address", c.getAddress())
                     .addParameter("dob", c.getDob())
                     .addParameter("point", c.getPoint())
