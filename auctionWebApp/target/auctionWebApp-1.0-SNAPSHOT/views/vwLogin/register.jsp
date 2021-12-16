@@ -41,10 +41,6 @@
                 <input type="text" placeholder="Email" id="txtEmail" name="email" required>
             </div>
             <div class="form-group">
-                <label for="txtPhone" class="classReg">Phone</label>
-                <input type="text" placeholder="Phone" id="txtPhone" name="phone" required>
-            </div>
-            <div class="form-group">
                 <label for="txtAdd" class="classReg">Address</label>
                 <input type="text" placeholder="Address" id="txtAdd" name="address" required>
             </div>
@@ -52,13 +48,17 @@
                 <label for="txtDOB" class="classReg">Date of Birth</label>
                 <input type="text" placeholder="Date of Birth" id="txtDOB" name="dob" required>
             </div>
-            <p style="margin-top: 60px"><button type="submit">Đăng ký</button></p>
+            <div class="form-group" style="margin-left: 110px; margin-top: 30px">
+                <div class="g-recaptcha" data-sitekey="6LeOXKgdAAAAAGKfLfyu3zb2UbY2-jcQz_R8i0Tb" data-callback="verifyCaptcha"></div>
+            </div>
+            <p style="margin-top: 60px"><button type="submit" id="regBtn" disabled>Đăng ký</button></p>
         </form>
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script>
     $('#frmRegister').on('submit', function (e) {
         e.preventDefault();
@@ -67,7 +67,6 @@
         const confirm = $('#txtConfirm').val();
         const rawpass = $('#txtPassword').val();
         const email = $('#txtEmail').val();
-        const phone = $('#txtPhone').val();
         if (username.length === 0) {
             alert('Invalid username.');
             return;
@@ -78,10 +77,6 @@
         }
         if (!isValidEmailAddress(email)) {
             alert('Please re-enter email');
-            return;
-        }
-        if (!validatePhone(phone)) {
-            alert('Please re-enter number phone');
             return;
         }
         $.getJSON('${pageContext.request.contextPath}/account/isAvailable?user=' + username, function (data) {
@@ -103,9 +98,12 @@
         let pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
         return pattern.test(emailAddress);
     }
-    function validatePhone(numberPhone) {
-        let filter = new RegExp(/^[0-9-+]+$/);
-        return filter.test(numberPhone);
+</script>
+<script>
+    function verifyCaptcha() {
+        let myCapt = document.querySelector('#regBtn');
+        myCapt.removeAttribute('disabled');
+        myCapt.style.cursor = 'pointer';
     }
 </script>
 </body>
