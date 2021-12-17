@@ -79,14 +79,21 @@
             alert('Please re-enter email');
             return;
         }
-        $.getJSON('${pageContext.request.contextPath}/account/isAvailable?user=' + username, function (data) {
-            if (data === true) {
-                $('#frmRegister').off('submit').submit();
-                alert('Register succeed!');
+        $.getJSON('${pageContext.request.contextPath}/account/isAvailable' + '?user=' + username, function (dataUsername) {
+            if (dataUsername === false) {
+                alert('Account is not available.');
             } else {
-                alert('Username is not available.');
+                $.getJSON('${pageContext.request.contextPath}/account/isAvailableEmail' + '?mail=' + email, function (dataEmail) {
+                    if (dataEmail === false) {
+                        alert('Mail is not available.');
+                    } else {
+                        $('#frmRegister').off('submit').submit();
+                        alert('Register succeed!');
+                    }
+                });
             }
         });
+
     });
     $('#txtDOB').datetimepicker({
         format: 'd/m/Y',
