@@ -22,7 +22,6 @@ public class accountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
-        System.out.println("Hello");
         switch (path) {
             case "/register":
                 servletUtils.forward("/views/vwLogin/register.jsp", request, response);
@@ -40,11 +39,23 @@ public class accountServlet extends HttpServlet {
                 String username = request.getParameter("user");
                 user user = userModel.findByUsername(username);
                 boolean isAvailable = (user == null);
+                System.out.println("Username" + " " + isAvailable);
                 PrintWriter out = response.getWriter();
                 response.setContentType("application/json");
                 response.setCharacterEncoding("utf-8");
                 out.print(isAvailable);
                 out.flush();
+                break;
+            case "/isAvailableEmail":
+                String email = request.getParameter("mail");
+                user mail = userModel.findByEmail(email);
+                boolean isAvailableEmail = (mail == null);
+                System.out.println("Mail" + " " + isAvailableEmail);
+                PrintWriter outl = response.getWriter();
+                response.setContentType("application/json");
+                response.setCharacterEncoding("utf-8");
+                outl.print(isAvailableEmail);
+                outl.flush();
                 break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
@@ -55,7 +66,6 @@ public class accountServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
-        System.out.println("ABC");
         switch (path) {
             case "/register":
                 registerUser(request, response);
