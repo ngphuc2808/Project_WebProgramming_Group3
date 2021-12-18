@@ -16,7 +16,7 @@
     </style>
 </head>
 <body>
-<div  class="register-form">
+<div class="register-form">
     <div class="inform">
         <form action="" method="post" id="frmRegister">
             <h3>TẠO TÀI KHOẢN</h3>

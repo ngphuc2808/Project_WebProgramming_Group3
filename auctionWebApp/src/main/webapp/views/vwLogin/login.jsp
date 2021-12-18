@@ -20,8 +20,8 @@
         </c:if>
         <form action="" method="post" >
             <h3>ĐĂNG NHẬP</h3>
-            <input type="text" id="txtUsername" name="username" autofocus placeholder="Username">
-            <input type="password" id="txtPassword" name="password" placeholder="Password">
+            <input type="text" id="txtUsername" name="user" autofocus placeholder="Username">
+            <input type="password" id="txtPassword" name="pass" placeholder="Password">
             <a href="">Quên mật khẩu</a>
             <p><button type="submit">ĐĂNG NHẬP</button></p>
         </form>

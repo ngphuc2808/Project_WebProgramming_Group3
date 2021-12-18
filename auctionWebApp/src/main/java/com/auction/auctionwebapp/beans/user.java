@@ -44,7 +44,6 @@ public class user {
         return email;
     }
 
-
     public String getAddress() {
         return address;
     }
@@ -63,5 +62,17 @@ public class user {
 
     public int getQueue() {
         return queue;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    public void setQueue(int queue) {
+        this.queue = queue;
     }
 }

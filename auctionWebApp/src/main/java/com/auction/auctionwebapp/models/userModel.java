@@ -48,4 +48,14 @@ public class userModel {
                     .executeUpdate();
         }
     }
+    public static void allowPermission(user c) {
+        String updateSql = "update users set role = :role where username = :username";
+        try (Connection con = dbUtils.getConnection()) {
+            con.createQuery(updateSql)
+                    .addParameter("role",c.getRole())
+                    .addParameter("username",c.getUsername())
+                    .executeUpdate();
+        }
+
+    }
 }

@@ -32,9 +32,6 @@ public class accountServlet extends HttpServlet {
             case "/profile":
                 servletUtils.forward("/views/vwAccount/infoAccount.jsp", request, response);
                 break;
-            case "/address":
-                servletUtils.forward("/views/vwAccount/address.jsp", request, response);
-                break;
             case "/isAvailable":
                 String username = request.getParameter("user");
                 user user = userModel.findByUsername(username);
@@ -75,6 +72,10 @@ public class accountServlet extends HttpServlet {
                 login(request, response);
                 break;
 
+            case "/profile":
+                permission(request, response);
+                break;
+
             case "/logout":
                 logout(request, response);
                 break;
@@ -106,8 +107,8 @@ public class accountServlet extends HttpServlet {
         servletUtils.forward("/views/vwLogin/register.jsp", request, response);
     }
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = request.getParameter("user");
+        String password = request.getParameter("pass");
 
         user user = userModel.findByUsername(username);
         if (user != null) {
@@ -141,5 +142,27 @@ public class accountServlet extends HttpServlet {
         if (url == null)
             url = "/home";
         servletUtils.redirect(url, request, response);
+    }
+    private void permission(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        int role = 1;
+        user user = userModel.findByUsername(username);
+        if (user != null) {
+            BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
+            if (result.verified) {
+                user c = new user();
+                c.setUsername(username);
+                c.setRole(role);
+                userModel.allowPermission(c);
+                servletUtils.redirect("/views/vwAccount/infoAccount.jsp", request, response);
+            } else {
+                request.setAttribute("Error", true);
+                servletUtils.forward("/views/vwAccount/infoAccount.jsp", request, response);
+            }
+        } else {
+            request.setAttribute("Error", true);
+            servletUtils.forward("/views/vwAccount/infoAccount.jsp", request, response);
+        }
     }
 }
