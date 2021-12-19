@@ -56,7 +56,7 @@
             </form>
         </div>
     </nav>
-    <div class="container-fluid mt-3">
+    <div class="container-fluid mt-3" style="height: 100vh">
         <div class="row">
             <div class="col-sm-3">
                 <div class="card">
@@ -97,7 +97,7 @@
                                     <td>${u.email}</td>
                                     <td>${u.queue}</td>
                                     <td class="text-right">
-                                        <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/admin/users/edit?id=${u.idUser}" role="button">
+                                        <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/admin/edit?id=${u.idUser}" role="button">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>
                                         </a>
                                     </td>
@@ -134,7 +134,7 @@
                                     <td>${u1.email}</td>
                                     <td>${u1.queue}</td>
                                     <td class="text-right">
-                                        <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/admin/users/edit?id=${u1.idUser}" role="button">
+                                        <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/admin/edit?id=${u1.idUser}" role="button">
                                             <i class="fa fa-pencil" aria-hidden="true"></i>
                                         </a>
                                     </td>

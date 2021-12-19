@@ -38,6 +38,19 @@ public class adminServlet extends HttpServlet {
             case "/login":
                 servletUtils.forward("/views/vwLogin/login.jsp", request, response);
                 break;
+            case  "/edit":
+                int id = 0;
+                try {
+                    id = Integer.parseInt(request.getParameter("id"));
+                } catch (NumberFormatException e) {}
+                user c = userModel.findById(id);
+                if (c != null) {
+                    request.setAttribute("user", c);
+                    servletUtils.forward("/views/vwLogin/edit.jsp", request, response);
+                } else {
+                    servletUtils.redirect("/admin/index", request, response);
+                }
+                break;
             case "/isAvailable":
                 String username = request.getParameter("admin");
                 admin admin = adminModel.findByNameAdmin(username);
@@ -63,6 +76,12 @@ public class adminServlet extends HttpServlet {
                 break;
             case "/logout":
                 logout(request, response);
+                break;
+            case "/update":
+                updateUser(request, response);
+                break;
+            case "/delete":
+                deleteUser(request, response);
                 break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
@@ -105,4 +124,25 @@ public class adminServlet extends HttpServlet {
             url = "/admin";
         servletUtils.redirect(url, request, response);
     }
+    private void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("idUser"));
+        String username = request.getParameter("username");
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        int permission = Integer.parseInt(request.getParameter("queue"));
+        user c = new user();
+        c.setIdUser(id);
+        c.setUsername(username);
+        c.setName(name);
+        c.setEmail(email);
+        c.setQueue(permission);
+        userModel.update(c);
+        servletUtils.redirect("/admin", request, response);
+    }
+    private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("idUser"));
+        userModel.delete(id);
+        servletUtils.redirect("/admin", request, response);
+    }
 }
+
