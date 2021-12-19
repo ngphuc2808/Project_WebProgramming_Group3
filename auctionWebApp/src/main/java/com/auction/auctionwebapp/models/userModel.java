@@ -7,6 +7,14 @@ import org.sql2o.Connection;
 import java.util.List;
 
 public class userModel {
+    public static List<user> findAll() {
+        final String query = "select * from users";
+        try (Connection con = dbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(user.class);
+        }
+    }
+
     public static user findByUsername(String username) {
         final String query = "select * from users where username = :username";
         try (Connection con = dbUtils.getConnection()) {
@@ -29,6 +37,14 @@ public class userModel {
                 return null;
             }
             return list.get(0);
+        }
+    }
+
+    public static List<user> findByRole() {
+        final String query = "select * from users where role = 1";
+        try (Connection con = dbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(user.class);
         }
     }
 

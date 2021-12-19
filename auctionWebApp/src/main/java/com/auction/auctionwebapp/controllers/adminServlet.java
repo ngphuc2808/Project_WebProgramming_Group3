@@ -1,7 +1,11 @@
 package com.auction.auctionwebapp.controllers;
 
 import com.auction.auctionwebapp.beans.admin;
+import com.auction.auctionwebapp.beans.user;
+import com.auction.auctionwebapp.beans.category;
 import com.auction.auctionwebapp.models.adminModel;
+import com.auction.auctionwebapp.models.userModel;
+import com.auction.auctionwebapp.models.categoryModel;
 import com.auction.auctionwebapp.utils.servletUtils;
 
 import javax.servlet.ServletException;
@@ -12,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 @WebServlet(name = "adminServlet", value = "/admin/*")
 public class adminServlet extends HttpServlet {
@@ -24,6 +29,10 @@ public class adminServlet extends HttpServlet {
 
         switch (path) {
             case "/index":
+                List<user> list = userModel.findAll();
+                request.setAttribute("users", list);
+                List<user> list1 = userModel.findByRole();
+                request.setAttribute("users1", list1);
                 servletUtils.forward("/views/vwAdmin/admin.jsp", request, response);
                 break;
             case "/login":
@@ -61,16 +70,12 @@ public class adminServlet extends HttpServlet {
         }
     }
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = request.getParameter("user");
+        String password = request.getParameter("pass");
         admin admin = adminModel.findByNameAdmin(username);
         if (admin != null) {
             String newPass = admin.getPassword();
-            System.out.println("error");
-            System.out.println(newPass);
-            System.out.println(password);
             if(newPass.equals(password)){
-                System.out.println(newPass);
                 HttpSession session = request.getSession();
                 session.setAttribute("authAd", true);
                 session.setAttribute("authAdmin", admin);
