@@ -71,80 +71,82 @@
                     </button>
                 </div>
             </div>
-            <div class="col-sm-9" style="display: block" id="information">
-                <div class="card">
-                    <h4 class="card-header d-flex justify-content-between">
-                        Thông tin
-                    </h4>
-                    <div class="card-body">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Username</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Permission</th>
-                                <th>&nbsp;</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${users}" var="u">
+<%--            <c:if test="${hasError}">--%>
+                <div class="col-sm-9" style="display: block" id="information">
+                    <div class="card">
+                        <h4 class="card-header d-flex justify-content-between">
+                            Thông tin
+                        </h4>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
                                 <tr>
-                                    <td>${u.idUser}</td>
-                                    <td>${u.username}</td>
-                                    <td>${u.name}</td>
-                                    <td>${u.email}</td>
-                                    <td>${u.queue}</td>
-                                    <td class="text-right">
-                                        <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/admin/edit?id=${u.idUser}" role="button">
-                                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
+                                    <th>ID</th>
+                                    <th>Username</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Permission</th>
+                                    <th>&nbsp;</th>
                                 </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                <c:forEach items="${users}" var="u">
+                                    <tr>
+                                        <td>${u.idUser}</td>
+                                        <td>${u.username}</td>
+                                        <td>${u.name}</td>
+                                        <td>${u.email}</td>
+                                        <td>${u.queue}</td>
+                                        <td class="text-right">
+                                            <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/admin/edit?id=${u.idUser}" role="button">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-9" style="display: none" id="permission">
-                <div class="card">
-                    <h4 class="card-header d-flex justify-content-between">
-                        Danh sách xin cấp quyền
-                    </h4>
-                    <div class="card-body">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Username</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Permission</th>
-                                <th>&nbsp;</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${users1}" var="u1">
+                <div class="col-sm-9" style="display: none" id="permission">
+                    <div class="card">
+                        <h4 class="card-header d-flex justify-content-between">
+                            Danh sách xin cấp quyền
+                        </h4>
+                        <div class="card-body">
+                            <table class="table table-hover">
+                                <thead>
                                 <tr>
-                                    <td>${u1.idUser}</td>
-                                    <td>${u1.username}</td>
-                                    <td>${u1.name}</td>
-                                    <td>${u1.email}</td>
-                                    <td>${u1.queue}</td>
-                                    <td class="text-right">
-                                        <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/admin/edit?id=${u1.idUser}" role="button">
-                                            <i class="fa fa-pencil" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
+                                    <th>ID</th>
+                                    <th>Username</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Permission</th>
+                                    <th>&nbsp;</th>
                                 </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                <c:forEach items="${users1}" var="u1">
+                                    <tr>
+                                        <td>${u1.idUser}</td>
+                                        <td>${u1.username}</td>
+                                        <td>${u1.name}</td>
+                                        <td>${u1.email}</td>
+                                        <td>${u1.queue}</td>
+                                        <td class="text-right">
+                                            <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/admin/edit?id=${u1.idUser}" role="button">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
+<%--            </c:if>--%>
         </div>
     </div>
 </div>

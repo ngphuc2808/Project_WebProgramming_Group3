@@ -24,10 +24,13 @@ public class adminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
         if (path == null || path.equals("/")) {
-            path = "/index";
+            path = "/empty";
         }
 
         switch (path) {
+            case "/empty":
+                servletUtils.forward("/views/vwAdmin/empty.jsp", request, response);
+                break;
             case "/index":
                 List<user> list = userModel.findAll();
                 request.setAttribute("users", list);
@@ -100,7 +103,7 @@ public class adminServlet extends HttpServlet {
                 session.setAttribute("authAdmin", admin);
                 String url = (String) session.getAttribute("retUrl");
                 if (url == null)
-                    url = "/admin";
+                    url = "/admin/index";
                 servletUtils.redirect(url, request, response);
             }
             else {
