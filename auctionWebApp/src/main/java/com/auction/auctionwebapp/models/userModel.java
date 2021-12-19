@@ -7,6 +7,14 @@ import org.sql2o.Connection;
 import java.util.List;
 
 public class userModel {
+    public static List<user> findAll() {
+        final String query = "select * from users";
+        try (Connection con = dbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(user.class);
+        }
+    }
+
     public static user findByUsername(String username) {
         final String query = "select * from users where username = :username";
         try (Connection con = dbUtils.getConnection()) {
@@ -28,6 +36,29 @@ public class userModel {
             if (list.size() == 0) {
                 return null;
             }
+            return list.get(0);
+        }
+    }
+
+    public static List<user> findByRole() {
+        final String query = "select * from users where role = 1 and queue = 0";
+        try (Connection con = dbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(user.class);
+        }
+    }
+
+    public static user findById(int idUser) {
+        final String query = "select * from users where idUser = :idUser";
+        try (Connection con = dbUtils.getConnection()) {
+            List<user> list = con.createQuery(query)
+                    .addParameter("idUser", idUser)
+                    .executeAndFetch(user.class);
+
+            if (list.size() == 0) {
+                return null;
+            }
+
             return list.get(0);
         }
     }
@@ -57,5 +88,26 @@ public class userModel {
                     .executeUpdate();
         }
 
+    }
+    public static void update(user c) {
+        String sql = "update users set username = :username, name =:name, email = :email, queue = :queue where idUser = :idUser";
+        try (Connection con = dbUtils.getConnection()) {
+            con.createQuery(sql)
+                    .addParameter("idUser", c.getIdUser())
+                    .addParameter("username", c.getUsername())
+                    .addParameter("name", c.getName())
+                    .addParameter("email", c.getEmail())
+                    .addParameter("queue", c.getQueue())
+                    .executeUpdate();
+        }
+    }
+
+    public static void delete(int id) {
+        String sql = "delete from users where idUser = :idUser";
+        try (Connection con = dbUtils.getConnection()) {
+            con.createQuery(sql)
+                    .addParameter("idUser", id)
+                    .executeUpdate();
+        }
     }
 }
