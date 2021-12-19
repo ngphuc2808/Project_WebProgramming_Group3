@@ -158,11 +158,12 @@ a {
 }
 
 .info-user .container .LayoutInner.account_layout form .fullName .input-name input {
-    padding: 5px 150px 5px 0;
+    /*padding: 5px 0px;*/
+    /*width: 300px;*/
 }
 
 .info-user .container .LayoutInner.account_layout form .email span {
-    padding-left: 109px;
+    margin-left: 115px;
 }
 
 .info-user .container .LayoutInner.account_layout form .email .change-pass {
