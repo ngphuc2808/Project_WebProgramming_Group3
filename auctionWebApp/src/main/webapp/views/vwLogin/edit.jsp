@@ -55,7 +55,7 @@
             </form>
         </div>
     </nav>
-    <div class="container-fluid mt-3">
+    <div class="container-fluid mt-3" style="height: 100vh">
         <div class="row">
             <div class="col-sm-3">
                 <div class="card">

@@ -52,16 +52,9 @@
                                 <span>Lịch sử giao dịch</span>
                             </a>
                         </li>
-
-                        <li class="changePassword">
-                            <a href="${pageContext.request.contextPath}/views/vwAccount/changePassword.jsp" style="text-decoration: none; color: black;">
-                                <i class="fas fa-lock"></i>
-                                <span style="padding-left: 17px;">Thay đổi mật khẩu</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
-                <div class="LayoutInner bg-white account_layout" id= "infor" style="display: block">
+                <div class="LayoutInner bg-white account_layout">
                     <div class="container-layoutInner">
                         <div class="title">
                             <h2>Thông tin tài khoản</h2>
@@ -77,7 +70,6 @@
                                     <input type="text" class="input_fullName" value="${authUser.name}" style="padding: 5px 0px; width: 300px;">
                                 </div>
                             </div>
-
                             <div class="email space-top">
                                 <label style="padding-right: 112px;">Email</label>
                                 <input type="email" value="${authUser.email}" style="padding: 5px 0px; width: 300px;">
@@ -88,13 +80,13 @@
                                     <span>${authUser.dob.dayOfMonth}/${authUser.dob.monthValue}/${authUser.dob.year}</span>
                                 </div>
                             </div>
-                            <div class="point space-top">
+                            <div class="role space-top">
                                 <label >Điểm số</label>
-                                <span style="padding-left: 95px;">${authUser.point}</span>
+                                <span>${authUser.point}</span>
                             </div>
-                            <div class="point space-top">
+                            <div class="role space-top">
                                 <label >Quyền hạn</label>
-                                <span style="padding-left: 76px;">${authUser.queue}</span>
+                                <span>${authUser.queue}</span>
                             </div>
                             <div class="btn-save">
                                 <button type="submit">Lưu thay đổi</button>
@@ -102,7 +94,6 @@
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
     </jsp:body>
