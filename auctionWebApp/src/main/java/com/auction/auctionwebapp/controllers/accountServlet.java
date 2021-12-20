@@ -32,6 +32,9 @@ public class accountServlet extends HttpServlet {
             case "/profile":
                 servletUtils.forward("/views/vwAccount/infoAccount.jsp", request, response);
                 break;
+            case "/becomeStore":
+                servletUtils.forward("/views/vwAccount/become_store.jsp", request, response);
+                break;
             case "/isAvailable":
                 String username = request.getParameter("user");
                 user user = userModel.findByUsername(username);
@@ -72,7 +75,7 @@ public class accountServlet extends HttpServlet {
                 login(request, response);
                 break;
 
-            case "/profile":
+            case "/becomeStore":
                 permission(request, response);
                 break;
 
@@ -155,14 +158,14 @@ public class accountServlet extends HttpServlet {
                 c.setUsername(username);
                 c.setRole(role);
                 userModel.allowPermission(c);
-                servletUtils.redirect("/views/vwAccount/infoAccount.jsp", request, response);
+                servletUtils.redirect("/account/becomeStore", request, response);
             } else {
                 request.setAttribute("Error", true);
-                servletUtils.forward("/views/vwAccount/infoAccount.jsp", request, response);
+                servletUtils.forward("/account/becomeStore", request, response);
             }
         } else {
             request.setAttribute("Error", true);
-            servletUtils.forward("/views/vwAccount/infoAccount.jsp", request, response);
+            servletUtils.forward("/account/becomeStore", request, response);
         }
     }
 }

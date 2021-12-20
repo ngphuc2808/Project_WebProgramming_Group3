@@ -134,18 +134,32 @@ public class adminServlet extends HttpServlet {
         String email = request.getParameter("email");
         int permission = Integer.parseInt(request.getParameter("queue"));
         user c = new user();
-        c.setIdUser(id);
-        c.setUsername(username);
-        c.setName(name);
-        c.setEmail(email);
-        c.setQueue(permission);
-        userModel.update(c);
-        servletUtils.redirect("/admin", request, response);
+        int role;
+        if (permission == 1){
+            role = 1;
+            c.setIdUser(id);
+            c.setUsername(username);
+            c.setName(name);
+            c.setEmail(email);
+            c.setRole(role);
+            c.setQueue(permission);
+            userModel.update(c);
+        }
+        else if (permission == 0){
+            role = 0;
+            c.setIdUser(id);
+            c.setUsername(username);
+            c.setName(name);
+            c.setEmail(email);
+            c.setRole(role);
+            c.setQueue(permission);
+            userModel.update(c);
+        }
+        servletUtils.redirect("/admin/index", request, response);
     }
     private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("idUser"));
         userModel.delete(id);
-        servletUtils.redirect("/admin", request, response);
+        servletUtils.redirect("/admin/index", request, response);
     }
 }
-

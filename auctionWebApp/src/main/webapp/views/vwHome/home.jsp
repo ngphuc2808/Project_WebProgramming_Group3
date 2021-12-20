@@ -46,7 +46,9 @@
                 <h:forEach items="${categories}" var="h">
                     <div class="card h-100" style="width: 14rem;border-radius: 0" type="button">
                         <img class="card-img-top" src="${pageContext.request.contextPath}/public/image/${h.idCategory}/main_pic.jpg" alt="Card image cap">
-                        <div class="card-footer" style="background-color: powderblue; font-weight: bold; text-align: center">${h.nameCategory}</div>
+                        <div class="card-footer" style="background-color: powderblue; font-weight: bold; text-align: center">
+                            <a href="${pageContext.request.contextPath}/search?category=${h.idCategory}">${h.nameCategory}</a>
+                        </div>
                     </div>
                 </h:forEach>
             </div>

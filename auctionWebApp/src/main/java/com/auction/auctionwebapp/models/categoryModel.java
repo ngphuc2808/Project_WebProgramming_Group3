@@ -15,6 +15,8 @@ public class categoryModel {
     }
 
     public static category findById(int id) {
+
+
         final String query = "select * from categories where idCategory = :idCategory";
         try (Connection con = dbUtils.getConnection()) {
             List<category> list = con.createQuery(query)
