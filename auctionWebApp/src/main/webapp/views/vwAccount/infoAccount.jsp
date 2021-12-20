@@ -19,17 +19,6 @@
                 mask: true
             });
         </script>
-        <script>
-            // function getInformation() {
-            //     document.getElementById("infor").style.display = "block"
-            //     document.getElementById("permission").style.display = "none";
-            // }
-            // function getPermission() {
-            //     document.getElementById("infor").style.display = "none"
-            //     document.getElementById("permission").style.display = "block";            }
-
-
-        </script>
     </jsp:attribute>
     <jsp:body>
         <div class="info-user bg-main" style="margin-top: 0">
@@ -63,6 +52,13 @@
                                 <span>Lịch sử giao dịch</span>
                             </a>
                         </li>
+
+                        <li class="changePassword">
+                            <a href="${pageContext.request.contextPath}/views/vwAccount/changePassword.jsp" style="text-decoration: none; color: black;">
+                                <i class="fas fa-lock"></i>
+                                <span style="padding-left: 17px;">Thay đổi mật khẩu</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="LayoutInner bg-white account_layout" id= "infor" style="display: block">
@@ -94,11 +90,11 @@
                             </div>
                             <div class="point space-top">
                                 <label >Điểm số</label>
-                                <span>${authUser.point}</span>
+                                <span style="padding-left: 95px;">${authUser.point}</span>
                             </div>
                             <div class="point space-top">
                                 <label >Quyền hạn</label>
-                                <span>${authUser.queue}</span>
+                                <span style="padding-left: 76px;">${authUser.queue}</span>
                             </div>
                             <div class="btn-save">
                                 <button type="submit">Lưu thay đổi</button>

@@ -46,6 +46,12 @@
                                 <span>Lịch sử giao dịch</span>
                             </a>
                         </li>
+                        <li class="changePassword">
+                            <a href="${pageContext.request.contextPath}/views/vwAccount/changePassword.jsp" style="text-decoration: none; color: black;">
+                                <i class="fas fa-lock"></i>
+                                <span style="padding-left: 17px;">Thay đổi mật khẩu</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="LayoutInner bg-white becomeStore_layout">
@@ -63,7 +69,7 @@
                                 <form action="" method="post">
                                     <div class="userName">
                                         <span>Tên đăng nhập</span>
-                                        <input type="text"  placeholder="Username" name="username">
+                                        <input type="text"  placeholder="Username" name="username" value="${authUser.username}" disabled>
                                     </div>
                                     <div class="password space-top">
                                         <span>Mật khẩu</span>

@@ -242,15 +242,15 @@ a {
 }
 
 .info-user .container .LayoutInner.becomeStore_layout form .email span {
-    padding-left: 99px;
+    padding-left: 98px;
 }
 
 .info-user .container .LayoutInner.becomeStore_layout form .address span {
-    padding-left: 90px;
+    padding-left: 89px;
 }
 
 .info-user .container .LayoutInner.becomeStore_layout form .role span {
-    padding-left: 62px;
+    padding-left: 60px;
 }
 
 .info-user .container .LayoutInner.becomeStore_layout form .btn-require {
@@ -265,3 +265,38 @@ a {
     border-radius: 5px;
     background: #344cb7;
 }
+.info-user .container .LayoutInner.changePassword_layout form {
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.info-user .container .LayoutInner.changePassword_layout form input {
+    width: 250px;
+    padding: 5px 0;
+}
+
+.info-user .container .LayoutInner.changePassword_layout form .oldPass input {
+    margin-left: 83px;
+}
+
+.info-user .container .LayoutInner.changePassword_layout form .newPass input {
+    margin-left: 73px;
+}
+
+.info-user .container .LayoutInner.changePassword_layout form .repeat_newPass input {
+    margin-left: 11px;
+}
+
+.info-user .container .LayoutInner.changePassword_layout form .btn-save {
+    padding-top: 40px;
+    padding-left: 178px;
+}
+
+.info-user .container .LayoutInner.changePassword_layout form .btn-save button {
+    padding: 15px 40px;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    background: #344cb7;
+}
+
