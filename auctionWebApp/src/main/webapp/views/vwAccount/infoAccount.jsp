@@ -106,49 +106,7 @@
                         </form>
                     </div>
                 </div>
-<%--                <div class="LayoutInner bg-white account_layout" id= "permission" style="display: none">--%>
-<%--                    <div class="container-layoutInner">--%>
-<%--                        <div class="title">--%>
-<%--                            <h2>Xin cấp quyền đăng bài</h2>--%>
-<%--                        </div>--%>
-<%--                        <c:if test="${Error}">--%>
-<%--                            <script>--%>
-<%--                                alert("Error!");--%>
-<%--                            </script>--%>
-<%--                        </c:if>--%>
-<%--                        <form action="" method="post">--%>
-<%--                            <div class="nickName d-flex">--%>
-<%--                                <div>--%>
-<%--                                    <label>Tên đăng nhập</label>--%>
-<%--                                    <input type="text" placeholder="Username" id="txtUsername" name="username" autofocus required>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="nickName">--%>
-<%--                                <label>Mật khẩu</label>--%>
-<%--                                <input type="password" placeholder="Password" id="txtPassword" name="password" autofocus required>--%>
-<%--                            </div>--%>
-<%--                            <div class="fullName space-top">--%>
-<%--                                <label >Họ và Tên</label>--%>
-<%--                                <span>${authUser.name}</span>--%>
-<%--                            </div>--%>
-<%--                            <div class="email space-top">--%>
-<%--                                <label >Email</label>--%>
-<%--                                <span>${authUser.email}</span>--%>
-<%--                            </div>--%>
-<%--                            <div class="email space-top">--%>
-<%--                                <label >Địa chỉ</label>--%>
-<%--                                <span>${authUser.address}</span>--%>
-<%--                            </div>--%>
-<%--                            <div class="point space-top">--%>
-<%--                                <label >Quyền hạn</label>--%>
-<%--                                <span>${authUser.queue}</span>--%>
-<%--                            </div>--%>
-<%--                            <div class="btn-save">--%>
-<%--                                <button type="submit">Xin cấp quyền</button>--%>
-<%--                            </div>--%>
-<%--                        </form>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
+
             </div>
         </div>
     </jsp:body>
