@@ -46,13 +46,13 @@
                     </div>
                     <ul>
                         <li class="account">
-                            <a href="${pageContext.request.contextPath}/views/vwAccount/infoAccount.jsp" style="text-decoration: none; color: black;">
+                            <a href="${pageContext.request.contextPath}/account/profile" style="text-decoration: none; color: black;">
                                 <i class="fas fa-user"></i>
                                 <span>Thông tin tài khoản</span>
                             </a>
                         </li>
                         <li class="become-store">
-                            <a href="${pageContext.request.contextPath}/views/vwAccount/become_store.jsp" style="text-decoration: none; color: black;">
+                            <a href="${pageContext.request.contextPath}/account/becomeStore" style="text-decoration: none; color: black;">
                                 <i class="fas fa-store"></i>
                                 <span>Trở thành người bán</span>
                             </a>

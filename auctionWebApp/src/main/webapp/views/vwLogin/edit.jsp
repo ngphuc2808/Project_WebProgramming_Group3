@@ -99,7 +99,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/admin" role="button">
+                            <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/admin/index" role="button">
                                 <i class="fa fa-backward" aria-hidden="true"></i>
                                 Back
                             </a>
