@@ -143,7 +143,7 @@ CREATE TABLE `users` (
   `role` int NOT NULL,
   `queue` int NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +152,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (11,'hoangphuc','$2a$12$vyaPqoP0O.Jnb1bdasZthO33YVb3JUE1xtW7tIbM0hoC4Fnil9ZQu','Nguyen Hoang Phuc','ngphuc.2808@gmail.com','585/40/4 Nguyen Thi Thap','2021-12-24 00:00:00',0,0,0);
+INSERT INTO `users` VALUES (69,'hoangphuc','$2a$12$/bz/.rJSsz.mODQiwEa7kOPopIwRCb6PRDvB.msyvmgKnFRgQz4Ju','Nguyen Hoang Phuc','ngphuc2908@gmail.com','585/40/4 Nguyen Thi Thap','2001-08-28 00:00:00',0,0,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -165,4 +165,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-17  0:01:01
+-- Dump completed on 2021-12-20 10:39:18

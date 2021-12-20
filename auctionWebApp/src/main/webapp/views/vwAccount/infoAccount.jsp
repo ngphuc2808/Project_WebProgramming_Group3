@@ -89,7 +89,7 @@
                             <div class="birthday ">
                                 <label >Ngày sinh</label>
                                 <div class="group-select">
-                                    <span>${authUser.dob}</span>
+                                    <span>${authUser.dob.dayOfMonth}/${authUser.dob.monthValue}/${authUser.dob.year}</span>
                                 </div>
                             </div>
                             <div class="point space-top">

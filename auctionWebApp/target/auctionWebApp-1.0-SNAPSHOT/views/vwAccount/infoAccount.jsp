@@ -27,6 +27,8 @@
             function getPermission() {
                 document.getElementById("infor").style.display = "none"
                 document.getElementById("permission").style.display = "block";            }
+
+
         </script>
     </jsp:attribute>
     <jsp:body>
@@ -76,23 +78,19 @@
                             <div class="fullName space-top">
                                 <label >Họ và Tên</label>
                                 <div class="input-name">
-                                    <input type="text">
+                                    <input type="text" class="input_fullName" value="${authUser.name}" style="padding: 5px 0px; width: 300px;">
                                 </div>
                             </div>
+
                             <div class="email space-top">
-                                <label >Mật khẩu</label>
-                                <span>${authUser.password}</span>
-                                <a href="" class="change-pass">Thay đổi</a>
-                            </div>
-                            <div class="email space-top">
-                                <label >Email</label>
-                                <span>${authUser.email}</span>
-                                <a href="" class="change-pass">Thay đổi</a>
+                                <label style="padding-right: 112px;">Email</label>
+                                <input type="email" value="${authUser.email}" style="padding: 5px 0px; width: 300px;">
                             </div>
                             <div class="birthday ">
                                 <label >Ngày sinh</label>
                                 <div class="group-select">
-                                    <input type="text" placeholder="Date of Birth" id="txtDOB" name="dob" required>
+                                    <span>${authUser.dob.dayOfMonth}/${authUser.dob.monthValue}/${authUser.dob.year}</span>
+
                                 </div>
                             </div>
                             <div class="point space-top">
