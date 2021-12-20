@@ -20,13 +20,13 @@
             });
         </script>
         <script>
-            // function getInformation() {
-            //     document.getElementById("infor").style.display = "block"
-            //     document.getElementById("permission").style.display = "none";
-            // }
-            // function getPermission() {
-            //     document.getElementById("infor").style.display = "none"
-            //     document.getElementById("permission").style.display = "block";            }
+            function getInformation() {
+                document.getElementById("infor").style.display = "block"
+                document.getElementById("permission").style.display = "none";
+            }
+            function getPermission() {
+                document.getElementById("infor").style.display = "none"
+                document.getElementById("permission").style.display = "block";            }
 
 
         </script>
@@ -46,21 +46,21 @@
                     </div>
                     <ul>
                         <li class="account">
-                            <a href="${pageContext.request.contextPath}/views/vwAccount/infoAccount.jsp" style="text-decoration: none; color: black;">
+                            <a>
                                 <i class="fas fa-user"></i>
-                                <span>Thông tin tài khoản</span>
+                                <button onclick="getInformation()" style="background-color: transparent">Thông tin tài khoản</button>
                             </a>
                         </li>
                         <li class="become-store">
-                            <a href="${pageContext.request.contextPath}/views/vwAccount/become_store.jsp" style="text-decoration: none; color: black;">
+                            <a>
                                 <i class="fas fa-store"></i>
-                                <span>Trở thành người bán</span>
+                                <button onclick="getPermission()" style="background-color: transparent">Trở thành người bán</button>
                             </a>
                         </li>
                         <li class="trading-history">
                             <a>
                                 <i class="fas fa-history"></i>
-                                <span>Lịch sử giao dịch</span>
+                                <button style="background-color: transparent">Lịch sử giao dịch</button>
                             </a>
                         </li>
                     </ul>
@@ -86,10 +86,11 @@
                                 <label style="padding-right: 112px;">Email</label>
                                 <input type="email" value="${authUser.email}" style="padding: 5px 0px; width: 300px;">
                             </div>
-                            <div class="birthday  " style="padding-top: 20px;">
+                            <div class="birthday ">
                                 <label >Ngày sinh</label>
                                 <div class="group-select">
-                                    <span>${authUser.dob}</span>
+                                    <span>${authUser.dob.dayOfMonth}/${authUser.dob.monthValue}/${authUser.dob.year}</span>
+
                                 </div>
                             </div>
                             <div class="point space-top">
@@ -106,49 +107,49 @@
                         </form>
                     </div>
                 </div>
-<%--                <div class="LayoutInner bg-white account_layout" id= "permission" style="display: none">--%>
-<%--                    <div class="container-layoutInner">--%>
-<%--                        <div class="title">--%>
-<%--                            <h2>Xin cấp quyền đăng bài</h2>--%>
-<%--                        </div>--%>
-<%--                        <c:if test="${Error}">--%>
-<%--                            <script>--%>
-<%--                                alert("Error!");--%>
-<%--                            </script>--%>
-<%--                        </c:if>--%>
-<%--                        <form action="" method="post">--%>
-<%--                            <div class="nickName d-flex">--%>
-<%--                                <div>--%>
-<%--                                    <label>Tên đăng nhập</label>--%>
-<%--                                    <input type="text" placeholder="Username" id="txtUsername" name="username" autofocus required>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <div class="nickName">--%>
-<%--                                <label>Mật khẩu</label>--%>
-<%--                                <input type="password" placeholder="Password" id="txtPassword" name="password" autofocus required>--%>
-<%--                            </div>--%>
-<%--                            <div class="fullName space-top">--%>
-<%--                                <label >Họ và Tên</label>--%>
-<%--                                <span>${authUser.name}</span>--%>
-<%--                            </div>--%>
-<%--                            <div class="email space-top">--%>
-<%--                                <label >Email</label>--%>
-<%--                                <span>${authUser.email}</span>--%>
-<%--                            </div>--%>
-<%--                            <div class="email space-top">--%>
-<%--                                <label >Địa chỉ</label>--%>
-<%--                                <span>${authUser.address}</span>--%>
-<%--                            </div>--%>
-<%--                            <div class="point space-top">--%>
-<%--                                <label >Quyền hạn</label>--%>
-<%--                                <span>${authUser.queue}</span>--%>
-<%--                            </div>--%>
-<%--                            <div class="btn-save">--%>
-<%--                                <button type="submit">Xin cấp quyền</button>--%>
-<%--                            </div>--%>
-<%--                        </form>--%>
-<%--                    </div>--%>
-<%--                </div>--%>
+                <div class="LayoutInner bg-white account_layout" id= "permission" style="display: none">
+                    <div class="container-layoutInner">
+                        <div class="title">
+                            <h2>Xin cấp quyền đăng bài</h2>
+                        </div>
+                        <c:if test="${Error}">
+                            <script>
+                                alert("Error!");
+                            </script>
+                        </c:if>
+                        <form action="" method="post">
+                            <div class="nickName d-flex">
+                                <div>
+                                    <label>Tên đăng nhập</label>
+                                    <input type="text" placeholder="Username" id="txtUsername" name="username" autofocus required>
+                                </div>
+                            </div>
+                            <div class="nickName">
+                                <label>Mật khẩu</label>
+                                <input type="password" placeholder="Password" id="txtPassword" name="password" autofocus required>
+                            </div>
+                            <div class="fullName space-top">
+                                <label >Họ và Tên</label>
+                                <span>${authUser.name}</span>
+                            </div>
+                            <div class="email space-top">
+                                <label >Email</label>
+                                <span>${authUser.email}</span>
+                            </div>
+                            <div class="email space-top">
+                                <label >Địa chỉ</label>
+                                <span>${authUser.address}</span>
+                            </div>
+                            <div class="point space-top">
+                                <label >Quyền hạn</label>
+                                <span>${authUser.queue}</span>
+                            </div>
+                            <div class="btn-save">
+                                <button type="submit">Xin cấp quyền</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </jsp:body>

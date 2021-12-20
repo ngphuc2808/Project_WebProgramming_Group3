@@ -4,8 +4,8 @@
 <jsp:useBean id="authUser" scope="session" type="com.auction.auctionwebapp.beans.user" />
 <i:main>
     <jsp:attribute name="css">
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css_Account/style_account.css">
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css_Account/reset_account.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css_Account/style_account.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css_Account/reset_account.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </jsp:attribute>
@@ -43,7 +43,7 @@
                         <li class="trading-history">
                             <a>
                                 <i class="fas fa-history"></i>
-                                <button style="background-color: transparent">Lịch sử giao dịch</button>
+                                <span>Lịch sử giao dịch</span>
                             </a>
                         </li>
                     </ul>
@@ -60,29 +60,29 @@
 
                             <div class="userName">
                                 <span>Tên đăng nhập</span>
-                                <input type="text" name="" id="" placeholder="Username">
+                                <input type="text"  placeholder="Username"  value="${authUser.username}" disabled>
                             </div>
 
                             <div class="password space-top">
                                 <span>Mật khẩu</span>
-                                <input type="text" name="" id="" placeholder="Password">
+                                <input type="text"  placeholder="Password">
                             </div>
 
                             <div class="fullName space-top">
-                                <label for="">Họ và tên</label>
-                                <span>Nhut</span>
+                                <label >Họ và tên</label>
+                                <span>${authUser.name}</span>
                             </div>
                             <div class="email space-top">
-                                <label for="">Email</label>
-                                <span>Nhut</span>
+                                <label >Email</label>
+                                <span>${authUser.email}</span>
                             </div>
                             <div class="address space-top">
-                                <label for="">Địa chỉ</label>
-                                <span>Nhut</span>
+                                <label >Địa chỉ</label>
+                                <span>${authUser.address}</span>
                             </div>
                             <div class="role space-top">
-                                <label for="">Quyền hạn</label>
-                                <span>Nhut</span>
+                                <label >Quyền hạn</label>
+                                <span>${authUser.role}</span>
                             </div>
 
                             <div class="btn-require">
