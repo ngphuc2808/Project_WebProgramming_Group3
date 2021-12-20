@@ -55,7 +55,7 @@
             </form>
         </div>
     </nav>
-    <div class="container-fluid mt-3">
+    <div class="container-fluid mt-3" style="height: 100vh">
         <div class="row">
             <div class="col-sm-3">
                 <div class="card">
@@ -99,7 +99,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/admin" role="button">
+                            <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/admin/index" role="button">
                                 <i class="fa fa-backward" aria-hidden="true"></i>
                                 Back
                             </a>

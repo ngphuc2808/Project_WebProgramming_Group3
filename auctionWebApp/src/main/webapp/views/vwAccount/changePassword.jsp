@@ -52,48 +52,43 @@
                                 <span>Lịch sử giao dịch</span>
                             </a>
                         </li>
+
+                        <li class="changePassword">
+                            <a href="${pageContext.request.contextPath}/views/vwAccount/changePassword.jsp" style="text-decoration: none; color: black;">
+                                <i class="fas fa-lock"></i>
+                                <span style="padding-left: 17px;">Thay đổi mật khẩu</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
-                <div class="LayoutInner bg-white account_layout">
+                <div class="LayoutInner bg-white changePassword_layout" id= "infor" style="display: block">
                     <div class="container-layoutInner">
                         <div class="title">
-                            <h2>Thông tin tài khoản</h2>
+                            <h2>Thay đổi mật khẩu</h2>
                         </div>
-                        <form action="" method="post">
-                            <div class="nickName">
-                                <label>Tên đăng nhập</label>
-                                <span>${authUser.username}</span>
+                        <form action="">
+
+                            <div class="oldPass">
+                                <span>Mật khẩu cũ: </span>
+                                <input type="text">
                             </div>
-                            <div class="fullName space-top">
-                                <label >Họ và Tên</label>
-                                <div class="input-name">
-                                    <input type="text" class="input_fullName" value="${authUser.name}" style="padding: 5px 0px; width: 300px;">
-                                </div>
+                            <div class="newPass space-top">
+                                <span>Mật khẩu mới: </span>
+                                <input type="text">
                             </div>
-                            <div class="email space-top">
-                                <label style="padding-right: 112px;">Email</label>
-                                <input type="email" value="${authUser.email}" style="padding: 5px 0px; width: 300px;">
+                            <div class="repeat_newPass space-top">
+                                <span>Nhập lại mật khẩu mới: </span>
+                                <input type="text">
                             </div>
-                            <div class="birthday  " style="padding-top: 20px;">
-                                <label >Ngày sinh</label>
-                                <div class="group-select">
-                                    <span>${authUser.dob.dayOfMonth}/${authUser.dob.monthValue}/${authUser.dob.year}</span>
-                                </div>
-                            </div>
-                            <div class="role space-top">
-                                <label >Điểm số</label>
-                                <span>${authUser.point}</span>
-                            </div>
-                            <div class="role space-top">
-                                <label >Quyền hạn</label>
-                                <span>${authUser.queue}</span>
-                            </div>
+
                             <div class="btn-save">
-                                <button type="submit">Lưu thay đổi</button>
+                                <button>Lưu thay đổi</button>
                             </div>
+
                         </form>
                     </div>
                 </div>
+
             </div>
         </div>
     </jsp:body>

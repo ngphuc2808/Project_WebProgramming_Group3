@@ -12,7 +12,6 @@
     <jsp:attribute name="js">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
     </jsp:attribute>
     <jsp:body>
         <div class="info-user bg-main" style="margin-top: 0">
@@ -29,13 +28,13 @@
                     </div>
                     <ul>
                         <li class="account">
-                            <a href="${pageContext.request.contextPath}/views/vwAccount/infoAccount.jsp" style="text-decoration: none; color: black;">
+                            <a href="${pageContext.request.contextPath}/account/profile" style="text-decoration: none; color: black;">
                                 <i class="fas fa-user"></i>
                                 <span>Thông tin tài khoản</span>
                             </a>
                         </li>
                         <li class="become-store">
-                            <a href="${pageContext.request.contextPath}/views/vwAccount/become_store.jsp" style="text-decoration: none; color: black;">
+                            <a href="${pageContext.request.contextPath}/account/becomeStore" style="text-decoration: none; color: black;">
                                 <i class="fas fa-store"></i>
                                 <span>Trở thành người bán</span>
                             </a>
@@ -46,55 +45,66 @@
                                 <span>Lịch sử giao dịch</span>
                             </a>
                         </li>
+                        <li class="changePassword">
+                            <a href="${pageContext.request.contextPath}/views/vwAccount/changePassword.jsp" style="text-decoration: none; color: black;">
+                                <i class="fas fa-lock"></i>
+                                <span style="padding-left: 17px;">Thay đổi mật khẩu</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
-
                 <div class="LayoutInner bg-white becomeStore_layout">
                     <div class="container-layoutInner">
-
                         <div class="title">
                             <h2>Trở thành người bán</h2>
                         </div>
-
-                        <form action="">
-
-                            <div class="userName">
-                                <span>Tên đăng nhập</span>
-                                <input type="text"  placeholder="Username"  value="${authUser.username}" disabled>
-                            </div>
-
-                            <div class="password space-top">
-                                <span>Mật khẩu</span>
-                                <input type="text"  placeholder="Password">
-                            </div>
-
-                            <div class="fullName space-top">
-                                <label >Họ và tên</label>
-                                <span>${authUser.name}</span>
-                            </div>
-                            <div class="email space-top">
-                                <label >Email</label>
-                                <span>${authUser.email}</span>
-                            </div>
-                            <div class="address space-top">
-                                <label >Địa chỉ</label>
-                                <span>${authUser.address}</span>
-                            </div>
-                            <div class="role space-top">
-                                <label >Quyền hạn</label>
-                                <span>${authUser.role}</span>
-                            </div>
-
-                            <div class="btn-require">
-                                <button>Xin cấp quyền</button>
-                            </div>
-
-
-                        </form>
-
+                        <c:if test="${Error}">
+                            <script>
+                                alert("Error!");
+                            </script>
+                        </c:if>
+                        <c:choose>
+                            <c:when test="${authUser.queue=='0'}">
+                                <form action="" method="post">
+                                    <div class="userName">
+                                        <span>Tên đăng nhập</span>
+                                        <input type="text"  placeholder="Username" name="username" value="${authUser.username}" disabled>
+                                    </div>
+                                    <div class="password space-top">
+                                        <span>Mật khẩu</span>
+                                        <input type="password" placeholder="Password" name="password">
+                                    </div>
+                                    <div class="fullName space-top">
+                                        <label >Họ và tên</label>
+                                        <span>${authUser.name}</span>
+                                    </div>
+                                    <div class="email space-top">
+                                        <label >Email</label>
+                                        <span>${authUser.email}</span>
+                                    </div>
+                                    <div class="address space-top">
+                                        <label >Địa chỉ</label>
+                                        <span>${authUser.address}</span>
+                                    </div>
+                                    <div class="role space-top">
+                                        <label >Quyền hạn</label>
+                                        <span>${authUser.queue}</span>
+                                    </div>
+                                    <div class="btn-require">
+                                        <button type="submit">Xin cấp quyền</button>
+                                    </div>
+                                </form>
+                            </c:when>
+                            <c:otherwise>
+                                <div style="margin-top: 20px">Họ tên: ${authUser.name}</div>
+                                <div>Quyền hạn: ${authUser.queue}</div>
+                                <div>Bạn đã được cấp quyền trong 7 ngày!</div>
+                                <div>Từ ngày: </div>
+                                <div>Đến ngày: </div>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
-
         </div>
     </jsp:body>
 </i:main>

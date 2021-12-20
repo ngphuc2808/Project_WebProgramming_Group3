@@ -4,6 +4,7 @@
     <option name="state">
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/vwAccount/become_store.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/vwAccount" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/views/vwAccount/infoAccount.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/vwAccount" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/vwCategory/category.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/vwCategory" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/views/vwHome/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp/views/vwHome" />
       </map>

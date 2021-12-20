@@ -16,6 +16,10 @@
         <url-pattern>/account/profile</url-pattern>
     </filter-mapping>
     <filter-mapping>
+        <filter-name>authFilter</filter-name>
+        <url-pattern>/account/becomeStore</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
         <filter-name>adminFilter</filter-name>
         <url-pattern>/admin/edit</url-pattern>
     </filter-mapping>
