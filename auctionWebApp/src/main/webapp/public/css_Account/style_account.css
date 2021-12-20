@@ -219,63 +219,49 @@ a {
     border-radius: 5px;
     background: #344cb7;
 }
-
-.info-user .container .LayoutInner.address_layout .title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.info-user .container .LayoutInner.becomeStore_layout form {
+    margin-top: 60px;
+    margin-left: 50px;
 }
 
-.info-user .container .LayoutInner.address_layout .title .btn-saveAddress button {
-    padding: 15px 25px;
+.info-user .container .LayoutInner.becomeStore_layout form input {
+    width: 300px;
+    padding: 5px 0;
+}
+
+.info-user .container .LayoutInner.becomeStore_layout form .userName input {
+    margin-left: 30px;
+}
+
+.info-user .container .LayoutInner.becomeStore_layout form .password input {
+    margin-left: 64px;
+}
+
+.info-user .container .LayoutInner.becomeStore_layout form .fullName span {
+    padding-left: 65px;
+}
+
+.info-user .container .LayoutInner.becomeStore_layout form .email span {
+    padding-left: 90px;
+}
+
+.info-user .container .LayoutInner.becomeStore_layout form .address span {
+    padding-left: 82px;
+}
+
+.info-user .container .LayoutInner.becomeStore_layout form .role span {
+    padding-left: 59px;
+}
+
+.info-user .container .LayoutInner.becomeStore_layout form .btn-require {
+    padding-top: 40px;
+    padding-left: 130px;
+}
+
+.info-user .container .LayoutInner.becomeStore_layout form .btn-require button {
+    padding: 15px 40px;
     cursor: pointer;
     color: white;
     border-radius: 5px;
-    background-color: #dd4a48;
-}
-
-.info-user .container .LayoutInner.address_layout form {
-    margin-top: 60px;
-}
-
-.info-user .container .LayoutInner.address_layout form label {
-    color: rgba(0, 0, 0, .6);
-}
-
-.info-user .container .LayoutInner.address_layout form .address_1 {
-    position: relative;
-    width: 100%;
-}
-
-.info-user .container .LayoutInner.address_layout form .address_1::before {
-    position: absolute;
-    bottom: -60px;
-    width: 100%;
-    height: 1px;
-    content: '';
-    background: rgba(0, 0, 0, .2);
-}
-
-.info-user .container .LayoutInner.address_layout form .address_1 .fullName {
-    padding-left: 40px;
-}
-
-.info-user .container .LayoutInner.address_layout form .address_1 .fullName span {
-    padding-left: 80px;
-}
-
-.info-user .container .LayoutInner.address_layout form .address_1 .phone {
-    padding-left: 40px;
-}
-
-.info-user .container .LayoutInner.address_layout form .address_1 .phone span {
-    padding-left: 62px;
-}
-
-.info-user .container .LayoutInner.address_layout form .address_1 .addr {
-    padding-left: 40px;
-}
-
-.info-user .container .LayoutInner.address_layout form .address_1 .addr span {
-    padding-left: 100px;
+    background: #344cb7;
 }
