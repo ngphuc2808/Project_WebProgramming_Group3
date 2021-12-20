@@ -90,13 +90,14 @@ public class userModel {
 
     }
     public static void update(user c) {
-        String sql = "update users set username = :username, name =:name, email = :email, queue = :queue where idUser = :idUser";
+        String sql = "update users set username = :username, name =:name, email = :email,role = :role, queue = :queue where idUser = :idUser";
         try (Connection con = dbUtils.getConnection()) {
             con.createQuery(sql)
                     .addParameter("idUser", c.getIdUser())
                     .addParameter("username", c.getUsername())
                     .addParameter("name", c.getName())
                     .addParameter("email", c.getEmail())
+                    .addParameter("role", c.getRole())
                     .addParameter("queue", c.getQueue())
                     .executeUpdate();
         }
