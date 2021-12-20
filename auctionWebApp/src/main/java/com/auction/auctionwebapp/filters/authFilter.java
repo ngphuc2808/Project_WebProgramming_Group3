@@ -26,7 +26,7 @@ public class authFilter implements Filter {
         boolean auth = (boolean) session.getAttribute("auth");
         if (!auth) {
             session.setAttribute("retUrl", request.getRequestURI());
-            servletUtils.redirect("/account/login", request, (HttpServletResponse) res);
+            servletUtils.redirect("/home", request, (HttpServletResponse) res);
             return;
         }
 

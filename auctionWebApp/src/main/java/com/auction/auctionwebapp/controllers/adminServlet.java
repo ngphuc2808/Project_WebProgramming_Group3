@@ -140,12 +140,12 @@ public class adminServlet extends HttpServlet {
         c.setEmail(email);
         c.setQueue(permission);
         userModel.update(c);
-        servletUtils.redirect("/admin", request, response);
+        servletUtils.redirect("/admin/index", request, response);
     }
     private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("idUser"));
         userModel.delete(id);
-        servletUtils.redirect("/admin", request, response);
+        servletUtils.redirect("/admin/index", request, response);
     }
 }
 
