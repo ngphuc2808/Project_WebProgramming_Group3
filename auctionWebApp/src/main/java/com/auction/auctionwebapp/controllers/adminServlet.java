@@ -163,4 +163,3 @@ public class adminServlet extends HttpServlet {
         servletUtils.redirect("/admin/index", request, response);
     }
 }
-
