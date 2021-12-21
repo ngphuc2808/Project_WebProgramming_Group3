@@ -2,10 +2,8 @@ package com.auction.auctionwebapp.controllers;
 
 import com.auction.auctionwebapp.beans.admin;
 import com.auction.auctionwebapp.beans.user;
-import com.auction.auctionwebapp.beans.category;
 import com.auction.auctionwebapp.models.adminModel;
 import com.auction.auctionwebapp.models.userModel;
-import com.auction.auctionwebapp.models.categoryModel;
 import com.auction.auctionwebapp.utils.servletUtils;
 
 import javax.servlet.ServletException;

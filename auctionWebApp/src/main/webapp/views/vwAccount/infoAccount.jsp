@@ -41,7 +41,7 @@
                             </a>
                         </li>
                         <li class="become-store">
-                            <a href="${pageContext.request.contextPath}/account/becomeStore" style="text-decoration: none; color: black;">
+                            <a href="${pageContext.request.contextPath}/account/becomeStore?id=${authUser.idUser}" role="button" style="text-decoration: none; color: black;">
                                 <i class="fas fa-store"></i>
                                 <span>Trở thành người bán</span>
                             </a>

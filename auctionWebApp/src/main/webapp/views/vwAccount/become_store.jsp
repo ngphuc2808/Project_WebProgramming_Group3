@@ -2,6 +2,7 @@
 <%@ taglib prefix="i" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="authUser" scope="session" type="com.auction.auctionwebapp.beans.user" />
+<jsp:useBean id="pms" scope="request" type="com.auction.auctionwebapp.beans.myPermission"/>
 <i:main>
     <jsp:attribute name="css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css_Account/style_account.css">
@@ -68,7 +69,7 @@
                                 <form action="" method="post">
                                     <div class="userName">
                                         <span>Tên đăng nhập</span>
-                                        <input type="text"  placeholder="Username" name="username" value="${authUser.username}" disabled>
+                                        <input type="text"  placeholder="Username" name="username">
                                     </div>
                                     <div class="password space-top">
                                         <span>Mật khẩu</span>
@@ -96,11 +97,12 @@
                                 </form>
                             </c:when>
                             <c:otherwise>
-                                <div style="margin-top: 20px">Họ tên: ${authUser.name}</div>
-                                <div>Quyền hạn: ${authUser.queue}</div>
-                                <div>Bạn đã được cấp quyền trong 7 ngày!</div>
-                                <div>Từ ngày: </div>
-                                <div>Đến ngày: </div>
+                                <div style="margin-top: 20px"><h6>ID: ${pms.idUser}</h6></div>
+                                <div><h6>Họ tên: ${authUser.name}</h6></div>
+                                <div><h6>Quyền hạn: ${authUser.queue}</h6></div>
+                                <div><h6>Bạn đã được cấp quyền trong 7 ngày!</h6></div>
+                                <div><h6>Từ ngày: ${pms.startDate}</h6></div>
+                                <div><h6>Đến ngày: ${pms.endDate}</h6></div>
                             </c:otherwise>
                         </c:choose>
                     </div>

@@ -45,7 +45,7 @@
         <c:choose>
             <c:when test="${c.timeInserted < 100}">
                 <tr style="color: red">
-                    <td><img src="${c.image}" alt="" width="30px" height="30px"></td>
+                    <td><img src="${pageContext.request.contextPath}/public/image/product/${c.image}" alt="" width="30px" height="30px"></td>
                     <td>${c.nameProduct}</td>
                     <td>${c.price}</td>
                     <td>${c.quantity}</td>

@@ -4,6 +4,8 @@ import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.auction.auctionwebapp.beans.user;
 import com.auction.auctionwebapp.models.userModel;
 import com.auction.auctionwebapp.utils.servletUtils;
+import com.auction.auctionwebapp.beans.myPermission;
+import com.auction.auctionwebapp.models.permissionModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +18,7 @@ import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @WebServlet(name = "accountServlet", value = "/account/*")
 public class accountServlet extends HttpServlet {
@@ -33,7 +36,17 @@ public class accountServlet extends HttpServlet {
                 servletUtils.forward("/views/vwAccount/infoAccount.jsp", request, response);
                 break;
             case "/becomeStore":
-                servletUtils.forward("/views/vwAccount/become_store.jsp", request, response);
+                int id = 0;
+                try {
+                    id = Integer.parseInt(request.getParameter("id"));
+                } catch (NumberFormatException e) {}
+                myPermission c = permissionModel.findById(id);
+                if (c != null) {
+                    request.setAttribute("pms", c);
+                    servletUtils.forward("/views/vwAccount/become_store.jsp", request, response);
+                } else {
+                    servletUtils.redirect("/account/profile", request, response);
+                }
                 break;
             case "/isAvailable":
                 String username = request.getParameter("user");
@@ -107,7 +120,7 @@ public class accountServlet extends HttpServlet {
 
         user c = new user(0, username, bcryptHashString, name, email, address, dob, point, role, queue);
         userModel.add(c);
-        servletUtils.forward("/views/vwLogin/register.jsp", request, response);
+        servletUtils.redirect("/home", request, response);
     }
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("user");
