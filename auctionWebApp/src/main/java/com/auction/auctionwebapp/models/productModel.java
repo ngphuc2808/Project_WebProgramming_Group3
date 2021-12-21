@@ -1,12 +1,29 @@
 package com.auction.auctionwebapp.models;
 
 import com.auction.auctionwebapp.beans.Product;
+import com.auction.auctionwebapp.beans.category;
 import com.auction.auctionwebapp.utils.dbUtils;
 import org.sql2o.Connection;
 
 import java.util.List;
 
 public class productModel {
+
+        public static List<Product> findAll() {
+            final String query = "select * from products";
+            try (Connection con = dbUtils.getConnection()) {
+                return con.createQuery(query)
+                        .executeAndFetch(Product.class);
+            }
+        }
+
+    public static List<Product> findByCatID(int idCat) {
+        final String query = "select * from products where idCategory = :idCategory";
+        try (Connection con = dbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(Product.class);
+        }
+    }
 
     public static List<Product> findAllProductByCategory(int category) {
         final String query = "select * from products where products.idCategory = :category";

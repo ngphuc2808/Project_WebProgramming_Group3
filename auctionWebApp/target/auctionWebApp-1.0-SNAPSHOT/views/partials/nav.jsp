@@ -31,8 +31,6 @@
 </c:choose>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
     <a class="navbar-brand" style="margin-left: 230px" href="#">Auction.com</a>
-    <a class="navbar-brand" style="margin-left: 230px" href="${pageContext.request.contextPath}/search"> Product
-        List</a>
     <div class="collapse navbar-collapse" style="margin-right: 230px" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
@@ -41,18 +39,18 @@
                     Categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/search?category=1">Phone</a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/search?category=2">Laptop</a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/search?category=3">Tablet</a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/search?category=4">Camera</a>
-                    <a class="dropdown-item" href="${pageContext.request.contextPath}/search?category=5">Perfume</a>
+                    <a class="dropdown-item" href="#">Phone</a>
+                    <a class="dropdown-item" href="#">Laptop</a>
+                    <a class="dropdown-item" href="#">Tablet</a>
+                    <a class="dropdown-item" href="#">Camera</a>
+                    <a class="dropdown-item" href="#">Perfume</a>
                 </div>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="" method="get">
-<%--            <input class="form-control mr-sm-2" style="width: 51vw" type="search" name="search" placeholder="Search"--%>
-<%--                   aria-label="Search">--%>
-<%--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--%>
+            <input class="form-control mr-sm-2" style="width: 51vw" type="search" name="search" placeholder="Search"
+                   aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
 </nav>

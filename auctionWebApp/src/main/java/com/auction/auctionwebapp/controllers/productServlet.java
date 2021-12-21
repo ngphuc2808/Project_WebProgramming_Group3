@@ -12,22 +12,17 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "categoryServlet", value = "/category/*")
-public class categoryServlet extends HttpServlet {
+@WebServlet(name = "productServlet", value = "/product/*")
+public class productServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
-        if (path == null || path.equals("/")) {
-            path = "/index";
-        }
-
         switch (path) {
-            case "/index":
-                List<category> list = categoryModel.findAll();
-                List<Product> productList = productModel.findAllProduct();
-                request.setAttribute("categories", list);
+            case "/ByCat":
+                int idCat = Integer.parseInt(request.getParameter("id"));
+                List<Product> productList = productModel.findByCatID(idCat);
                 request.setAttribute("products", productList);
-                servletUtils.forward("/views/vwCategory/category.jsp", request, response);
+                servletUtils.forward("/views/vwCategory/ByCat.jsp", request, response);
                 break;
 
             default:

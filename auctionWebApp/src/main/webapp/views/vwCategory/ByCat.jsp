@@ -3,6 +3,7 @@
 <%@ taglib prefix="i" tagdir="/WEB-INF/tags" %>
 
 <jsp:useBean id="categories" scope="request" type="java.util.List<com.auction.auctionwebapp.beans.category>"/>
+
 <jsp:useBean id="products" scope="request" type="java.util.List<com.auction.auctionwebapp.beans.Product>"/>
 <i:main>
     <jsp:attribute name="css">
@@ -32,7 +33,7 @@
                         </h4>
                         <div class="list-group list-group-flush">
                             <c:forEach items="${categories}" var="c">
-                                <a href="${pageContext.request.contextPath}/views/vwCategory/ByCat.jsp" class="list-group-item list-group-item-action">
+                                <a href="" class="list-group-item list-group-item-action">
                                     <i class="fa fa-caret-right" aria-hidden="true"></i>
                                         ${c.nameCategory}
                                 </a>
