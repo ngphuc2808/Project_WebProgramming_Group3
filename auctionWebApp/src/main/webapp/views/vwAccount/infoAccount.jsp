@@ -52,6 +52,12 @@
                                 <span>Lịch sử giao dịch</span>
                             </a>
                         </li>
+                        <li class="changePassword">
+                            <a href="${pageContext.request.contextPath}/views/vwAccount/changePassword.jsp" style="text-decoration: none; color: black;">
+                                <i class="fas fa-lock"></i>
+                                <span style="padding-left: 17px;">Thay đổi mật khẩu</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="LayoutInner bg-white account_layout">
@@ -82,11 +88,11 @@
                             </div>
                             <div class="role space-top">
                                 <label >Điểm số</label>
-                                <span>${authUser.point}</span>
+                                <span style="padding-left: 97px;">${authUser.point}</span>
                             </div>
                             <div class="role space-top">
                                 <label >Quyền hạn</label>
-                                <span>${authUser.queue}</span>
+                                <span style="padding-left: 79px;">${authUser.queue}</span>
                             </div>
                             <div class="btn-save">
                                 <button type="submit">Lưu thay đổi</button>

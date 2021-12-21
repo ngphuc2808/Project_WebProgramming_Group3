@@ -3,7 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="h" %>
 
 <jsp:useBean id="categories" scope="request" type="java.util.List<com.auction.auctionwebapp.beans.category>"/>
+
 <i:main>
+    <jsp:attribute name="css">
+      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css/styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    </jsp:attribute>
     <jsp:body>
         <div class="container-fluid" style="width: 75vw">
             <div id="myDiv" class="mx-auto mt-3 d-flex justify-content-between" style="width: 75vw">
@@ -77,5 +82,31 @@
                 </div>
             </div>
         </div>
+
+        <div class="footer bg-footer">
+            <div class="container-fluid">
+                <div class="contact">
+
+                    <h3>Liên hệ với chúng tôi</h3>
+                    <ul>
+                        <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                        <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fas fa-phone-alt"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="designBy">
+                    <span>Design by</span>
+                    <ul>
+                        <li>Quynh Nhut</li>
+                        <li>Hoang Phuc</li>
+                        <li>Bich Tram</li>
+                        <li>Nguyen Huy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </jsp:body>
+
 </i:main>

@@ -15,3 +15,106 @@
 .myHover:hover {
     color: cornsilk;
 }
+
+ul{
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer {
+    height: 150px;
+}
+
+.footer.bg-footer {
+    background-color: #343a40;
+}
+
+.footer .container-fluid {
+    display: flex;
+    padding-top: 40px;
+    padding-left: 30px;
+    justify-content: space-between;
+}
+.footer .container-fluid .contact  {
+    margin-left: 100px;
+}
+.footer .container-fluid .designBy  {
+    margin-right: 50px;
+}
+.footer .container-fluid .contact h3 {
+    color: white;
+}
+
+.footer .container-fluid .contact ul {
+    display: flex;
+    width: 200px;
+    padding-top: 15px;
+    justify-content: space-between;
+}
+
+.footer .container-fluid .contact ul li a {
+    font-size: 30px;
+    color: white;
+}
+
+.footer .container-fluid .contact ul li a i {
+    transition: all .4s;
+}
+
+.footer .container-fluid .contact ul li a:hover i {
+    transform: scale(.8);
+}
+
+.footer .container-fluid .designBy span {
+    font-size: 25px;
+    color: white;
+}
+
+.footer .container-fluid .designBy ul {
+    display: flex;
+    width: 400px;
+    justify-content: space-between;
+}
+
+.footer .container-fluid .designBy ul li {
+    padding-top: 15px;
+    cursor: pointer;
+    transition: all .4s;
+    color: white;
+}
+
+.footer .container-fluid .designBy ul li:hover {
+    -webkit-animation-name: foot;
+    animation-name: foot;
+    -webkit-animation-duration: .5s;
+    animation-duration: .5s;
+}
+
+@-webkit-keyframes foot {
+
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-3px);
+    }
+
+}
+
+@keyframes foot {
+
+    from {
+        transform: translateY(0px);
+    }
+
+    to {
+        transform: translateY(-3px);
+    }
+
+}
+
