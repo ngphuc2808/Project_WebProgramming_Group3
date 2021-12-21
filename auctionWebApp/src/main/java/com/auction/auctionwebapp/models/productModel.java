@@ -6,7 +6,7 @@ import org.sql2o.Connection;
 
 import java.util.List;
 
-public class ProductModel {
+public class productModel {
 
     public static List<Product> findAllProductByCategory(int category) {
         final String query = "select * from products where products.idCategory = :category";

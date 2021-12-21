@@ -1,7 +1,7 @@
 package com.auction.auctionwebapp.controllers;
 
 import com.auction.auctionwebapp.beans.Product;
-import com.auction.auctionwebapp.models.ProductModel;
+import com.auction.auctionwebapp.models.productModel;
 import com.auction.auctionwebapp.utils.servletUtils;
 
 import javax.servlet.ServletException;
@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "SearchServlet", value = "/search")
-public class SearchServlet extends HttpServlet {
+@WebServlet(name = "searchServlet", value = "/search")
+public class searchServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,12 +23,12 @@ public class SearchServlet extends HttpServlet {
             int category;
             try {
                 category = Integer.parseInt(request.getParameter("category"));
-                productList = ProductModel.findAllProductByCategory(category);
+                productList = productModel.findAllProductByCategory(category);
             } catch (NumberFormatException e) {
                 e.printStackTrace();
             }
         } else {
-            productList = ProductModel.findAllProduct();
+            productList = productModel.findAllProduct();
         }
         request.setAttribute("productList", productList);
         servletUtils.forward("/views/vwProduct/list_product.jsp", request, response);
