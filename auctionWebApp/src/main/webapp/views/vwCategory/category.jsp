@@ -62,26 +62,66 @@
                                 <c:forEach items="${products}" var="p">
                                     <c:choose>
                                         <c:when test="${p.timeInserted < 100}">
-                                            <tr style="color: red">
-                                                <td><img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" width="30px" height="30px"></td>
-                                                <td>${p.nameProduct}</td>
-                                                <td>${p.price}</td>
-                                                <td>${p.quantity}</td>
-                                                <td>${p.createdDate}</td>
-                                                <td>${p.timeRemaining}</td>
-                                                <td>${p.bidder}</td>
-                                            </tr>
+                                            <div class="col-sm-4 mb-3 d-flex" style="color: red">
+                                                <div class="card h-100">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">${p.nameProduct}</h6>
+                                                        <h5 class="card-title text-danger">
+                                                            <fmt:formatNumber value="${p.price}" type="number" />
+                                                        </h5>
+                                                    </div>
+                                                    <div class="card-footer text-muted">
+                                                        <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                            Details
+                                                        </a>
+                                                        <a class="btn btn-sm btn-outline-success" href="#" role="button">
+                                                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                                            Add to cart
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+<%--                                            <tr >--%>
+<%--                                                <td><img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" width="30px" height="30px"></td>--%>
+<%--                                                <td>${p.nameProduct}</td>--%>
+<%--                                                <td>${p.price}</td>--%>
+<%--                                                <td>${p.quantity}</td>--%>
+<%--                                                <td>${p.createdDate}</td>--%>
+<%--                                                <td>${p.timeRemaining}</td>--%>
+<%--                                                <td>${p.bidder}</td>--%>
+<%--                                            </tr>--%>
                                         </c:when>
                                         <c:otherwise>
-                                            <tr>
-                                                <td><img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" width="30px" height="30px"></td>
-                                                <td>${p.nameProduct}</td>
-                                                <td>${p.price}</td>
-                                                <td>${p.quantity}</td>
-                                                <td>${p.createdDate}</td>
-                                                <td>${p.timeRemaining}</td>
-                                                <td>${p.bidder}</td>
-                                            </tr>
+                                            <div class="col-sm-4 mb-3">
+                                                <div class="card h-100">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">${p.nameProduct}</h6>
+                                                        <h5 class="card-title text-danger">
+                                                            <fmt:formatNumber value="${p.price}" type="number" />
+                                                        </h5>
+                                                    </div>
+                                                    <div class="card-footer text-muted">
+                                                        <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                                            Details
+                                                        </a>
+                                                        <a class="btn btn-sm btn-outline-success" href="#" role="button">
+                                                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                                            Add to cart
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+<%--                                            <tr>--%>
+<%--                                                <td><img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" width="30px" height="30px"></td>--%>
+<%--                                                <td>${p.nameProduct}</td>--%>
+<%--                                                <td>${p.price}</td>--%>
+<%--                                                <td>${p.quantity}</td>--%>
+<%--                                                <td>${p.createdDate}</td>--%>
+<%--                                                <td>${p.timeRemaining}</td>--%>
+<%--                                                <td>${p.bidder}</td>--%>
+<%--                                            </tr>--%>
                                         </c:otherwise>
                                     </c:choose>
 

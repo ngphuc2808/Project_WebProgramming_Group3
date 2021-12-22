@@ -1,6 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="authUser" scope="session" type="com.auction.auctionwebapp.beans.user"/>
-<jsp:useBean id="categories" scope="request" type="java.util.List<com.auction.auctionwebapp.beans.category>"/>
 <c:choose>
     <c:when test="${auth}">
         <form id="frmLogout" method="post" action="${pageContext.request.contextPath}/account/logout"></form>
@@ -40,11 +39,11 @@
                     Categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <c:forEach items="${categories}" var="c">
-                        <a href="${pageContext.request.contextPath}/product/byCat?id=${c.idCategory}" class="list-group-item list-group-item-action">
-                                ${c.nameCategory}
-                        </a>
-                    </c:forEach>
+                    <a href="${pageContext.request.contextPath}/product/byCat?id=${1}" class="list-group-item list-group-item-action">Phone</a>
+                    <a href="${pageContext.request.contextPath}/product/byCat?id=${2}" class="list-group-item list-group-item-action">Laptop</a>
+                    <a href="${pageContext.request.contextPath}/product/byCat?id=${3}" class="list-group-item list-group-item-action">Tablet</a>
+                    <a href="${pageContext.request.contextPath}/product/byCat?id=${4}" class="list-group-item list-group-item-action">Camera</a>
+                    <a href="${pageContext.request.contextPath}/product/byCat?id=${5}" class="list-group-item list-group-item-action">Perfume</a>
                 </div>
             </li>
         </ul>

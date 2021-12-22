@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="authUser" scope="session" type="com.auction.auctionwebapp.beans.user"/>
 <c:choose>
     <c:when test="${auth}">
@@ -30,7 +30,7 @@
     </c:otherwise>
 </c:choose>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
-    <a class="navbar-brand" style="margin-left: 230px" href="#">Auction.com</a>
+    <a class="navbar-brand" style="margin-left: 230px" href="${pageContext.request.contextPath}/home">Auction.com</a>
     <div class="collapse navbar-collapse" style="margin-right: 230px" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
@@ -39,11 +39,11 @@
                     Categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Phone</a>
-                    <a class="dropdown-item" href="#">Laptop</a>
-                    <a class="dropdown-item" href="#">Tablet</a>
-                    <a class="dropdown-item" href="#">Camera</a>
-                    <a class="dropdown-item" href="#">Perfume</a>
+                    <a href="${pageContext.request.contextPath}/product/byCat?id=${1}" class="list-group-item list-group-item-action">Phone</a>
+                    <a href="${pageContext.request.contextPath}/product/byCat?id=${2}" class="list-group-item list-group-item-action">Laptop</a>
+                    <a href="${pageContext.request.contextPath}/product/byCat?id=${3}" class="list-group-item list-group-item-action">Tablet</a>
+                    <a href="${pageContext.request.contextPath}/product/byCat?id=${4}" class="list-group-item list-group-item-action">Camera</a>
+                    <a href="${pageContext.request.contextPath}/product/byCat?id=${5}" class="list-group-item list-group-item-action">Perfume</a>
                 </div>
             </li>
         </ul>
