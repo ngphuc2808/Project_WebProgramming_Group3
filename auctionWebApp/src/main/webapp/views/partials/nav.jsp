@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="authUser" scope="session" type="com.auction.auctionwebapp.beans.user"/>
+<jsp:useBean id="categories" scope="request" type="java.util.List<com.auction.auctionwebapp.beans.category>"/>
 <c:choose>
     <c:when test="${auth}">
         <form id="frmLogout" method="post" action="${pageContext.request.contextPath}/account/logout"></form>
@@ -30,7 +31,7 @@
     </c:otherwise>
 </c:choose>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
-    <a class="navbar-brand" style="margin-left: 230px" href="#">Auction.com</a>
+    <a class="navbar-brand" style="margin-left: 230px" href="${pageContext.request.contextPath}/home">Auction.com</a>
     <div class="collapse navbar-collapse" style="margin-right: 230px" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
@@ -39,11 +40,11 @@
                     Categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Phone</a>
-                    <a class="dropdown-item" href="#">Laptop</a>
-                    <a class="dropdown-item" href="#">Tablet</a>
-                    <a class="dropdown-item" href="#">Camera</a>
-                    <a class="dropdown-item" href="#">Perfume</a>
+                    <c:forEach items="${categories}" var="c">
+                        <a href="${pageContext.request.contextPath}/product/byCat?id=${c.idCategory}" class="list-group-item list-group-item-action">
+                                ${c.nameCategory}
+                        </a>
+                    </c:forEach>
                 </div>
             </li>
         </ul>

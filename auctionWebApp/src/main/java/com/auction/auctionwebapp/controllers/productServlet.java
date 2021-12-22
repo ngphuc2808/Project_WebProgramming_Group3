@@ -18,13 +18,21 @@ public class productServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
         switch (path) {
-            case "/ByCat":
-                int idCat = Integer.parseInt(request.getParameter("id"));
+            case "/byCat":
+                List<category> list = categoryModel.findAll();
+                request.setAttribute("categories", list);
+                int idCat = 0;
+                try {
+                    idCat = Integer.parseInt(request.getParameter("id"));
+                } catch (NumberFormatException e) {}
                 List<Product> productList = productModel.findByCatID(idCat);
-                request.setAttribute("products", productList);
-                servletUtils.forward("/views/vwCategory/ByCat.jsp", request, response);
+                if (productList != null) {
+                    request.setAttribute("products", productList);
+                    servletUtils.forward("/views/vwCategory/byCat.jsp", request, response);
+                } else {
+                    servletUtils.redirect("/category/index", request, response);
+                }
                 break;
-
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
                 break;

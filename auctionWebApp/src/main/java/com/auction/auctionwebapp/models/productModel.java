@@ -17,19 +17,20 @@ public class productModel {
             }
         }
 
-    public static List<Product> findByCatID(int idCat) {
+    public static List<Product> findByCatID(int idCategory) {
         final String query = "select * from products where idCategory = :idCategory";
         try (Connection con = dbUtils.getConnection()) {
             return con.createQuery(query)
+                    .addParameter("idCategory", idCategory)
                     .executeAndFetch(Product.class);
         }
     }
 
-    public static List<Product> findAllProductByCategory(int category) {
+    public static List<Product> findAllProductByCategory(int idCategory) {
         final String query = "select * from products where products.idCategory = :category";
         try (Connection con = dbUtils.getConnection()) {
             List<Product> list = con.createQuery(query)
-                    .addParameter("category", category)
+                    .addParameter("idCategory", idCategory)
                     .executeAndFetch(Product.class);
             if (list.size() == 0) {
                 return null;

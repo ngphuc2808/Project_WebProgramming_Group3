@@ -17,16 +17,34 @@
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
                     </ol>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="${pageContext.request.contextPath}/public/image/iphone.jpg" alt="First slide">
+                            <a href="${pageContext.request.contextPath}/product/byCat?id=${1}">
+                                <img class="d-block w-100" src="${pageContext.request.contextPath}/public/image/iphone.jpg" alt="First slide">
+                            </a>
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="${pageContext.request.contextPath}/public/image/laptop.jpg" alt="Second slide">
+                            <a href="${pageContext.request.contextPath}/product/byCat?id=${2}">
+                                <img class="d-block w-100" src="${pageContext.request.contextPath}/public/image/laptop.jpg" alt="Second slide">
+                            </a>
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="${pageContext.request.contextPath}/public/image/camera.jpg" alt="Third slide">
+                            <a href="${pageContext.request.contextPath}/product/byCat?id=${3}">
+                                <img class="d-block w-100" src="${pageContext.request.contextPath}/public/image/tablet.jpg" alt="Fourth slide">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="${pageContext.request.contextPath}/product/byCat?id=${4}">
+                                <img class="d-block w-100" src="${pageContext.request.contextPath}/public/image/camera.jpg" alt="Third slide">
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="${pageContext.request.contextPath}/product/byCat?id=${5}">
+                                <img class="d-block w-100" src="${pageContext.request.contextPath}/public/image/perfume.jpg" alt="Fifth  slide">
+                            </a>
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -40,17 +58,23 @@
                 </div>
                 <div class="ml-3" style="width: 50%; height: 400px">
                     <div style="height: 197px; margin-bottom: 6px">
-                        <img style="width: 100%; height: 100%" src="${pageContext.request.contextPath}/public/image/thongbao.jpg" alt="thongbao" type="button">
+                        <a href="${pageContext.request.contextPath}/home">
+                            <img style="width: 100%; height: 100%" src="${pageContext.request.contextPath}/public/image/thongbao.jpg" alt="thongbao" type="button">
+                        </a>
                     </div>
                     <div style="height: 197px;">
-                        <img style="width: 100%; height: 100%" src="${pageContext.request.contextPath}/public/image/auction.jpg" alt="thongbao" type="button">
+                        <a href="${pageContext.request.contextPath}/category">
+                            <img style="width: 100%; height: 100%" src="${pageContext.request.contextPath}/public/image/auction.jpg" alt="thongbao" type="button">
+                        </a>
                     </div>
                 </div>
             </div>
             <div class="mx-auto mt-5 d-flex justify-content-between" style="width: 75vw">
                 <h:forEach items="${categories}" var="h">
                     <div class="card h-100" style="width: 14rem;border-radius: 0" type="button">
-                        <img class="card-img-top" src="${pageContext.request.contextPath}/public/image/${h.idCategory}/main_pic.jpg" alt="Card image cap">
+                        <a href="${pageContext.request.contextPath}/product/byCat?id=${h.idCategory}">
+                            <img class="card-img-top" src="${pageContext.request.contextPath}/public/image/${h.idCategory}/main_pic.jpg" alt="Card image cap">
+                        </a>
                         <div class="card-footer" style="background-color: powderblue; font-weight: bold; text-align: center">
                             <a href="${pageContext.request.contextPath}/search?category=${h.idCategory}">${h.nameCategory}</a>
                         </div>
@@ -85,7 +109,7 @@
             </div>
         </div>
 
-        <div class="footer bg-footer">
+        <div class="footer bg-footer mt-5">
             <div class="container-fluid">
                 <div class="contact">
 

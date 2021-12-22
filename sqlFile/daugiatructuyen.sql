@@ -117,6 +117,7 @@ CREATE TABLE `permission` (
 
 LOCK TABLES `permission` WRITE;
 /*!40000 ALTER TABLE `permission` DISABLE KEYS */;
+INSERT INTO `permission` VALUES (70,1,'2021-12-21','2021-12-28');
 /*!40000 ALTER TABLE `permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,7 +176,7 @@ CREATE TABLE `users` (
   `role` int NOT NULL,
   `queue` int NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=70 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,8 +185,36 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (70,'hoangphuc','$2a$12$mx.L7fi/lGSg4eOAjG4/gOIAr8xA1Ry3EXZ3KOXXjTPoHlhXopPb2','Nguyen Hoang Phuc','ngphuc.2808@gmail.com','585/40/4 Nguyen Thi Thap','2001-08-28 00:00:00',0,1,1),(71,'hoangphuc2','$2a$12$tOju187wFSKeSZiLeBZoB.zp/4AF0MGs9KazCB7JwKP8T1mxYjFeu','Nguyen Hoang Phuc','ngphuc@gmail.com','585/40/4 Nguyen Thi Thap','2001-08-28 00:00:00',0,0,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `updatePermission` AFTER UPDATE ON `users` FOR EACH ROW BEGIN
+    IF  new.queue > 0 THEN INSERT INTO permission (idUser, permission, startDate, endDate) VALUES (new.idUser, new.queue, curdate(), curdate() + interval 7 day);
+	ELSE DELETE FROM permission WHERE permission.idUser = new.idUser;
+    END IF;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Dumping events for database 'daugiatructuyen'
+--
+
+--
+-- Dumping routines for database 'daugiatructuyen'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -196,4 +225,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-21  1:36:41
+-- Dump completed on 2021-12-22 18:42:30

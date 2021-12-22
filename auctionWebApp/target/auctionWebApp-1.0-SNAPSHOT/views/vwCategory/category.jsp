@@ -3,7 +3,6 @@
 <%@ taglib prefix="i" tagdir="/WEB-INF/tags" %>
 
 <jsp:useBean id="categories" scope="request" type="java.util.List<com.auction.auctionwebapp.beans.category>"/>
-<jsp:useBean id="products" scope="request" type="java.util.List<com.auction.auctionwebapp.beans.Product>"/>
 <i:main>
     <jsp:attribute name="css">
     <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
@@ -32,7 +31,7 @@
                         </h4>
                         <div class="list-group list-group-flush">
                             <c:forEach items="${categories}" var="c">
-                                <a href="${pageContext.request.contextPath}/views/vwCategory/ByCat.jsp" class="list-group-item list-group-item-action">
+                                <a href="${pageContext.request.contextPath}/product/byCat?id=${c.idCategory}" class="list-group-item list-group-item-action">
                                     <i class="fa fa-caret-right" aria-hidden="true"></i>
                                         ${c.nameCategory}
                                 </a>
@@ -40,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-9">
+                <div class="col-sm-9" style="height: 100vh;">
                     <div class="card">
                         <h4 class="card-header d-flex justify-content-between">
                             Sản phẩm
@@ -60,28 +59,28 @@
                                 </thead>
                                 <tbody>
 
-                                <c:forEach items="${products}" var="c">
+                                <c:forEach items="${products}" var="p">
                                     <c:choose>
-                                        <c:when test="${c.timeInserted < 100}">
+                                        <c:when test="${p.timeInserted < 100}">
                                             <tr style="color: red">
-                                                <td><img src="${pageContext.request.contextPath}/public/image/product/${c.image}" alt="" width="30px" height="30px"></td>
-                                                <td>${c.nameProduct}</td>
-                                                <td>${c.price}</td>
-                                                <td>${c.quantity}</td>
-                                                <td>${c.createdDate}</td>
-                                                <td>${c.timeRemaining}</td>
-                                                <td>${c.bidder}</td>
+                                                <td><img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" width="30px" height="30px"></td>
+                                                <td>${p.nameProduct}</td>
+                                                <td>${p.price}</td>
+                                                <td>${p.quantity}</td>
+                                                <td>${p.createdDate}</td>
+                                                <td>${p.timeRemaining}</td>
+                                                <td>${p.bidder}</td>
                                             </tr>
                                         </c:when>
                                         <c:otherwise>
                                             <tr>
-                                                <td><img src="${pageContext.request.contextPath}/public/image/product/${c.image}" alt="" width="30px" height="30px"></td>
-                                                <td>${c.nameProduct}</td>
-                                                <td>${c.price}</td>
-                                                <td>${c.quantity}</td>
-                                                <td>${c.createdDate}</td>
-                                                <td>${c.timeRemaining}</td>
-                                                <td>${c.bidder}</td>
+                                                <td><img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" width="30px" height="30px"></td>
+                                                <td>${p.nameProduct}</td>
+                                                <td>${p.price}</td>
+                                                <td>${p.quantity}</td>
+                                                <td>${p.createdDate}</td>
+                                                <td>${p.timeRemaining}</td>
+                                                <td>${p.bidder}</td>
                                             </tr>
                                         </c:otherwise>
                                     </c:choose>
@@ -90,17 +89,6 @@
 
 
                                 </tbody>
-                                <tfoot>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Created Date</th>
-                                    <th>Time Remaining</th>
-                                    <th>Bidder</th>
-                                </tr>
-                                </tfoot>
                             </table>
                         </div>
                     </div>
