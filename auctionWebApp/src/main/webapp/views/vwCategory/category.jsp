@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="i" tagdir="/WEB-INF/tags" %>
 
 <jsp:useBean id="categories" scope="request" type="java.util.List<com.auction.auctionwebapp.beans.category>"/>
@@ -14,11 +15,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-    </script>
+
 </jsp:attribute>
 
     <jsp:body>
@@ -44,31 +41,30 @@
                         <h4 class="card-header d-flex justify-content-between">
                             Sản phẩm
                         </h4>
-                        <div class="card-body">
-                            <table id="example" class="table table-striped" style="width:100%">
-                                <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Created Date</th>
-                                    <th>Time Remaining</th>
-                                    <th>Bidder</th>
-                                </tr>
-                                </thead>
-                                <tbody>
+                        <div class="card-body d-flex" style="flex-wrap: wrap">
 
                                 <c:forEach items="${products}" var="p">
                                     <c:choose>
                                         <c:when test="${p.timeInserted < 100}">
-                                            <div class="col-sm-4 mb-3 d-flex" style="color: red">
+                                            <div class="col-sm-4 mb-3 " style="color: red" >
                                                 <div class="card h-100">
                                                     <div class="card-body">
-                                                        <h6 class="card-title">${p.nameProduct}</h6>
+
+                                                        <img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" style="height: 250px;">
+                                                        <h6 class="card-title mt-4">${p.nameProduct}</h6>
                                                         <h5 class="card-title text-danger">
                                                             <fmt:formatNumber value="${p.price}" type="number" />
+
                                                         </h5>
+                                                        <div class="content d-flex justify-content-between">
+                                                            <p style="color:cornflowerblue;">
+                                                                ${p.timeRemaining}
+                                                            </p>
+                                                            <p style="text-align: right;color: lightslategray; font-size: 12px">
+                                                                    ${p.createdDate}
+                                                            </p>
+                                                        </div>
+
                                                     </div>
                                                     <div class="card-footer text-muted">
                                                         <a class="btn btn-sm btn-outline-primary" href="#" role="button">
@@ -76,8 +72,8 @@
                                                             Details
                                                         </a>
                                                         <a class="btn btn-sm btn-outline-success" href="#" role="button">
-                                                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                                            Add to cart
+                                                            <img src="${pageContext.request.contextPath}/public/image/bid.png" alt="" style="width: 18px;height: 18px;">
+                                                            <fmt:formatNumber value="${p.priceStep}" type="number" />
                                                         </a>
                                                     </div>
                                                 </div>
@@ -93,13 +89,25 @@
 <%--                                            </tr>--%>
                                         </c:when>
                                         <c:otherwise>
-                                            <div class="col-sm-4 mb-3">
+                                            <div class="col-sm-4 mb-3 " >
                                                 <div class="card h-100">
                                                     <div class="card-body">
-                                                        <h6 class="card-title">${p.nameProduct}</h6>
+
+                                                        <img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" style="height: 250px;">
+                                                        <h6 class="card-title mt-4">${p.nameProduct}</h6>
                                                         <h5 class="card-title text-danger">
                                                             <fmt:formatNumber value="${p.price}" type="number" />
+
                                                         </h5>
+                                                        <div class="content d-flex justify-content-between">
+                                                            <p style="color:cornflowerblue;">
+                                                                    ${p.timeRemaining}
+                                                            </p>
+                                                            <p style="text-align: right;color: lightslategray; font-size: 12px">
+                                                                    ${p.createdDate}
+                                                            </p>
+                                                        </div>
+
                                                     </div>
                                                     <div class="card-footer text-muted">
                                                         <a class="btn btn-sm btn-outline-primary" href="#" role="button">
@@ -107,8 +115,8 @@
                                                             Details
                                                         </a>
                                                         <a class="btn btn-sm btn-outline-success" href="#" role="button">
-                                                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                                                            Add to cart
+                                                            <img src="${pageContext.request.contextPath}/public/image/bid.png" alt="" style="width: 18px;height: 18px;">
+                                                            <fmt:formatNumber value="${p.priceStep}" type="number" />
                                                         </a>
                                                     </div>
                                                 </div>
@@ -127,9 +135,6 @@
 
                                 </c:forEach>
 
-
-                                </tbody>
-                            </table>
                         </div>
                     </div>
                 </div>

@@ -138,7 +138,7 @@ CREATE TABLE `products` (
   `priceStep` int NOT NULL,
   `image` text,
   `createdDate` datetime DEFAULT NULL,
-  `timeRemaining` datetime DEFAULT NULL,
+  `timeRemaining` time DEFAULT NULL,
   `bidder` varchar(45) DEFAULT NULL,
   `timeInserted` int DEFAULT NULL,
   PRIMARY KEY (`idProduct`),
@@ -153,7 +153,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,1,'Iphone 12 64GB',1000000,'a',2,100000,'ip12.png','2021-12-21 00:00:00','2021-12-21 00:00:00','phuc',100),(2,1,'Samsung A32',700000,'a',1,50000,'samsunga32.jpg','2021-12-21 00:00:00','2021-12-21 00:00:00','tram',210),(3,1,'Vivo Y20',50000,'a',3,25000,'vivoy20.jpg','2021-12-21 00:00:00','2021-12-21 00:00:00','nhut',150),(4,1,'Iphone 13 Pro Max',3000000,'a',1,100000,'ip13prm.jpg','2021-12-21 00:00:00','2021-12-21 00:00:00','huy',350),(5,1,'Oppo Reno 5',900000,'a',2,50000,'ip13prm.jpg','2021-12-21 00:00:00','2021-12-21 00:00:00','phuc',100),(6,2,'Laptop MSI Modern 14 B10MW 636VN',1500000,'a',1,150000,'msi14.jpg','2021-12-21 00:00:00','2021-12-21 00:00:00','tram',16),(7,2,'Laptop Dell Inspiron N3501 i5 1135G7',1300000,'a',1,200000,'dell-i51135g7.jpg','2021-12-21 00:00:00','2021-12-21 00:00:00','nhut',34),(8,3,'Samsung Galaxy Tab A7 Lite',350000,'a',2,150000,'a7-lite.jpg','2021-12-21 00:00:00','2021-12-21 00:00:00','huy',56),(9,4,'Camera Sony Handy ',2500000,'a',1,250000,'sony-handycam.jpg','2021-12-21 00:00:00','2021-12-21 00:00:00','phuc',37),(10,4,'Camera Canon',3000000,'a',1,350000,'canon-eos-90d.png','2021-12-21 00:00:00','2021-12-21 00:00:00','tram',12),(11,5,'Nước hoa Coco Chanel',300000,'a',2,50000,'coco-chanel.jpg','2021-12-21 00:00:00','2021-12-21 00:00:00','nhut',56),(12,5,'Nước hoa Charme Luxury',150000,'a',3,50000,'charme-luxury.jpg','2021-12-21 00:00:00','2021-12-21 00:00:00','huy',67);
+INSERT INTO `products` VALUES (1,1,'Iphone 12 64GB',1000000,'a',2,100000,'ip12.png','2021-12-21 00:00:00','00:00:40','phuc',100),(2,1,'Samsung A32',700000,'a',1,50000,'samsunga32.jpg','2021-12-21 00:00:00','00:00:24','tram',210),(3,1,'Vivo Y20',50000,'a',3,25000,'vivoy20.jpg','2021-12-21 00:00:00','00:00:12','nhut',150),(4,1,'Iphone 13 Pro Max',3000000,'a',1,100000,'ip13prm.jpg','2021-12-21 00:00:00','00:01:00','huy',350),(5,1,'Oppo Reno 5',900000,'a',2,50000,'oppo-reno5.jpg','2021-12-21 00:00:00','00:00:23','phuc',100),(6,2,'Laptop MSI Modern 14 B10MW 636VN',1500000,'a',1,150000,'msi14.jpg','2021-12-21 00:00:00','00:00:14','tram',16),(7,2,'Laptop Dell Inspiron N3501 i5 1135G7',1300000,'a',1,200000,'dell-i51135g7.jpg','2021-12-21 00:00:00','00:00:23','nhut',34),(8,3,'Samsung Galaxy Tab A7 Lite',350000,'a',2,150000,'a7-lite.jpg','2021-12-21 00:00:00','00:00:15','huy',56),(9,4,'Camera Sony Handy ',2500000,'a',1,250000,'sony-handycam.jpg','2021-12-21 00:00:00','00:00:30','phuc',37),(10,4,'Camera Canon',3000000,'a',1,350000,'canon-eos-90d.png','2021-12-21 00:00:00','00:00:15','tram',12),(11,5,'Nước hoa Coco Chanel',300000,'a',2,50000,'coco-chanel.jpg','2021-12-21 00:00:00','00:00:19','nhut',56),(12,5,'Nước hoa Charme Luxury',150000,'a',3,50000,'charme-luxury.jpg','2021-12-21 00:00:00','00:00:16','huy',67);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,7 +176,7 @@ CREATE TABLE `users` (
   `role` int NOT NULL,
   `queue` int NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,7 +185,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (70,'hoangphuc','$2a$12$mx.L7fi/lGSg4eOAjG4/gOIAr8xA1Ry3EXZ3KOXXjTPoHlhXopPb2','Nguyen Hoang Phuc','ngphuc.2808@gmail.com','585/40/4 Nguyen Thi Thap','2001-08-28 00:00:00',0,1,1),(71,'hoangphuc2','$2a$12$tOju187wFSKeSZiLeBZoB.zp/4AF0MGs9KazCB7JwKP8T1mxYjFeu','Nguyen Hoang Phuc','ngphuc@gmail.com','585/40/4 Nguyen Thi Thap','2001-08-28 00:00:00',0,0,0);
+INSERT INTO `users` VALUES (70,'hoangphuc','$2a$12$mx.L7fi/lGSg4eOAjG4/gOIAr8xA1Ry3EXZ3KOXXjTPoHlhXopPb2','Nguyen Hoang Phuc','ngphuc.2808@gmail.com','585/40/4 Nguyen Thi Thap','2001-08-28 00:00:00',0,1,1),(71,'hoangphuc2','$2a$12$tOju187wFSKeSZiLeBZoB.zp/4AF0MGs9KazCB7JwKP8T1mxYjFeu','Nguyen Hoang Phuc','ngphuc@gmail.com','585/40/4 Nguyen Thi Thap','2001-08-28 00:00:00',0,0,0),(72,'bichtram','$2a$12$PePnMyRwlOQgt6P0muZJpO5cv5YqP1XCVyBgqyFpkYh69tVAW2EOK','Bich Tram','tramnguyen672001@gmail.com','Long An','2001-11-06 00:00:00',0,0,0),(73,'bichtram1','$2a$12$MA0zvEiK1Kn2W.jaE.WFqutnPWYXA4Df.I8BduOxXrKXfQJM5fLVG','Bich Tram1','tramnguyen@gmail.com','Long An','2021-12-13 00:00:00',0,0,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -198,4 +198,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-22 21:26:23
+-- Dump completed on 2021-12-23  1:53:04
