@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{api, dataTables.bootstrap5, font-awesome, jquery-3.5.1, jquery-3.6.0, jquery.dataTables}" />
+    <file url="file://$PROJECT_DIR$" libraries="{api, dataTables.bootstrap5, font-awesome, jquery-3.2.1, jquery-3.5.1, jquery-3.6.0, jquery.dataTables, jquery.twbsPagination}" />
     <file url="PROJECT" libraries="{bootstrap, font-awesome, jquery-3.6.0, jquery-datetimepicker, popper.js}" />
     <includedPredefinedLibrary name="HTTP Response Handler" />
   </component>

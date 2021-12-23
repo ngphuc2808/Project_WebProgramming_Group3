@@ -6,15 +6,59 @@
 <jsp:useBean id="categories" scope="request" type="java.util.List<com.auction.auctionwebapp.beans.category>"/>
 <i:main>
     <jsp:attribute name="css">
-    <link rel="stylesheet" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
-          type="text/css">
-    <link rel="stylesheet" src="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" type="text/css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
 </jsp:attribute>
 
     <jsp:attribute name="js">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+
+     <script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
+        <!-- JS tạo nút bấm di chuyển trang start -->
+        <script src="http://1892.yn.lt/blogger/JQuery/Pagging/js/jquery.twbsPagination.js" type="text/javascript"></script>
+        <!-- JS tạo nút bấm di chuyển trang end -->
+        <script type="text/javascript">
+            $(function () {
+                var pageSize = 6; // Hiển thị 6 sản phẩm trên 1 trang
+                showPage = function (page) {
+                    $(".contentPage").hide();
+                    $(".contentPage").each(function (n) {
+                        if (n >= pageSize * (page - 1) && n < pageSize * page)
+                            $(this).show();
+
+                    });
+                }
+                showPage(1);
+                ///** Cần truyền giá trị vào đây **///
+                var totalRows = 40; // Tổng số sản phẩm hiển thị
+                var btnPage = 3; // Số nút bấm hiển thị di chuyển trang
+                var iTotalPages = Math.ceil(totalRows / pageSize);
+
+                var obj = $('#pagination').twbsPagination({
+                    totalPages: iTotalPages,
+                    visiblePages: btnPage,
+                    onPageClick: function (event, page) {
+                        console.info(page);
+                        showPage(page);
+                    }
+                });
+                console.info(obj.data());
+            });
+        </script>
+        <style>
+            /** CSS căn id pagination ra giữa màn hình **/
+            #pagination {
+                display: flex;
+                display: -webkit-flex; /* Safari 8 */
+                flex-wrap: wrap;
+                -webkit-flex-wrap: wrap; /* Safari 8 */
+                justify-content: center;
+                -webkit-justify-content: center;
+            }
+        </style>
 
 </jsp:attribute>
 
@@ -38,16 +82,16 @@
                 </div>
                 <div class="col-sm-9" style="height: 100vh;">
                     <div class="card">
-                        <h4 class="card-header d-flex justify-content-between">
+                        <h4 class="card-header d-flex justify-content-between ">
                             Sản phẩm
                         </h4>
-                        <div class="card-body d-flex" style="flex-wrap: wrap">
+                        <div class="card-body d-flex " style="flex-wrap: wrap">
 
                                 <c:forEach items="${products}" var="p">
                                     <c:choose>
                                         <c:when test="${p.timeInserted < 100}">
                                             <div class="col-sm-4 mb-3 " style="color: red" >
-                                                <div class="card h-100">
+                                                <div class="card h-100 contentPage">
                                                     <div class="card-body">
 
                                                         <img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" style="height: 250px;">
@@ -78,19 +122,10 @@
                                                     </div>
                                                 </div>
                                             </div>
-<%--                                            <tr >--%>
-<%--                                                <td><img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" width="30px" height="30px"></td>--%>
-<%--                                                <td>${p.nameProduct}</td>--%>
-<%--                                                <td>${p.price}</td>--%>
-<%--                                                <td>${p.quantity}</td>--%>
-<%--                                                <td>${p.createdDate}</td>--%>
-<%--                                                <td>${p.timeRemaining}</td>--%>
-<%--                                                <td>${p.bidder}</td>--%>
-<%--                                            </tr>--%>
                                         </c:when>
                                         <c:otherwise>
                                             <div class="col-sm-4 mb-3 " >
-                                                <div class="card h-100">
+                                                <div class="card h-100 contentPage">
                                                     <div class="card-body">
 
                                                         <img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" style="height: 250px;">
@@ -135,6 +170,10 @@
 
                                 </c:forEach>
 
+                        </div>
+
+                        <div class="card-footer">
+                            <ul id="pagination"></ul>
                         </div>
                     </div>
                 </div>
