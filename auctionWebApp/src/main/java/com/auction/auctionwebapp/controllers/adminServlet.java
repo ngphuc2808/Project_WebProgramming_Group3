@@ -2,6 +2,8 @@ package com.auction.auctionwebapp.controllers;
 
 import com.auction.auctionwebapp.beans.admin;
 import com.auction.auctionwebapp.beans.user;
+import com.auction.auctionwebapp.models.permissionModel;
+import com.auction.auctionwebapp.beans.myPermission;
 import com.auction.auctionwebapp.models.adminModel;
 import com.auction.auctionwebapp.models.userModel;
 import com.auction.auctionwebapp.utils.servletUtils;
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "adminServlet", value = "/admin/*")
@@ -84,6 +88,9 @@ public class adminServlet extends HttpServlet {
             case "/delete":
                 deleteUser(request, response);
                 break;
+            case "/checkPermission":
+                checkPermission(request, response);
+                break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
                 break;
@@ -127,37 +134,76 @@ public class adminServlet extends HttpServlet {
     }
     private void updateUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("idUser"));
+        int permission = Integer.parseInt(request.getParameter("queue"));
+        int role;
         String username = request.getParameter("username");
         String name = request.getParameter("name");
         String email = request.getParameter("email");
-        int permission = Integer.parseInt(request.getParameter("queue"));
         user c = new user();
-        int role;
+        Date now = new Date();
+        Calendar ca = Calendar.getInstance();
+        ca.setTime(now);
+        ca.add(Calendar.DATE, 7);
+        ca.add(Calendar.MINUTE, 1);
+        Date endDate = ca.getTime();
+        c.setIdUser(id);
+        c.setUsername(username);
+        c.setName(name);
+        c.setEmail(email);
+        c.setQueue(permission);
         if (permission == 1){
             role = 1;
-            c.setIdUser(id);
-            c.setUsername(username);
-            c.setName(name);
-            c.setEmail(email);
             c.setRole(role);
-            c.setQueue(permission);
-            userModel.update(c);
         }
         else if (permission == 0){
             role = 0;
-            c.setIdUser(id);
-            c.setUsername(username);
-            c.setName(name);
-            c.setEmail(email);
             c.setRole(role);
-            c.setQueue(permission);
-            userModel.update(c);
+        }
+        userModel.update(c);
+
+        myPermission pms = permissionModel.findById(id);
+        if (pms != null) {
+            if (permission == 1) {
+                myPermission newPms= new myPermission(id, 1, now, endDate);
+                permissionModel.update(newPms);
+            } else if ( permission == 0) {
+                myPermission newPms = new myPermission(id, 0, null, null);
+                permissionModel.update(newPms);
+            }
         }
         servletUtils.redirect("/admin/index", request, response);
     }
+
     private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("idUser"));
         userModel.delete(id);
+        servletUtils.redirect("/admin/index", request, response);
+    }
+
+    public void checkPermission(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("idUser"));
+        myPermission pms = permissionModel.findById(id);
+        if (pms == null) {
+            myPermission newPms = new myPermission(id, 0, null, null);
+            permissionModel.update(newPms);
+        }
+
+        Date now = new Date();
+
+        if (pms.getPermission() == 0) {
+            myPermission newPms = new myPermission(id, 0, null, null);
+            permissionModel.update(newPms);
+        }
+
+        if (pms.getEndDate() == null || now.getTime() > pms.getEndDate().getTime()) {
+            myPermission newPms = new myPermission(id, 0, null, null);
+            permissionModel.update(newPms);
+            user c = new user();
+            c.setRole(1);
+            c.setQueue(1);
+            userModel.update(c);
+        }
+
         servletUtils.redirect("/admin/index", request, response);
     }
 }

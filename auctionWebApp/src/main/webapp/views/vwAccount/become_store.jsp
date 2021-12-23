@@ -13,6 +13,11 @@
     <jsp:attribute name="js">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            function thongBao(){
+                alert("Xin cấp phép thành công, vui lòng đợi Admin xem xét");
+            }
+        </script>
     </jsp:attribute>
     <jsp:body>
         <div class="info-user bg-main" style="margin-top: 0">
@@ -23,7 +28,7 @@
                             <img src="${pageContext.request.contextPath}/public/image/PortalAgares.png" >
                         </div>
                         <div class="name-user">
-                            <span class="title-name">Tài <kh></kh>oản của</span>
+                            <span class="title-name">Tài khoản của</span>
                             <span class="name">${authUser.name}</span>
                         </div>
                     </div>
@@ -89,17 +94,17 @@
                                     </div>
                                     <div class="role space-top">
                                         <label >Quyền hạn</label>
-                                        <span>${authUser.queue}</span>
+                                        <span>${pms.permission}</span>
                                     </div>
                                     <div class="btn-require">
-                                        <button type="submit">Xin cấp quyền</button>
+                                        <button type="submit" onclick="thongBao()">Xin cấp quyền</button>
                                     </div>
                                 </form>
                             </c:when>
                             <c:otherwise>
-                                <div style="margin-top: 20px"><h6>ID: ${pms.idUser}</h6></div>
+                                <div style="margin-top: 20px"><h6>ID: ${pms.userId}</h6></div>
                                 <div><h6>Họ tên: ${authUser.name}</h6></div>
-                                <div><h6>Quyền hạn: ${authUser.queue}</h6></div>
+                                <div><h6>Quyền hạn: ${pms.permission}</h6></div>
                                 <div><h6>Bạn đã được cấp quyền trong 7 ngày!</h6></div>
                                 <div><h6>Từ ngày: ${pms.startDate}</h6></div>
                                 <div><h6>Đến ngày: ${pms.endDate}</h6></div>

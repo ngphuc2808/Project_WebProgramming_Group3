@@ -2,10 +2,10 @@ package com.auction.auctionwebapp.controllers;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.auction.auctionwebapp.beans.user;
+import com.auction.auctionwebapp.models.permissionModel;
+import com.auction.auctionwebapp.beans.myPermission;
 import com.auction.auctionwebapp.models.userModel;
 import com.auction.auctionwebapp.utils.servletUtils;
-import com.auction.auctionwebapp.beans.myPermission;
-import com.auction.auctionwebapp.models.permissionModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,13 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
+import java.util.Date;
 
 @WebServlet(name = "accountServlet", value = "/account/*")
 public class accountServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
@@ -63,7 +63,6 @@ public class accountServlet extends HttpServlet {
                 String email = request.getParameter("mail");
                 user mail = userModel.findByEmail(email);
                 boolean isAvailableEmail = (mail == null);
-                System.out.println("Mail" + " " + isAvailableEmail);
                 PrintWriter outl = response.getWriter();
                 response.setContentType("application/json");
                 response.setCharacterEncoding("utf-8");
@@ -120,6 +119,18 @@ public class accountServlet extends HttpServlet {
 
         user c = new user(0, username, bcryptHashString, name, email, address, dob, point, role, queue);
         userModel.add(c);
+        user createdUser = userModel.findByUsername(username);
+
+        // Add permission to user
+        myPermission permission = new myPermission(
+                createdUser.getIdUser(),
+                0,
+                null,
+                null
+                );
+
+        permissionModel.create(permission);
+
         servletUtils.redirect("/home", request, response);
     }
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

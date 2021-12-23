@@ -111,6 +111,10 @@
                                 <i class="fa fa-check" aria-hidden="true"></i>
                                 Save
                             </button>
+                            <button type="submit" class="btn btn-warning" formaction="${pageContext.request.contextPath}/admin/checkPermission">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                Duration
+                            </button>
                         </div>
                     </form>
                 </div>

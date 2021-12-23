@@ -102,13 +102,15 @@ DROP TABLE IF EXISTS `permission`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `permission` (
-  `idUser` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userId` int NOT NULL,
   `permission` int NOT NULL,
-  `startDate` date NOT NULL,
-  `endDate` date NOT NULL,
-  PRIMARY KEY (`idUser`),
-  KEY `idUser_idx` (`idUser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `startDate` date DEFAULT NULL,
+  `endDate` date DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idUser_idx` (`userId`),
+  CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `users` (`idUser`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,7 +119,6 @@ CREATE TABLE `permission` (
 
 LOCK TABLES `permission` WRITE;
 /*!40000 ALTER TABLE `permission` DISABLE KEYS */;
-INSERT INTO `permission` VALUES (70,1,'2021-12-21','2021-12-28');
 /*!40000 ALTER TABLE `permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +186,6 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (70,'hoangphuc','$2a$12$mx.L7fi/lGSg4eOAjG4/gOIAr8xA1Ry3EXZ3KOXXjTPoHlhXopPb2','Nguyen Hoang Phuc','ngphuc.2808@gmail.com','585/40/4 Nguyen Thi Thap','2001-08-28 00:00:00',0,1,1),(71,'hoangphuc2','$2a$12$tOju187wFSKeSZiLeBZoB.zp/4AF0MGs9KazCB7JwKP8T1mxYjFeu','Nguyen Hoang Phuc','ngphuc@gmail.com','585/40/4 Nguyen Thi Thap','2001-08-28 00:00:00',0,0,0),(72,'bichtram','$2a$12$PePnMyRwlOQgt6P0muZJpO5cv5YqP1XCVyBgqyFpkYh69tVAW2EOK','Bich Tram','tramnguyen672001@gmail.com','Long An','2001-11-06 00:00:00',0,0,0),(73,'bichtram1','$2a$12$MA0zvEiK1Kn2W.jaE.WFqutnPWYXA4Df.I8BduOxXrKXfQJM5fLVG','Bich Tram1','tramnguyen@gmail.com','Long An','2021-12-13 00:00:00',0,0,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -198,4 +198,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-23  1:53:04
+-- Dump completed on 2021-12-23 19:08:51
