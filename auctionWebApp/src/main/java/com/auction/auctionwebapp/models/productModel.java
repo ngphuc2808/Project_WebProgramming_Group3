@@ -51,4 +51,17 @@ public class productModel {
             return list;
         }
     }
+
+    public static Product findById(int id) {
+        final String query = "select * from products where idProduct = :idProduct";
+        try (Connection con = dbUtils.getConnection()) {
+            List<Product> list = con.createQuery(query)
+                    .addParameter("idProduct",id)
+                    .executeAndFetch(Product.class);
+            if (list.size() == 0) {
+                return null;
+            }
+            return list.get(0);
+        }
+    }
 }

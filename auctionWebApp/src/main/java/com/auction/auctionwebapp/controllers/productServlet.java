@@ -33,6 +33,20 @@ public class productServlet extends HttpServlet {
                     servletUtils.redirect("/category/index", request, response);
                 }
                 break;
+            case "/Details":
+                int proId = Integer.parseInt(request.getParameter("id"));
+                Product product = productModel.findById(proId);
+
+                if (product != null){
+                    request.setAttribute("product",product);
+                    servletUtils.forward("/views/vwCategory/Detail.jsp",request,response);
+
+                }
+                else {
+                    servletUtils.redirect("/category/index",request,response);
+                }
+
+                break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
                 break;
