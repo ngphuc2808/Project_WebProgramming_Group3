@@ -111,4 +111,25 @@ public class userModel {
                     .executeUpdate();
         }
     }
+    public static void updateProfile(user c) {
+        String sql = "update users set  name =:name, email = :email where idUser = :idUser";
+        try (Connection con = dbUtils.getConnection()) {
+            con.createQuery(sql)
+                    .addParameter("idUser", c.getIdUser())
+                    .addParameter("name", c.getName())
+                    .addParameter("email", c.getEmail())
+                    .executeUpdate();
+        }
+    }
+    public static void updatePassword(user c) {
+        System.out.println("ss2");
+        String sql = "update users set  password= :password where idUser = :idUser";
+
+        try (Connection con = dbUtils.getConnection()) {
+            con.createQuery(sql)
+                    .addParameter("idUser", c.getIdUser())
+                    .addParameter("password", c.getPassword())
+                    .executeUpdate();
+        }
+    }
 }

@@ -5,6 +5,7 @@
 <jsp:useBean id="pms" scope="request" type="com.auction.auctionwebapp.beans.myPermission"/>
 <i:main>
     <jsp:attribute name="css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/styles.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css_Account/style_account.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css_Account/reset_account.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -112,6 +113,30 @@
                         </c:choose>
                     </div>
                 </div>
+        </div>
+        <div class="footer bg-footer">
+            <div class="container-fluid">
+                <div class="contact">
+
+                    <h3>Liên hệ với chúng tôi</h3>
+                    <ul>
+                        <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                        <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fas fa-phone-alt"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="designBy">
+                    <span>Design by</span>
+                    <ul>
+                        <li>Quynh Nhut</li>
+                        <li>Hoang Phuc</li>
+                        <li>Bich Tram</li>
+                        <li>Nguyen Huy</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </jsp:body>
 </i:main>
