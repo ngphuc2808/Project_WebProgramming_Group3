@@ -27,4 +27,8 @@
         <filter-name>emptyFilter</filter-name>
         <url-pattern>/admin/index</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>productFilter</filter-name>
+        <url-pattern>/product/upload</url-pattern>
+    </filter-mapping>
 </web-app>
