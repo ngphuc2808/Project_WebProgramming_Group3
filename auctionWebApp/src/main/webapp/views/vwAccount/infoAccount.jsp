@@ -50,7 +50,7 @@
                     </div>
                     <ul>
                         <li class="account">
-                            <a href="${pageContext.request.contextPath}/account/profile" style="text-decoration: none; color: black;">
+                            <a href="${pageContext.request.contextPath}/account/profile?id=${authUser.idUser}" style="text-decoration: none; color: black;">
                                 <i class="fas fa-user"></i>
                                 <span>Thông tin tài khoản</span>
                             </a>
@@ -68,7 +68,7 @@
                             </a>
                         </li>
                         <li class="changePassword">
-                            <a href="${pageContext.request.contextPath}/account/changePassword" style="text-decoration: none; color: black;">
+                            <a href="${pageContext.request.contextPath}/account/changePassword?id=${authUser.idUser}" style="text-decoration: none; color: black;">
                                 <i class="fas fa-lock"></i>
                                 <span style="padding-left: 17px;">Thay đổi mật khẩu</span>
                             </a>

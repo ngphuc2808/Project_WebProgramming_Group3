@@ -122,8 +122,8 @@ public class userModel {
         }
     }
     public static void updatePassword(user c) {
-        System.out.println("ss2");
-        String sql = "update users set  password= :password where idUser = :idUser";
+
+        String sql = "update users set password= :password where idUser = :idUser";
 
         try (Connection con = dbUtils.getConnection()) {
             con.createQuery(sql)

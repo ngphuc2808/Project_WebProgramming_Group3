@@ -9,7 +9,7 @@
                 Welcome <b>${authUser.name}!</b>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="${pageContext.request.contextPath}/account/profile">
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/account/profile?id=${authUser.idUser}">
                     <i class="fa fa-user" aria-hidden="true"></i>
                     Profile
                 </a>
