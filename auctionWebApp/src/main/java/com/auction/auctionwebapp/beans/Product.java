@@ -1,62 +1,38 @@
 package com.auction.auctionwebapp.beans;
 
-
-
 public class Product {
     private int idProduct;
     private int idCategory;
+    private int idUser;
     private String nameProduct;
     private int price;
-    private String detail;
-    private int quantity;
     private int priceStep;
+    private int buyNowPrice;
+    private String detail;
     private String image;
-    private String createdDate;
-    private String bidder;
-    private String timeRemaining;
     private int timeInserted;
-
     public Product() {
     }
 
-    public Product(int idProduct, int idCategory, String nameProduct, int price, String detail, int quantity,
-                   int priceStep, String image, String createdDate, String bidder, String timeRemaining, int timeInserted) {
+    public Product(int idProduct, int idCategory, int idUser, String nameProduct, int price, int priceStep, int buyNowPrice, String detail, String image, int timeInserted) {
         this.idProduct = idProduct;
         this.idCategory = idCategory;
+        this.idUser = idUser;
         this.nameProduct = nameProduct;
         this.price = price;
-        this.detail = detail;
-        this.quantity = quantity;
         this.priceStep = priceStep;
+        this.buyNowPrice = buyNowPrice;
+        this.detail = detail;
         this.image = image;
-        this.createdDate = createdDate;
-        this.bidder = bidder;
-        this.timeRemaining = timeRemaining;
         this.timeInserted = timeInserted;
     }
 
-    public String getCreatedDate() {
-        return createdDate;
+    public int getIdUser() {
+        return idUser;
     }
 
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public String getBidder() {
-        return bidder;
-    }
-
-    public void setBidder(String bidder) {
-        this.bidder = bidder;
-    }
-
-    public String getTimeRemaining() {
-        return timeRemaining;
-    }
-
-    public void setTimeRemaining(String timeRemaining) {
-        this.timeRemaining = timeRemaining;
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     public int getIdProduct() {
@@ -91,28 +67,28 @@ public class Product {
         this.price = price;
     }
 
-    public String getDetail() {
-        return detail;
-    }
-
-    public void setDetail(String detail) {
-        this.detail = detail;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
     public int getPriceStep() {
         return priceStep;
     }
 
     public void setPriceStep(int priceStep) {
         this.priceStep = priceStep;
+    }
+
+    public int getBuyNowPrice() {
+        return buyNowPrice;
+    }
+
+    public void setBuyNowPrice(int buyNowPrice) {
+        this.buyNowPrice = buyNowPrice;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 
     public String getImage() {

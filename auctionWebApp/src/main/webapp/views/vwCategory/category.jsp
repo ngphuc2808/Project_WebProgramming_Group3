@@ -1,9 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="i" tagdir="/WEB-INF/tags" %>
 
 <jsp:useBean id="categories" scope="request" type="java.util.List<com.auction.auctionwebapp.beans.category>"/>
+<jsp:useBean id="authUser" scope="session" type="com.auction.auctionwebapp.beans.user" />
 <i:main>
     <jsp:attribute name="css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -84,91 +85,71 @@
                     <div class="card">
                         <h4 class="card-header d-flex justify-content-between ">
                             Sản phẩm
+                            <c:if test="${authUser.queue=='1'}">
+                                <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/product/upload" role="button">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    Đăng bài
+                                </a>
+                            </c:if>
                         </h4>
                         <div class="card-body d-flex " style="flex-wrap: wrap">
 
-                                <c:forEach items="${products}" var="p">
-                                    <c:choose>
-                                        <c:when test="${p.timeInserted < 100}">
-                                            <div class="col-sm-4 mb-3 " style="color: red" >
-                                                <div class="card h-100 contentPage">
-                                                    <div class="card-body">
+                            <c:forEach items="${products}" var="p">
+                                <c:choose>
+                                    <c:when test="${p.timeInserted < 100}">
+                                        <div class="col-sm-4 mb-3 " style="color: red" >
+                                            <div class="card h-100 contentPage">
+                                                <div class="card-body">
 
-                                                        <img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" style="height: 250px;">
-                                                        <h6 class="card-title mt-4">${p.nameProduct}</h6>
-                                                        <h5 class="card-title text-danger">
-                                                            <fmt:formatNumber value="${p.price}" type="number" />
+                                                    <img src="data:image/jpg;base64,${p.image}" alt="" style="height: 250px;">
+                                                    <h6 class="card-title mt-4">${p.nameProduct}</h6>
+                                                    <h5 class="card-title text-danger">
+                                                        <fmt:formatNumber value="${p.price}" type="number" />
 
-                                                        </h5>
-                                                        <div class="content d-flex justify-content-between">
-                                                            <p style="color:cornflowerblue;">
-                                                                ${p.timeRemaining}
-                                                            </p>
-                                                            <p style="text-align: right;color: lightslategray; font-size: 12px">
-                                                                    ${p.createdDate}
-                                                            </p>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="card-footer text-muted">
-                                                        <a class="btn btn-sm btn-outline-primary" href="#" role="button">
-                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                            Details
-                                                        </a>
-                                                        <a class="btn btn-sm btn-outline-success" href="#" role="button">
-                                                            <img src="${pageContext.request.contextPath}/public/image/bid.png" alt="" style="width: 18px;height: 18px;">
-                                                            <fmt:formatNumber value="${p.priceStep}" type="number" />
-                                                        </a>
-                                                    </div>
+                                                    </h5>
+                                                </div>
+                                                <div class="card-footer text-muted">
+                                                    <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        Details
+                                                    </a>
+                                                    <a class="btn btn-sm btn-outline-success" href="#" role="button">
+                                                        <img src="${pageContext.request.contextPath}/public/image/bid.png" alt="" style="width: 18px;height: 18px;">
+                                                        <fmt:formatNumber value="${p.priceStep}" type="number" />
+                                                    </a>
                                                 </div>
                                             </div>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <div class="col-sm-4 mb-3 " >
-                                                <div class="card h-100 contentPage">
-                                                    <div class="card-body">
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="col-sm-4 mb-3 " >
+                                            <div class="card h-100 contentPage">
+                                                <div class="card-body">
 
-                                                        <img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" style="height: 250px;">
-                                                        <h6 class="card-title mt-4">${p.nameProduct}</h6>
-                                                        <h5 class="card-title text-danger">
-                                                            <fmt:formatNumber value="${p.price}" type="number" />
+                                                    <img src="data:image/jpg;base64,${p.image}" alt="" style="height: 250px;">
+                                                    <h6 class="card-title mt-4">${p.nameProduct}</h6>
+                                                    <h5 class="card-title text-danger">
+                                                        <fmt:formatNumber value="${p.price}" type="number" />
 
-                                                        </h5>
-                                                        <div class="content d-flex justify-content-between">
-                                                            <p style="color:cornflowerblue;">
-                                                                    ${p.timeRemaining}
-                                                            </p>
-                                                            <p style="text-align: right;color: lightslategray; font-size: 12px">
-                                                                    ${p.createdDate}
-                                                            </p>
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="card-footer text-muted">
-                                                        <a class="btn btn-sm btn-outline-primary" href="#" role="button">
-                                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                                            Details
-                                                        </a>
-                                                        <a class="btn btn-sm btn-outline-success" href="#" role="button">
-                                                            <img src="${pageContext.request.contextPath}/public/image/bid.png" alt="" style="width: 18px;height: 18px;">
-                                                            <fmt:formatNumber value="${p.priceStep}" type="number" />
-                                                        </a>
-                                                    </div>
+                                                    </h5>
+                                                </div>
+                                                <div class="card-footer text-muted">
+                                                    <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        Details
+                                                    </a>
+                                                    <a class="btn btn-sm btn-outline-success" href="#" role="button">
+                                                        <img src="${pageContext.request.contextPath}/public/image/bid.png" alt="" style="width: 18px;height: 18px;">
+                                                        <fmt:formatNumber value="${p.priceStep}" type="number" />
+                                                    </a>
                                                 </div>
                                             </div>
-<%--                                            <tr>--%>
-<%--                                                <td><img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" width="30px" height="30px"></td>--%>
-<%--                                                <td>${p.nameProduct}</td>--%>
-<%--                                                <td>${p.price}</td>--%>
-<%--                                                <td>${p.quantity}</td>--%>
-<%--                                                <td>${p.createdDate}</td>--%>
-<%--                                                <td>${p.timeRemaining}</td>--%>
-<%--                                                <td>${p.bidder}</td>--%>
-<%--                                            </tr>--%>
-                                        </c:otherwise>
-                                    </c:choose>
+                                        </div>
 
-                                </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+
+                            </c:forEach>
 
                         </div>
 

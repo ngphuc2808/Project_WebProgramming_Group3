@@ -1,9 +1,10 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="i" tagdir="/WEB-INF/tags" %>
 
 <jsp:useBean id="categories" scope="request" type="java.util.List<com.auction.auctionwebapp.beans.category>"/>
+<jsp:useBean id="authUser" scope="session" type="com.auction.auctionwebapp.beans.user" />
 <i:main>
     <jsp:attribute name="css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -84,6 +85,12 @@
                     <div class="card">
                         <h4 class="card-header d-flex justify-content-between ">
                             Sản phẩm
+                            <c:if test="${authUser.queue=='1'}">
+                                <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/product/upload" role="button">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    Đăng bài
+                                </a>
+                            </c:if>
                         </h4>
                         <div class="card-body d-flex " style="flex-wrap: wrap">
 
@@ -94,21 +101,12 @@
                                             <div class="card h-100 contentPage">
                                                 <div class="card-body">
 
-                                                    <img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" style="height: 250px;">
+                                                    <img src="data:image/jpg;base64,${p.image}" alt="" style="height: 250px;">
                                                     <h6 class="card-title mt-4">${p.nameProduct}</h6>
                                                     <h5 class="card-title text-danger">
                                                         <fmt:formatNumber value="${p.price}" type="number" />
 
                                                     </h5>
-                                                    <div class="content d-flex justify-content-between">
-                                                        <p style="color:cornflowerblue;">
-                                                                ${p.timeRemaining}
-                                                        </p>
-                                                        <p style="text-align: right;color: lightslategray; font-size: 12px">
-                                                                ${p.createdDate}
-                                                        </p>
-                                                    </div>
-
                                                 </div>
                                                 <div class="card-footer text-muted">
                                                     <a class="btn btn-sm btn-outline-primary" href="#" role="button">
@@ -128,21 +126,12 @@
                                             <div class="card h-100 contentPage">
                                                 <div class="card-body">
 
-                                                    <img src="${pageContext.request.contextPath}/public/image/product/${p.image}" alt="" style="height: 250px;">
+                                                    <img src="data:image/jpg;base64,${p.image}" alt="" style="height: 250px;">
                                                     <h6 class="card-title mt-4">${p.nameProduct}</h6>
                                                     <h5 class="card-title text-danger">
                                                         <fmt:formatNumber value="${p.price}" type="number" />
 
                                                     </h5>
-                                                    <div class="content d-flex justify-content-between">
-                                                        <p style="color:cornflowerblue;">
-                                                                ${p.timeRemaining}
-                                                        </p>
-                                                        <p style="text-align: right;color: lightslategray; font-size: 12px">
-                                                                ${p.createdDate}
-                                                        </p>
-                                                    </div>
-
                                                 </div>
                                                 <div class="card-footer text-muted">
                                                     <a class="btn btn-sm btn-outline-primary" href="#" role="button">
@@ -156,7 +145,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </c:otherwise>
                                 </c:choose>
 

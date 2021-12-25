@@ -29,7 +29,6 @@ public class categoryServlet extends HttpServlet {
                 request.setAttribute("products", productList);
                 servletUtils.forward("/views/vwCategory/category.jsp", request, response);
                 break;
-
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
                 break;
