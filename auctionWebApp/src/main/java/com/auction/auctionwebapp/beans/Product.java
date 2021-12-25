@@ -1,4 +1,5 @@
 package com.auction.auctionwebapp.beans;
+import java.util.Date;
 
 public class Product {
     private int idProduct;
@@ -11,10 +12,12 @@ public class Product {
     private String detail;
     private String image;
     private int timeInserted;
+    private Date startDate;
+    private Date endDate;
     public Product() {
     }
 
-    public Product(int idProduct, int idCategory, int idUser, String nameProduct, int price, int priceStep, int buyNowPrice, String detail, String image, int timeInserted) {
+    public Product(int idProduct, int idCategory, int idUser, String nameProduct, int price, int priceStep, int buyNowPrice, String detail, String image, int timeInserted, Date startDate, Date endDate) {
         this.idProduct = idProduct;
         this.idCategory = idCategory;
         this.idUser = idUser;
@@ -25,6 +28,24 @@ public class Product {
         this.detail = detail;
         this.image = image;
         this.timeInserted = timeInserted;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public int getIdUser() {

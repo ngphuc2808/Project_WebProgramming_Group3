@@ -1,6 +1,7 @@
 package com.auction.auctionwebapp.models;
 
 import com.auction.auctionwebapp.beans.Product;
+import com.auction.auctionwebapp.beans.myPermission;
 import com.auction.auctionwebapp.utils.dbUtils;
 import org.sql2o.Connection;
 
@@ -13,6 +14,21 @@ public class productModel {
         try (Connection con = dbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Product.class);
+        }
+    }
+
+    public static Product findById(int idProduct) {
+        final String query = "select * from products where idProduct = :idProduct";
+        try (Connection con = dbUtils.getConnection()) {
+            List<Product> list = con.createQuery(query)
+                    .addParameter("idProduct", idProduct)
+                    .executeAndFetch(Product.class);
+
+            if (list.size() == 0) {
+                return null;
+            }
+
+            return list.get(0);
         }
     }
 
@@ -50,7 +66,7 @@ public class productModel {
         }
     }
     public static void add(Product p) {
-        String insertSql = "insert into products (idCategory, idUser, nameProduct, price, priceStep, buyNowPrice, detail, image, timeInserted) values (:idCategory,:idUser,:nameProduct,:price,:priceStep,:buyNowPrice,:detail,:image,:timeInserted)";
+        String insertSql = "insert into products (idCategory, idUser, nameProduct, price, priceStep, buyNowPrice, detail, image, timeInserted, startDate, endDate) values (:idCategory,:idUser,:nameProduct,:price,:priceStep,:buyNowPrice,:detail,:image,:timeInserted,:startDate,:endDate)";
         try (Connection con = dbUtils.getConnection()) {
             con.createQuery(insertSql)
                     .addParameter("idCategory", p.getIdCategory())
@@ -62,6 +78,8 @@ public class productModel {
                     .addParameter("detail", p.getDetail())
                     .addParameter("image", p.getImage())
                     .addParameter("timeInserted", p.getTimeInserted())
+                    .addParameter("startDate", p.getStartDate())
+                    .addParameter("endDate", p.getEndDate())
                     .executeUpdate();
         }
     }

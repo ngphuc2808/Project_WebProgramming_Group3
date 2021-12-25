@@ -28,6 +28,8 @@ import java.sql.DriverManager;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Base64;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "productServlet", value = "/product/*")
@@ -93,33 +95,34 @@ public class productServlet extends HttpServlet {
         String detail = request.getParameter("detail");
         Part fileImage = request.getPart("jpgImage");
         String imageStr = toBase64(fileImage.getInputStream());
-
+        Date now = new Date();
+        Calendar ca = Calendar.getInstance();
+        ca.setTime(now);
+        ca.add(Calendar.DATE, 3);
+        Date endDate = ca.getTime();
         user c = userModel.findByUsername(username);
         int id = c.getIdUser();
         if(c != null){
             BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), c.getPassword());
             if (result.verified) {
                 if (c.getQueue() == 1) {
-                    Product p = new Product(0, idCat, id, nameProduct, price, priceStep, buyNowPrice, detail, imageStr, 0);
+                    Product p = new Product(0, idCat, id, nameProduct, price, priceStep, buyNowPrice, detail, imageStr, 0, now, endDate);
                     productModel.add(p);
                     servletUtils.redirect("/category", request, response);
                 }
                 else {
                     request.setAttribute("Error", true);
-                    System.out.println("Error 1");
-                    servletUtils.redirect("/views/vwCategory/upload.jsp", request, response);
-                    System.out.println("Error 1'");
+                    servletUtils.redirect("/product/upload", request, response);
                 }
             }
             else {
                 request.setAttribute("Error", true);
-                servletUtils.redirect("/views/vwCategory/upload.jsp", request, response);
-                System.out.println("Error 2");
+                servletUtils.redirect("/product/upload", request, response);
             }
         }
         else {
             request.setAttribute("Error", true);
-            servletUtils.redirect("/views/vwCategory/upload.jsp", request, response);
+            servletUtils.redirect("/product/upload", request, response);
         }
     }
 
@@ -131,5 +134,27 @@ public class productServlet extends HttpServlet {
             e.printStackTrace();
             return "";
         }
+    }
+
+    public void checkTime(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("idCategory"));
+        Product p = productModel.findById(id);
+        if (p == null) {
+            myPermission newPms = new myPermission(id, 0, null, null);
+            permissionModel.update(newPms);
+        }
+
+        Date now = new Date();
+
+        if (p.getEndDate() == null || now.getTime() > p.getEndDate().getTime()) {
+            myPermission newPms = new myPermission(id, 0, null, null);
+            permissionModel.update(newPms);
+            user c = new user();
+            c.setRole(1);
+            c.setQueue(1);
+            userModel.update(c);
+        }
+
+        servletUtils.redirect("/category", request, response);
     }
 }

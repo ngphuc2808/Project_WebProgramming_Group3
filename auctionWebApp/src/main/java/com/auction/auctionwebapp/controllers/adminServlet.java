@@ -144,7 +144,6 @@ public class adminServlet extends HttpServlet {
         Calendar ca = Calendar.getInstance();
         ca.setTime(now);
         ca.add(Calendar.DATE, 7);
-        ca.add(Calendar.MINUTE, 1);
         Date endDate = ca.getTime();
         c.setIdUser(id);
         c.setUsername(username);
