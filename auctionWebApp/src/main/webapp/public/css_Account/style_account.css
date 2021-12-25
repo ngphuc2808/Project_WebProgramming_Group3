@@ -17,7 +17,7 @@ a {
 
 .info-user .container {
     display: flex;
-    height: 100vh;
+    height: 650px;
 }
 
 .info-user .container .category-user {

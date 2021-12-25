@@ -23,7 +23,18 @@ public class user {
         this.role = role;
         this.queue = queue;
     }
+    public  user(int idUser, String name, String email)
+    {
+        this.idUser = idUser;
+        this.name = name;
+        this.email = email;
+    }
 
+    public user(int idUser, String password)
+    {
+        this.idUser = idUser;
+        this.password = password;
+    }
     public int getIdUser() {
         return idUser;
     }

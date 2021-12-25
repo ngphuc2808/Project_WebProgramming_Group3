@@ -4,6 +4,7 @@
 <jsp:useBean id="authUser" scope="session" type="com.auction.auctionwebapp.beans.user" />
 <i:main>
     <jsp:attribute name="css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css/styles.css">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css_Account/style_account.css">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css_Account/reset_account.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -13,14 +14,47 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
-            $('#txtDOB').datetimepicker({
-                format: 'd/m/Y',
-                timepicker: false,
-                mask: true
-            });
+            var new_Pass = $(".new_Pass").val();
+            var repeat_new_Pass = $(".repeat_new_Pass").val();
+            // $('#btn_save').on('submit',function (){
+            //
+            //     if( new_Pass != repeat_new_Pass)
+            //     {
+            //         alert("Bạn đã nhập mật khẩu nhập lại sai hoặc mật khẩu mới. Xin mời nhập lại!");
+            //         return;
+            //     }
+            //     })
+            $('.btn_save').click(function (){
+                if(new_Pass!=repeat_new_Pass) {
+                    $('.warning').css("display","block")
+                }
+            })
+            $('.close').click(function (){
+                $('.warning').css("display","none");
+            })
         </script>
     </jsp:attribute>
     <jsp:body>
+        <c:if test="${hasError}">
+            <div style="margin-bottom: 30px; margin-left: 80px;position: absolute;
+    transform: translate(60%,7px);
+     top: 40%;
+     right: 40%;
+     width: 400px;
+     height: 60px;
+     background-color: #1A374D;
+    box-shadow: 0px 0px 1px 2px rgba(0,0,0,0.5);
+    color: whitesmoke;
+    border-color: darkgrey;
+    padding-top: 15px;
+
+    " role="alert" class="warning">
+                <strong style="padding-top: 20px; padding-left: 10px;">Incorrect!</strong> ${errorMessage}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="color: white;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </c:if>
         <div class="info-user bg-main" style="margin-top: 0">
             <div class="container">
                 <div class="category-user">
@@ -54,7 +88,7 @@
                         </li>
 
                         <li class="changePassword">
-                            <a href="${pageContext.request.contextPath}/views/vwAccount/changePassword.jsp" style="text-decoration: none; color: black;">
+                            <a href="${pageContext.request.contextPath}/account/changePassword" style="text-decoration: none; color: black;">
                                 <i class="fas fa-lock"></i>
                                 <span style="padding-left: 17px;">Thay đổi mật khẩu</span>
                             </a>
@@ -66,29 +100,57 @@
                         <div class="title">
                             <h2>Thay đổi mật khẩu</h2>
                         </div>
-                        <form action="">
 
+                        <form method="post" class="frmChangePass">
+                            <div class="idUser" style="display: none;">
+                                <label>ID</label>
+                                <input type="text" value="${authUser.idUser}" name="idUser">
+                            </div>
                             <div class="oldPass">
                                 <span>Mật khẩu cũ: </span>
-                                <input type="text">
+                                <input type="password" name="OldPass" class="old_Pass">
                             </div>
                             <div class="newPass space-top">
                                 <span>Mật khẩu mới: </span>
-                                <input type="text">
+                                <input type="password" name="NewPass" class="new_Pass">
                             </div>
                             <div class="repeat_newPass space-top">
                                 <span>Nhập lại mật khẩu mới: </span>
-                                <input type="text">
+                                <input type="password" name="Repeat_newPass" class="repeat_new_Pass">
                             </div>
 
                             <div class="btn-save">
-                                <button>Lưu thay đổi</button>
+                                <button class="btn_save" type="submit" >Lưu thay đổi</button>
                             </div>
 
                         </form>
                     </div>
                 </div>
 
+            </div>
+        </div>
+        <div class="footer bg-footer">
+            <div class="container-fluid">
+                <div class="contact">
+
+                    <h3>Liên hệ với chúng tôi</h3>
+                    <ul>
+                        <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                        <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fas fa-phone-alt"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="designBy">
+                    <span>Design by</span>
+                    <ul>
+                        <li>Quynh Nhut</li>
+                        <li>Hoang Phuc</li>
+                        <li>Bich Tram</li>
+                        <li>Nguyen Huy</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </jsp:body>

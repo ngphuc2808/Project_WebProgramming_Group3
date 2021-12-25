@@ -27,7 +27,7 @@ a {
 }
 
 .footer {
-    height: 150px;
+    height: 226px;
 }
 
 .footer.bg-footer {
@@ -41,10 +41,12 @@ a {
     justify-content: space-between;
 }
 .footer .container-fluid .contact  {
-    margin-left: 100px;
+    margin-left: 230px;
+    margin-top: 30px;
 }
 .footer .container-fluid .designBy  {
-    margin-right: 50px;
+    margin-right: 150px;
+    margin-top: 30px;
 }
 .footer .container-fluid .contact h3 {
     color: white;

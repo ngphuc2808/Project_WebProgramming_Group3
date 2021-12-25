@@ -35,6 +35,9 @@ public class accountServlet extends HttpServlet {
             case "/profile":
                 servletUtils.forward("/views/vwAccount/infoAccount.jsp", request, response);
                 break;
+            case "/changePassword":
+                servletUtils.forward("/views/vwAccount/changePassword.jsp", request, response);
+                break;
             case "/becomeStore":
                 int id = 0;
                 try {
@@ -94,7 +97,12 @@ public class accountServlet extends HttpServlet {
             case "/logout":
                 logout(request, response);
                 break;
-
+            case "/changePassword":
+                updatePassword(request,response);
+                break;
+            case "/profile":
+                updateProfile(request,response);
+                break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
                 break;
@@ -191,5 +199,69 @@ public class accountServlet extends HttpServlet {
             request.setAttribute("Error", true);
             servletUtils.forward("/account/becomeStore", request, response);
         }
+    }
+    private void updateProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        int idUser = Integer.parseInt(request.getParameter("idUser"));
+        user c = new user(idUser,name,email);
+
+        userModel.updateProfile(c);
+        servletUtils.redirect("/home", request, response);
+        servletUtils.forward("/views/vwAccount/infoAccount.jsp", request, response);
+    }
+    private void updatePassword(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String oldPass = request.getParameter("OldPass");
+        String newPass = request.getParameter("NewPass");
+        String repeat_newPass = request.getParameter("Repeat_newPass");
+        int idUser = Integer.parseInt(request.getParameter("idUser"));
+
+        String bcryptHashString_oldPass = BCrypt.withDefaults().hashToString(12, oldPass.toCharArray());
+        String bcryptHashString_newPass = BCrypt.withDefaults().hashToString(12, newPass.toCharArray());
+        String bcryptHashString_repeat_newPass = BCrypt.withDefaults().hashToString(12, repeat_newPass.toCharArray());
+
+        user c = new user(idUser,bcryptHashString_newPass);
+        boolean flag = newPass.equals(repeat_newPass);
+
+
+        user user = userModel.findById(idUser);
+
+
+        if(user!=null)
+        {
+            BCrypt.Result result = BCrypt.verifyer().verify(oldPass.toCharArray(), user.getPassword());
+            if(result.verified){
+                System.out.println("Correct old pass");
+                if(flag)
+                {
+                    System.out.println("succeed");
+                    userModel.updatePassword(c);
+                    servletUtils.redirect("/home", request, response);
+                    servletUtils.forward("/views/vwAccount/changePassword.jsp", request, response);
+                }
+                else{
+                    System.out.println("fail newpass");
+                    request.setAttribute("hasError", true);
+                    request.setAttribute("errorMessage", "Repeat new password is not correct!");
+                    servletUtils.forward("/views/vwAccount/changePassword.jsp", request, response);
+                }
+            }
+            else{
+                System.out.println("incorrect old pass");
+                request.setAttribute("hasError", true);
+                request.setAttribute("errorMessage", "Incorrect old pass!");
+                servletUtils.forward("/views/vwAccount/changePassword.jsp", request, response);
+            }
+
+        }
+        else {
+            System.out.println("fail find id");
+            request.setAttribute("hasError", true);
+            request.setAttribute("errorMessage", "Not find ID");
+            servletUtils.forward("/views/vwAccount/changePassword.jsp", request, response);
+        }
+
+
+
     }
 }

@@ -1,9 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="i" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <jsp:useBean id="authUser" scope="session" type="com.auction.auctionwebapp.beans.user" />
 <i:main>
     <jsp:attribute name="css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css/styles.css">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css_Account/style_account.css">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css_Account/reset_account.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -18,6 +20,19 @@
                 timepicker: false,
                 mask: true
             });
+            function isValidEmailAddress(emailAddress) {
+                let pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+                return pattern.test(emailAddress);
+            }
+            $('#btn-update').on('submit',function (){
+                // e.preventDefault();
+                const email = $('#txtEmail').val();
+                if (!isValidEmailAddress(email)) {
+                    alert('Please re-enter email');
+                    return;
+                }
+            })
+
         </script>
     </jsp:attribute>
     <jsp:body>
@@ -53,7 +68,7 @@
                             </a>
                         </li>
                         <li class="changePassword">
-                            <a href="${pageContext.request.contextPath}/views/vwAccount/changePassword.jsp" style="text-decoration: none; color: black;">
+                            <a href="${pageContext.request.contextPath}/account/changePassword" style="text-decoration: none; color: black;">
                                 <i class="fas fa-lock"></i>
                                 <span style="padding-left: 17px;">Thay đổi mật khẩu</span>
                             </a>
@@ -66,6 +81,10 @@
                             <h2>Thông tin tài khoản</h2>
                         </div>
                         <form action="" method="post">
+                            <div class="idUser" style="display: none;">
+                                <label>ID</label>
+                                <input type="text" value="${authUser.idUser}" name="idUser">
+                            </div>
                             <div class="nickName">
                                 <label>Tên đăng nhập</label>
                                 <span>${authUser.username}</span>
@@ -73,12 +92,12 @@
                             <div class="fullName space-top">
                                 <label >Họ và Tên</label>
                                 <div class="input-name">
-                                    <input type="text" class="input_fullName" value="${authUser.name}" style="padding: 5px 0px; width: 300px;">
+                                    <input id="txtName" name="name" type="text" class="input_fullName" value="${authUser.name}" style="padding: 5px 0px; width: 300px;">
                                 </div>
                             </div>
                             <div class="email space-top">
                                 <label style="padding-right: 112px;">Email</label>
-                                <input type="email" value="${authUser.email}" style="padding: 5px 0px; width: 300px;">
+                                <input id="txtEmail" name="email" type="email" value="${authUser.email}" style="padding: 5px 0px; width: 300px;">
                             </div>
                             <div class="birthday  " style="padding-top: 20px;">
                                 <label >Ngày sinh</label>
@@ -95,10 +114,34 @@
                                 <span style="padding-left: 79px;">${authUser.queue}</span>
                             </div>
                             <div class="btn-save">
-                                <button type="submit">Lưu thay đổi</button>
+                                <button id="btn-update" type="submit" >Lưu thay đổi</button>
                             </div>
                         </form>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer bg-footer">
+            <div class="container-fluid">
+                <div class="contact">
+
+                    <h3>Liên hệ với chúng tôi</h3>
+                    <ul>
+                        <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                        <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fas fa-phone-alt"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="designBy">
+                    <span>Design by</span>
+                    <ul>
+                        <li>Quynh Nhut</li>
+                        <li>Hoang Phuc</li>
+                        <li>Bich Tram</li>
+                        <li>Nguyen Huy</li>
+                    </ul>
                 </div>
             </div>
         </div>
