@@ -17,18 +17,12 @@ public class productModel {
         }
     }
 
-    public static Product findById(int idProduct) {
-        final String query = "select * from products where idProduct = :idProduct";
+    public static List<Product> findByUserID(int idUser) {
+        final String query = "select * from products where idUser = :idUser";
         try (Connection con = dbUtils.getConnection()) {
-            List<Product> list = con.createQuery(query)
-                    .addParameter("idProduct", idProduct)
+            return con.createQuery(query)
+                    .addParameter("idUser", idUser)
                     .executeAndFetch(Product.class);
-
-            if (list.size() == 0) {
-                return null;
-            }
-
-            return list.get(0);
         }
     }
 
@@ -66,7 +60,7 @@ public class productModel {
         }
     }
     public static void add(Product p) {
-        String insertSql = "insert into products (idCategory, idUser, nameProduct, price, priceStep, buyNowPrice, detail, image, timeInserted, startDate, endDate) values (:idCategory,:idUser,:nameProduct,:price,:priceStep,:buyNowPrice,:detail,:image,:timeInserted,:startDate,:endDate)";
+        String insertSql = "insert into products (idCategory, idUser, nameProduct, price, priceStep, buyNowPrice, detail, image1, image2, image3, image4, timeInserted, startDate, endDate) values (:idCategory,:idUser,:nameProduct,:price,:priceStep,:buyNowPrice,:detail,:image1,:image2,:image3,:image4,:timeInserted,:startDate,:endDate)";
         try (Connection con = dbUtils.getConnection()) {
             con.createQuery(insertSql)
                     .addParameter("idCategory", p.getIdCategory())
@@ -76,7 +70,10 @@ public class productModel {
                     .addParameter("priceStep", p.getPriceStep())
                     .addParameter("buyNowPrice", p.getBuyNowPrice())
                     .addParameter("detail", p.getDetail())
-                    .addParameter("image", p.getImage())
+                    .addParameter("image1", p.getImage1())
+                    .addParameter("image2", p.getImage2())
+                    .addParameter("image3", p.getImage3())
+                    .addParameter("image4", p.getImage4())
                     .addParameter("timeInserted", p.getTimeInserted())
                     .addParameter("startDate", p.getStartDate())
                     .addParameter("endDate", p.getEndDate())

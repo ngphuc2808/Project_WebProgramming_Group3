@@ -69,28 +69,33 @@
                     </div>
                     <ul>
                         <li class="account">
-                            <a href="${pageContext.request.contextPath}/account/profile" style="text-decoration: none; color: black;">
+                            <a href="${pageContext.request.contextPath}/account/profile?id=${authUser.idUser}" style="text-decoration: none; color: black;">
                                 <i class="fas fa-user"></i>
                                 <span>Thông tin tài khoản</span>
                             </a>
                         </li>
+                        <li class="changePassword">
+                            <a href="${pageContext.request.contextPath}/account/changePassword?id=${authUser.idUser}" style="text-decoration: none; color: black;">
+                                <i class="fas fa-lock"></i>
+                                <span style="padding-left: 17px;">Thay đổi mật khẩu</span>
+                            </a>
+                        </li>
                         <li class="become-store">
-                            <a href="${pageContext.request.contextPath}/account/becomeStore" style="text-decoration: none; color: black;">
+                            <a href="${pageContext.request.contextPath}/account/becomeStore?id=${authUser.idUser}" role="button" style="text-decoration: none; color: black;">
                                 <i class="fas fa-store"></i>
                                 <span>Trở thành người bán</span>
+                            </a>
+                        </li>
+                        <li class="trading-history">
+                            <a href="${pageContext.request.contextPath}/account/historyUpload?id=${authUser.idUser}" style="text-decoration: none; color: black;">
+                                <i class="fas fa-history"></i>
+                                <span>Các bài đã đăng</span>
                             </a>
                         </li>
                         <li class="trading-history">
                             <a>
                                 <i class="fas fa-history"></i>
                                 <span>Lịch sử giao dịch</span>
-                            </a>
-                        </li>
-
-                        <li class="changePassword">
-                            <a href="${pageContext.request.contextPath}/account/changePassword" style="text-decoration: none; color: black;">
-                                <i class="fas fa-lock"></i>
-                                <span style="padding-left: 17px;">Thay đổi mật khẩu</span>
                             </a>
                         </li>
                     </ul>

@@ -27,10 +27,7 @@ import java.io.InputStream;
 import java.sql.DriverManager;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Base64;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @WebServlet(name = "productServlet", value = "/product/*")
 @MultipartConfig(
@@ -93,8 +90,14 @@ public class productServlet extends HttpServlet {
         int priceStep = Integer.parseInt(request.getParameter("priceStep"));
         int buyNowPrice = Integer.parseInt(request.getParameter("buyNowPrice"));
         String detail = request.getParameter("detail");
-        Part fileImage = request.getPart("jpgImage");
-        String imageStr = toBase64(fileImage.getInputStream());
+        Part fileImage1 = request.getPart("jpgImage1");
+        String imageStr1 = toBase64(fileImage1.getInputStream());
+        Part fileImage2 = request.getPart("jpgImage2");
+        String imageStr2 = toBase64(fileImage2.getInputStream());
+        Part fileImage3 = request.getPart("jpgImage3");
+        String imageStr3 = toBase64(fileImage3.getInputStream());
+        Part fileImage4 = request.getPart("jpgImage4");
+        String imageStr4 = toBase64(fileImage4.getInputStream());
         Date now = new Date();
         Calendar ca = Calendar.getInstance();
         ca.setTime(now);
@@ -105,8 +108,8 @@ public class productServlet extends HttpServlet {
         if(c != null){
             BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), c.getPassword());
             if (result.verified) {
-                if (c.getQueue() == 1) {
-                    Product p = new Product(0, idCat, id, nameProduct, price, priceStep, buyNowPrice, detail, imageStr, 0, now, endDate);
+                if (c.getQueue() == 1 && priceStep < price && price < buyNowPrice) {
+                    Product p = new Product(0, idCat, id, nameProduct, price, priceStep, buyNowPrice, detail, imageStr1, imageStr2, imageStr3, imageStr4, 0, now, endDate);
                     productModel.add(p);
                     servletUtils.redirect("/category", request, response);
                 }
@@ -136,25 +139,25 @@ public class productServlet extends HttpServlet {
         }
     }
 
-    public void checkTime(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("idCategory"));
-        Product p = productModel.findById(id);
-        if (p == null) {
-            myPermission newPms = new myPermission(id, 0, null, null);
-            permissionModel.update(newPms);
-        }
-
-        Date now = new Date();
-
-        if (p.getEndDate() == null || now.getTime() > p.getEndDate().getTime()) {
-            myPermission newPms = new myPermission(id, 0, null, null);
-            permissionModel.update(newPms);
-            user c = new user();
-            c.setRole(1);
-            c.setQueue(1);
-            userModel.update(c);
-        }
-
-        servletUtils.redirect("/category", request, response);
-    }
+//    public void checkTime(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        int id = Integer.parseInt(request.getParameter("idCategory"));
+//        Product p = productModel.findById(id);
+//        if (p == null) {
+//            myPermission newPms = new myPermission(id, 0, null, null);
+//            permissionModel.update(newPms);
+//        }
+//
+//        Date now = new Date();
+//
+//        if (p.getEndDate() == null || now.getTime() > p.getEndDate().getTime()) {
+//            myPermission newPms = new myPermission(id, 0, null, null);
+//            permissionModel.update(newPms);
+//            user c = new user();
+//            c.setRole(1);
+//            c.setQueue(1);
+//            userModel.update(c);
+//        }
+//
+//        servletUtils.redirect("/category", request, response);
+//    }
 }

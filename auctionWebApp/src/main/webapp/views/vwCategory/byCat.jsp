@@ -7,17 +7,26 @@
 <jsp:useBean id="authUser" scope="session" type="com.auction.auctionwebapp.beans.user" />
 <i:main>
     <jsp:attribute name="css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-
-</jsp:attribute>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <style>
+            /** CSS căn id pagination ra giữa màn hình **/
+            #pagination {
+                display: flex;
+                display: -webkit-flex; /* Safari 8 */
+                flex-wrap: wrap;
+                -webkit-flex-wrap: wrap; /* Safari 8 */
+                justify-content: center;
+                -webkit-justify-content: center;
+            }
+        </style>
+    </jsp:attribute>
 
     <jsp:attribute name="js">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-
-     <script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
         <!-- JS tạo nút bấm di chuyển trang start -->
         <script src="http://1892.yn.lt/blogger/JQuery/Pagging/js/jquery.twbsPagination.js" type="text/javascript"></script>
         <!-- JS tạo nút bấm di chuyển trang end -->
@@ -49,19 +58,7 @@
                 console.info(obj.data());
             });
         </script>
-        <style>
-            /** CSS căn id pagination ra giữa màn hình **/
-            #pagination {
-                display: flex;
-                display: -webkit-flex; /* Safari 8 */
-                flex-wrap: wrap;
-                -webkit-flex-wrap: wrap; /* Safari 8 */
-                justify-content: center;
-                -webkit-justify-content: center;
-            }
-        </style>
-
-</jsp:attribute>
+    </jsp:attribute>
 
     <jsp:body>
         <div class="container-fluid mt-3">
@@ -101,7 +98,7 @@
                                             <div class="card h-100 contentPage">
                                                 <div class="card-body">
 
-                                                    <img src="data:image/jpg;base64,${p.image}" alt="" style="height: 250px;">
+                                                    <img src="data:image/jpg;base64,${p.image1}" alt="" style="height: 250px;">
                                                     <h6 class="card-title mt-4">${p.nameProduct}</h6>
                                                     <h5 class="card-title text-danger">
                                                         <fmt:formatNumber value="${p.price}" type="number" />
@@ -126,7 +123,7 @@
                                             <div class="card h-100 contentPage">
                                                 <div class="card-body">
 
-                                                    <img src="data:image/jpg;base64,${p.image}" alt="" style="height: 250px;">
+                                                    <img src="data:image/jpg;base64,${p.image1}" alt="" style="height: 250px;">
                                                     <h6 class="card-title mt-4">${p.nameProduct}</h6>
                                                     <h5 class="card-title text-danger">
                                                         <fmt:formatNumber value="${p.price}" type="number" />

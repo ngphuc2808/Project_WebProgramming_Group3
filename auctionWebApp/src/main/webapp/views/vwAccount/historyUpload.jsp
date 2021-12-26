@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="i" tagdir="/WEB-INF/tags" %>
 
-<jsp:useBean id="categories" scope="request" type="java.util.List<com.auction.auctionwebapp.beans.category>"/>
 <jsp:useBean id="authUser" scope="session" type="com.auction.auctionwebapp.beans.user" />
 <i:main>
     <jsp:attribute name="css">
@@ -63,22 +62,7 @@
     <jsp:body>
         <div class="container-fluid mt-3">
             <div class="row">
-                <div class="col-sm-3">
-                    <div class="card">
-                        <h4 class="card-header">
-                            Danh mục sản phẩm
-                        </h4>
-                        <div class="list-group list-group-flush">
-                            <c:forEach items="${categories}" var="c">
-                                <a href="${pageContext.request.contextPath}/product/byCat?id=${c.idCategory}" class="list-group-item list-group-item-action">
-                                    <i class="fa fa-caret-right" aria-hidden="true"></i>
-                                        ${c.nameCategory}
-                                </a>
-                            </c:forEach>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-9" style="height: 100vh;">
+                <div class="col-sm-9" style="height: 100vh; margin: auto">
                     <div class="card">
                         <h4 class="card-header d-flex justify-content-between ">
                             Sản phẩm

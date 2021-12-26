@@ -3,12 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="i" tagdir="/WEB-INF/tags" %>
 
-<jsp:useBean id="categories" scope="request" type="java.util.List<com.auction.auctionwebapp.beans.category>"/>
 <i:main>
     <jsp:attribute name="css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="path/to/file/bootstrap.min.css">
     </jsp:attribute>
 
     <jsp:attribute name="js">
@@ -19,9 +19,28 @@
         <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/js/fileinput.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.2.5/themes/fa/theme.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.2.5/js/locales/vi.min.js"></script>
+        <script type="text/javascript" src="path/to/file/bootstrap.min.js"></script>
         <script>
             $( document ).ready(function() {
-                $('#jpgImage').fileinput({
+                $('#jpgImage1').fileinput({
+                    theme: 'fa',
+                    language: "vi",
+                    dropZoneEnabled: false,
+                    allowedFileExtensions: ['jpg', 'png', 'gif']
+                });
+                $('#jpgImage2').fileinput({
+                    theme: 'fa',
+                    language: "vi",
+                    dropZoneEnabled: false,
+                    allowedFileExtensions: ['jpg', 'png', 'gif']
+                });
+                $('#jpgImage3').fileinput({
+                    theme: 'fa',
+                    language: "vi",
+                    dropZoneEnabled: false,
+                    allowedFileExtensions: ['jpg', 'png', 'gif']
+                });
+                $('#jpgImage4').fileinput({
                     theme: 'fa',
                     language: "vi",
                     dropZoneEnabled: false,
@@ -29,9 +48,6 @@
                 });
             });
         </script>
-
-
-
     </jsp:attribute>
 
     <jsp:body>
@@ -62,6 +78,11 @@
                             </a>
                         </h4>
                         <div class="card-body">
+                            <c:if test="${Error}">
+                                <script>
+                                    alert("Upload Error!");
+                                </script>
+                            </c:if>
                             <form id="formCreateProduct" action="" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="txtUsername" class="classReg">Tên đăng nhập</label>
@@ -72,8 +93,14 @@
                                     <input type="password" id="txtPassword" name="password" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="txtIdCategory" class="classReg">Mã danh mục</label>
-                                    <input type="text" id="txtIdCategory" name="idCategory" required>
+                                    <label for="txtIdCategory" class="classReg">Danh mục đăng bán</label>
+                                    <select class="custom-select" id="txtIdCategory" name="idCategory" required>
+                                        <option value="1">Phone</option>
+                                        <option value="2">Laptop</option>
+                                        <option value="3">Tablet</option>
+                                        <option value="4">Camera</option>
+                                        <option value="5">Perfume</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="txtNameProduct" class="classReg">Tên sản phẩm</label>
@@ -92,20 +119,29 @@
                                     <input type="text" id="txtBuyNow" name="buyNowPrice" required>
                                 </div>
                                 <div class="form-group">
-                                    <input id="jpgImage" name="jpgImage" type="file">
+                                    <label for="jpgImage1" class="classReg">Ảnh đại diện sản phẩm</label>
+                                    <input id="jpgImage1" name="jpgImage1" type="file">
+                                    <br>
+                                    <label for="jpgImage2" class="classReg">Ảnh phụ</label>
+                                    <input id="jpgImage2" name="jpgImage2" type="file">
+                                    <br>
+                                    <input id="jpgImage3" name="jpgImage3" type="file">
+                                    <br>
+                                    <input id="jpgImage4" name="jpgImage4" type="file">
                                 </div>
                                 <div class="form-group">
                                     <label for="txtDetail" class="classReg">Mô tả sản phẩm</label>
-                                    <textarea type="text" id="txtDetail" name="detail" required></textarea>
+                                    <br>
+                                    <textarea type="text" id="txtDetail" name="detail" style="width: 500px; height: 350px" required></textarea>
                                 </div>
                                 <button class="btn btn-outline-success" type="submit">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                     Đăng
                                 </button>
-                                <button class="btn btn-outline-danger">
+                                <a href="${pageContext.request.contextPath}/category" class="btn btn-outline-danger">
                                     <i class="fa fa-plus" aria-hidden="true"></i>
                                     Hủy
-                                </button>
+                                </a>
                             </form>
                         </div>
                     </div>

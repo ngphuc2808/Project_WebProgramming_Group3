@@ -47,6 +47,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <button class="dropdown-item" onclick="showInformation()">Quản lý dannh sách người dùng</button>
                         <button class="dropdown-item" onclick="showPermission()">Đơn xin đăng bán</button>
+                        <a class="list-group-item list-group-item-action">Quản lý danh sách sản phẩm</a>
                     </div>
                 </li>
             </ul>
@@ -69,6 +70,9 @@
                     <button class="list-group-item list-group-item-action" onclick="showPermission()">
                         Đơn xin đăng bán
                     </button>
+                    <a class="list-group-item list-group-item-action">
+                        Quản lý danh sách sản phẩm
+                    </a>
                 </div>
             </div>
 <%--            <c:if test="${hasError}">--%>

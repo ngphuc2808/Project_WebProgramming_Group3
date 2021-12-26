@@ -31,4 +31,8 @@
         <filter-name>productFilter</filter-name>
         <url-pattern>/product/upload</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>authFilter</filter-name>
+        <url-pattern>/account/historyUpload</url-pattern>
+    </filter-mapping>
 </web-app>

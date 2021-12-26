@@ -1,9 +1,13 @@
 package com.auction.auctionwebapp.controllers;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import com.auction.auctionwebapp.beans.Product;
+import com.auction.auctionwebapp.beans.category;
 import com.auction.auctionwebapp.beans.user;
+import com.auction.auctionwebapp.models.categoryModel;
 import com.auction.auctionwebapp.models.permissionModel;
 import com.auction.auctionwebapp.beans.myPermission;
+import com.auction.auctionwebapp.models.productModel;
 import com.auction.auctionwebapp.models.userModel;
 import com.auction.auctionwebapp.utils.servletUtils;
 
@@ -18,6 +22,7 @@ import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
 
 @WebServlet(name = "accountServlet", value = "/account/*")
 public class accountServlet extends HttpServlet {
@@ -38,12 +43,25 @@ public class accountServlet extends HttpServlet {
             case "/changePassword":
                 servletUtils.forward("/views/vwAccount/changePassword.jsp", request, response);
                 break;
-            case "/becomeStore":
+            case "/historyUpload":
                 int id = 0;
                 try {
                     id = Integer.parseInt(request.getParameter("id"));
                 } catch (NumberFormatException e) {}
-                myPermission c = permissionModel.findById(id);
+                List<Product> productList = productModel.findByUserID(id);
+                if (productList != null) {
+                    request.setAttribute("products", productList);
+                    servletUtils.forward("/views/vwAccount/historyUpload.jsp", request, response);
+                } else {
+                    servletUtils.redirect("/account/profile", request, response);
+                }
+                break;
+            case "/becomeStore":
+                int id2 = 0;
+                try {
+                    id2 = Integer.parseInt(request.getParameter("id"));
+                } catch (NumberFormatException e) {}
+                myPermission c = permissionModel.findById(id2);
                 if (c != null) {
                     request.setAttribute("pms", c);
                     servletUtils.forward("/views/vwAccount/become_store.jsp", request, response);
