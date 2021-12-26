@@ -1,11 +1,7 @@
 package com.auction.auctionwebapp.controllers;
 
-import com.auction.auctionwebapp.beans.admin;
-import com.auction.auctionwebapp.beans.user;
-import com.auction.auctionwebapp.models.permissionModel;
-import com.auction.auctionwebapp.beans.myPermission;
-import com.auction.auctionwebapp.models.adminModel;
-import com.auction.auctionwebapp.models.userModel;
+import com.auction.auctionwebapp.beans.*;
+import com.auction.auctionwebapp.models.*;
 import com.auction.auctionwebapp.utils.servletUtils;
 
 import javax.servlet.ServletException;
@@ -38,6 +34,10 @@ public class adminServlet extends HttpServlet {
                 request.setAttribute("users", list);
                 List<user> list1 = userModel.findByRole();
                 request.setAttribute("users1", list1);
+                List<category> list2 = categoryModel.findAll();
+                List<Product> productList = productModel.findAllProduct();
+                request.setAttribute("categories", list2);
+                request.setAttribute("products", productList);
                 servletUtils.forward("/views/vwAdmin/admin.jsp", request, response);
                 break;
             case "/login":

@@ -62,7 +62,7 @@
     <jsp:body>
         <div class="container-fluid mt-3">
             <div class="row">
-                <div class="col-sm-9" style="height: 100vh; margin: auto">
+                <div class="col-sm-9" style="height: 100vh; overflow: auto; margin: auto">
                     <div class="card">
                         <h4 class="card-header d-flex justify-content-between ">
                             Sản phẩm

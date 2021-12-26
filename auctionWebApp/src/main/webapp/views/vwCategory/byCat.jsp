@@ -78,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-9" style="height: 100vh;">
+                <div class="col-sm-9" style="height: 100vh; overflow: auto">
                     <div class="card">
                         <h4 class="card-header d-flex justify-content-between ">
                             Sản phẩm
