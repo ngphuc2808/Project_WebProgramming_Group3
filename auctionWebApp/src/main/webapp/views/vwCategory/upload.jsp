@@ -86,11 +86,11 @@
                             <form id="formCreateProduct" action="" method="POST" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="txtUsername" class="classReg">Tên đăng nhập</label>
-                                    <input type="text" id="txtUsername" name="username" required>
+                                    <input type="text" id="txtUsername" name="username" style="margin-left: 20px; width: 400px;"  required>
                                 </div>
                                 <div class="form-group">
                                     <label for="txtPassword" class="classReg">Mật khẩu</label>
-                                    <input type="password" id="txtPassword" name="password" required>
+                                    <input type="password" id="txtPassword" name="password" style="margin-left: 57px; width: 400px;" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="txtIdCategory" class="classReg">Danh mục đăng bán</label>
@@ -104,19 +104,19 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="txtNameProduct" class="classReg">Tên sản phẩm</label>
-                                    <input type="text" id="txtNameProduct" name="nameProduct" required>
+                                    <input type="text" id="txtNameProduct" name="nameProduct" style="margin-left: 30px; width: 400px;" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="txtStartingPrice" class="classReg">Giá khởi điểm:</label>
-                                    <input type="text" id="txtStartingPrice" name="startingPrice" required>
+                                    <input type="text" id="txtStartingPrice" name="startingPrice" style="margin-left: 27px; width: 400px;" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="txtPriceStep" class="classReg">Bước giá:</label>
-                                    <input type="text" id="txtPriceStep" name="priceStep" required>
+                                    <input type="text" id="txtPriceStep" name="priceStep" style="margin-left: 62px; width: 400px;" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="txtBuyNow" class="classReg">Giá mua ngay</label>
-                                    <input type="text" id="txtBuyNow" name="buyNowPrice" required>
+                                    <input type="text" id="txtBuyNow" name="buyNowPrice" style="margin-left: 30px; width: 400px;" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="jpgImage1" class="classReg">Ảnh đại diện sản phẩm</label>
