@@ -132,4 +132,13 @@ public class userModel {
                     .executeUpdate();
         }
     }
+    public static void updateImage(user c) {
+        String sql = "update users set  image = :image where idUser = :idUser";
+        try (Connection con = dbUtils.getConnection()) {
+            con.createQuery(sql)
+                    .addParameter("idUser", c.getIdUser())
+                    .addParameter("image", c.getImage())
+                    .executeUpdate();
+        }
+    }
 }

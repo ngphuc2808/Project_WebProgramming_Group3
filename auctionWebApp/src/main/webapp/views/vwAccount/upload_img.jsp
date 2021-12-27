@@ -1,13 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="i" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <jsp:useBean id="authUser" scope="session" type="com.auction.auctionwebapp.beans.user" />
-<jsp:useBean id="pms" scope="request" type="com.auction.auctionwebapp.beans.myPermission"/>
 <i:main>
     <jsp:attribute name="css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/styles.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css_Account/style_account.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css_Account/reset_account.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css/styles.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css_Account/style_account.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css_Account/reset_account.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </jsp:attribute>
@@ -15,9 +15,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
-            function thongBao(){
-                alert("Xin cấp phép thành công, vui lòng đợi Admin xem xét");
-            }
+
         </script>
     </jsp:attribute>
     <jsp:body>
@@ -68,57 +66,23 @@
                         </li>
                     </ul>
                 </div>
-                <div class="LayoutInner bg-white becomeStore_layout">
+                <div class="LayoutInner bg-white uploadIMG_layout">
                     <div class="container-layoutInner">
+
                         <div class="title">
-                            <h2>Trở thành người bán</h2>
+                            <h2>Upload hình ảnh</h2>
                         </div>
-                        <c:if test="${Error}">
-                            <script>
-                                alert("Error!");
-                            </script>
-                        </c:if>
-                        <c:choose>
-                            <c:when test="${authUser.queue=='0'}">
-                                <form action="" method="post">
-                                    <div class="userName">
-                                        <span>Tên đăng nhập</span>
-                                        <input type="text"  placeholder="Username" name="username">
-                                    </div>
-                                    <div class="password space-top">
-                                        <span>Mật khẩu</span>
-                                        <input type="password" placeholder="Password" name="password">
-                                    </div>
-                                    <div class="fullName space-top">
-                                        <label >Họ và tên</label>
-                                        <span>${authUser.name}</span>
-                                    </div>
-                                    <div class="email space-top">
-                                        <label >Email</label>
-                                        <span>${authUser.email}</span>
-                                    </div>
-                                    <div class="address space-top">
-                                        <label >Địa chỉ</label>
-                                        <span>${authUser.address}</span>
-                                    </div>
-                                    <div class="role space-top">
-                                        <label >Quyền hạn</label>
-                                        <span>${pms.permission}</span>
-                                    </div>
-                                    <div class="btn-require">
-                                        <button type="submit" onclick="thongBao()">Xin cấp quyền</button>
-                                    </div>
-                                </form>
-                            </c:when>
-                            <c:otherwise>
-                                <div style="margin-top: 20px"><h6>ID: ${pms.userId}</h6></div>
-                                <div><h6>Họ tên: ${authUser.name}</h6></div>
-                                <div><h6>Quyền hạn: ${pms.permission}</h6></div>
-                                <div><h6>Bạn đã được cấp quyền trong 7 ngày!</h6></div>
-                                <div><h6>Từ ngày: ${pms.startDate}</h6></div>
-                                <div><h6>Đến ngày: ${pms.endDate}</h6></div>
-                            </c:otherwise>
-                        </c:choose>
+
+
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <div class="upload">
+                                <input type="file" id="upIMG" name="image" accept="image/*" >
+                            </div>
+                            <div class="btn-save">
+                                <button>Lưu thay đổi</button>
+                            </div>
+                        </form>
+
                     </div>
                 </div>
         </div>

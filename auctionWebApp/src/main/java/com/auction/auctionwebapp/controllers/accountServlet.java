@@ -10,20 +10,26 @@ import com.auction.auctionwebapp.beans.myPermission;
 import com.auction.auctionwebapp.models.productModel;
 import com.auction.auctionwebapp.models.userModel;
 import com.auction.auctionwebapp.utils.servletUtils;
+import org.apache.commons.io.IOUtils;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.Part;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
+
+@MultipartConfig( fileSizeThreshold = 2 * 1024 * 1024,
+        maxFileSize = 50 * 1024 * 1024,
+        maxRequestSize = 50 * 1024 * 1024)
 @WebServlet(name = "accountServlet", value = "/account/*")
 public class accountServlet extends HttpServlet {
 
@@ -42,6 +48,9 @@ public class accountServlet extends HttpServlet {
                 break;
             case "/changePassword":
                 servletUtils.forward("/views/vwAccount/changePassword.jsp", request, response);
+                break;
+            case "/uploadIMG":
+                servletUtils.forward("/views/vwAccount/upload_img.jsp", request, response);
                 break;
             case "/historyUpload":
                 int id = 0;
@@ -119,15 +128,18 @@ public class accountServlet extends HttpServlet {
             case "/changePassword":
                 updatePassword(request,response);
                 break;
-
             case "/profile":
                 updateProfile(request,response);
+                break;
+            case "/uploadIMG":
+                uploadIMG(request,response);
                 break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
                 break;
         }
     }
+
     private void registerUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String rawPass = request.getParameter("password");
         String bcryptHashString = BCrypt.withDefaults().hashToString(12, rawPass.toCharArray());
@@ -279,5 +291,40 @@ public class accountServlet extends HttpServlet {
             request.setAttribute("errorMessage", "Not find ID");
             servletUtils.forward("/account/changePassword", request, response);
         }
+    }
+    public String toBase64(InputStream inputStream) {
+        try {
+            byte[] bytes = IOUtils.toByteArray(inputStream);
+            return Base64.getEncoder().encodeToString(bytes);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+    private void uploadIMG(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        int idUser = Integer.parseInt(request.getParameter("id"));
+        Part fileImg = request.getPart("image");
+        String imageStr1 =  toBase64(fileImg.getInputStream());
+        user c = new user();
+        c.setImage(imageStr1);
+        c.setIdUser(idUser);
+
+        user user = userModel.findById(idUser);
+
+        if(user!=null)
+        {
+            userModel.updateImage(c);
+            servletUtils.redirect("/home", request, response);
+        }
+        else {
+            request.setAttribute("hasError", true);
+            request.setAttribute("errorMessage", "Not find ID");
+            servletUtils.redirect("/home", request, response);
+        }
+
+
+
+
     }
 }
