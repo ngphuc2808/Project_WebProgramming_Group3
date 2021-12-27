@@ -1,5 +1,7 @@
 package com.auction.auctionwebapp.beans;
+import java.sql.Time;
 import java.util.Date;
+import java.util.Timer;
 
 public class Product {
     private int idProduct;
@@ -37,7 +39,10 @@ public class Product {
         this.timeInserted = timeInserted;
         this.startDate = startDate;
         this.endDate = endDate;
+
     }
+
+
 
     public int getIdProduct() {
         return idProduct;

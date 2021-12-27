@@ -58,6 +58,16 @@ public class productServlet extends HttpServlet {
                     servletUtils.redirect("/category/index", request, response);
                 }
                 break;
+            case "/Details":
+                int proId = Integer.parseInt(request.getParameter("id"));
+                Product product = productModel.findById(proId);
+                if(product == null){
+                    servletUtils.redirect("/views/404.jsp",request,response);
+                }
+                else{
+                    request.setAttribute("product",product);
+                    servletUtils.forward("/views/vwCategory/Detail.jsp", request, response);
+                }
             case "/upload":
                 List<category> list1 = categoryModel.findAll();
                 request.setAttribute("categories", list1);
