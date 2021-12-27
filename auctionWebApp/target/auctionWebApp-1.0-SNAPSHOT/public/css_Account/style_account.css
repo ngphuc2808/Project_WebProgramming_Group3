@@ -300,3 +300,46 @@ a {
     background: #344cb7;
 }
 
+.info-user .container .LayoutInner.uploadIMG_layout form {
+    margin-top: 100px;
+}
+
+.info-user .container .LayoutInner.uploadIMG_layout form .upload {
+    position: relative;
+    display: flex;
+    width: 350px;
+    height: 250px;
+    transform: translate(130px, 0);
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+}
+.info-user .container .LayoutInner.uploadIMG_layout form .upload input{
+    position: relative;
+}
+
+.info-user .container .LayoutInner.uploadIMG_layout form .upload::before {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+    left: 5px;
+    content: '';
+    border: 1px solid black;
+}
+
+.info-user .container .LayoutInner.uploadIMG_layout form .btn-save {
+    display: block;
+    padding-top: 40px;
+    padding-left: 205px;
+}
+
+.info-user .container .LayoutInner.uploadIMG_layout form .btn-save button {
+    padding: 15px 40px;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    background: #344cb7;
+}
+
+

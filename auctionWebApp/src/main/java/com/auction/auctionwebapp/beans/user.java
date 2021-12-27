@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class user {
     private int idUser;
-    private String username, password, name, email, address;
+    private String username, password, name, email, address, image;
     private LocalDateTime dob;
     private int point, role, queue;
 
@@ -29,6 +29,7 @@ public class user {
         this.name = name;
         this.email = email;
     }
+
 
     public user(int idUser, String password)
     {
@@ -74,6 +75,10 @@ public class user {
     public int getQueue() {
         return queue;
     }
+
+    public  String getImage(){ return image;}
+
+    public  void setImage(String image){this.image = image;}
 
     public void setUsername(String username) {
         this.username = username;

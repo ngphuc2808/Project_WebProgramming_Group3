@@ -41,7 +41,9 @@
                 <div class="category-user">
                     <div class="image-user" style="margin-top: 20px">
                         <div class="avatar">
-                            <img src="${pageContext.request.contextPath}/public/image/PortalAgares.png">
+                            <a href="${pageContext.request.contextPath}/account/uploadIMG?id=${authUser.idUser}">
+                                <img src="data:image/jpg;base64,${authUser.image}" >
+                            </a>
                         </div>
                         <div class="name-user">
                             <span class="title-name">Tài khoản của</span>
