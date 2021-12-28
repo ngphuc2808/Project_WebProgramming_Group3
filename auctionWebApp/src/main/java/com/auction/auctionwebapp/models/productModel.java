@@ -1,7 +1,6 @@
 package com.auction.auctionwebapp.models;
 
 import com.auction.auctionwebapp.beans.Product;
-import com.auction.auctionwebapp.beans.myPermission;
 import com.auction.auctionwebapp.utils.dbUtils;
 import org.sql2o.Connection;
 
@@ -81,16 +80,25 @@ public class productModel {
         }
     }
 
-    public static Product findById (int id){
+    public static Product findById (int idProduct){
         final String query = "select * from products where idProduct = :idProduct";
         try (Connection con = dbUtils.getConnection()) {
             List<Product> list = con.createQuery(query)
-                    .addParameter("idProduct",id)
+                    .addParameter("idProduct",idProduct)
                     .executeAndFetch(Product.class);
             if (list.size() == 0) {
                 return null;
             }
             return list.get(0);
+        }
+    }
+
+    public static void delete(int idProduct) {
+        String sql = "delete from products where idProduct = :idProduct";
+        try (Connection con = dbUtils.getConnection()) {
+            con.createQuery(sql)
+                    .addParameter("idProduct", idProduct)
+                    .executeUpdate();
         }
     }
 }

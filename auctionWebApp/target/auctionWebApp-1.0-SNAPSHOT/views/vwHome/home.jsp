@@ -6,7 +6,7 @@
 
 <i:main>
     <jsp:attribute name="css">
-      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css/styles.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/public/css/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     </jsp:attribute>
     <jsp:body>

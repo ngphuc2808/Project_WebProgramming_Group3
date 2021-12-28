@@ -121,12 +121,17 @@
                                 <div class="form-group">
                                     <label for="jpgImage1" class="classReg">Ảnh đại diện sản phẩm</label>
                                     <input id="jpgImage1" name="jpgImage1" type="file">
-                                    <br>
-                                    <label for="jpgImage2" class="classReg">Ảnh phụ</label>
+                                </div>
+                                <div class="form-group">
+                                    <label for="jpgImage2" class="classReg">Ảnh 2</label>
                                     <input id="jpgImage2" name="jpgImage2" type="file">
-                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    <label for="jpgImage3" class="classReg">Ảnh 3</label>
                                     <input id="jpgImage3" name="jpgImage3" type="file">
-                                    <br>
+                                </div>
+                                <div class="form-group">
+                                    <label for="jpgImage4" class="classReg">Ảnh 4</label>
                                     <input id="jpgImage4" name="jpgImage4" type="file">
                                 </div>
                                 <div class="form-group">

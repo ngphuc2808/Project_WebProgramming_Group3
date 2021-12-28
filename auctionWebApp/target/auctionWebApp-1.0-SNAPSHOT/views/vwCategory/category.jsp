@@ -97,7 +97,6 @@
                                         <div class="col-sm-4 mb-3 " style="color: red" >
                                             <div class="card h-100 contentPage">
                                                 <div class="card-body">
-
                                                     <img src="data:image/jpg;base64,${p.image1}" alt="" style="height: 250px; margin: auto">
                                                     <h6 class="card-title mt-4">${p.nameProduct}</h6>
                                                     <h5 class="card-title text-danger">
@@ -106,7 +105,7 @@
                                                     </h5>
                                                 </div>
                                                 <div class="card-footer text-muted">
-                                                    <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/product/Details?id=${p.idProduct}" role="button">
+                                                    <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/product/details?id=${p.idProduct}" role="button">
                                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                                         Details
                                                     </a>
@@ -123,7 +122,7 @@
                                             <div class="card h-100 contentPage">
                                                 <div class="card-body">
 
-                                                    <img src="data:image/jpg;base64,${p.image1}" alt="" style="height: 250px; margin: auto">
+                                                    <img src="data:image/jpg;base64,${p.image2}" alt="" style="height: 250px; margin: auto">
                                                     <h6 class="card-title mt-4">${p.nameProduct}</h6>
                                                     <h5 class="card-title text-danger">
                                                         <fmt:formatNumber value="${p.price}" type="number" />
@@ -131,7 +130,7 @@
                                                     </h5>
                                                 </div>
                                                 <div class="card-footer text-muted">
-                                                    <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/product/Details?id=${p.idProduct}" role="button">
+                                                    <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/product/details?id=${p.idProduct}" role="button">
                                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                                         Details
                                                     </a>

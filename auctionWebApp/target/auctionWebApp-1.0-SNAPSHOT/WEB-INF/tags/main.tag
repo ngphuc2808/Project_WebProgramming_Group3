@@ -13,7 +13,7 @@
     <jsp:invoke fragment="css"/>
 </head>
 <body>
-    <div id="divMain">
+    <div id="divMain" style="height: 100vh; overflow: auto">
         <jsp:include page="../../views/partials/nav.jsp" />
         <jsp:doBody/>
     </div>

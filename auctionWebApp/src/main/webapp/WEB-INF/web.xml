@@ -35,4 +35,8 @@
         <filter-name>authFilter</filter-name>
         <url-pattern>/account/historyUpload</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>adminFilter</filter-name>
+        <url-pattern>/admin/adminDetails</url-pattern>
+    </filter-mapping>
 </web-app>

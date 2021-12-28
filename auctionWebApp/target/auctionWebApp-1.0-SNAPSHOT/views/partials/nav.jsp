@@ -29,7 +29,7 @@
         </div>
     </c:otherwise>
 </c:choose>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow" style="border-radius: 0">
     <a class="navbar-brand" style="margin-left: 230px" href="${pageContext.request.contextPath}/home">Auction.com</a>
     <div class="collapse navbar-collapse" style="margin-right: 230px" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">

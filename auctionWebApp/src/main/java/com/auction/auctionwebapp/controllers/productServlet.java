@@ -36,9 +36,6 @@ import java.util.*;
         maxRequestSize = 50 * 1024 * 1024
 )
 public class productServlet extends HttpServlet {
-    private String dbURL = "jdbc:mysql://localhost:3306/daugiatructuyen";
-    private String dbUser = "root";
-    private String dbPass = "root";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
@@ -58,16 +55,19 @@ public class productServlet extends HttpServlet {
                     servletUtils.redirect("/category/index", request, response);
                 }
                 break;
-            case "/Details":
-                int proId = Integer.parseInt(request.getParameter("id"));
-                Product product = productModel.findById(proId);
-                if(product == null){
+            case "/details":
+                int id = 0;
+                try {
+                    id = Integer.parseInt(request.getParameter("id"));
+                } catch (NumberFormatException e) {}
+                Product p = productModel.findById(id);
+                if (p != null) {
+                    request.setAttribute("product", p);
+                    servletUtils.forward("/views/vwCategory/detail.jsp", request, response);
+                } else {
                     servletUtils.redirect("/views/404.jsp",request,response);
                 }
-                else{
-                    request.setAttribute("product",product);
-                    servletUtils.forward("/views/vwCategory/Detail.jsp", request, response);
-                }
+                break;
             case "/upload":
                 List<category> list1 = categoryModel.findAll();
                 request.setAttribute("categories", list1);

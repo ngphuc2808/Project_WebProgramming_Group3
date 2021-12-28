@@ -66,6 +66,19 @@ public class adminServlet extends HttpServlet {
                 out.print(isAvailable);
                 out.flush();
                 break;
+            case "/adminDetails":
+                id = 0;
+                try {
+                    id = Integer.parseInt(request.getParameter("id"));
+                } catch (NumberFormatException e) {}
+                Product p = productModel.findById(id);
+                if (p != null) {
+                    request.setAttribute("product", p);
+                    servletUtils.forward("/views/vwAdmin/productDetail.jsp", request, response);
+                } else {
+                    servletUtils.redirect("/views/404.jsp",request,response);
+                }
+                break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
                 break;
@@ -87,6 +100,9 @@ public class adminServlet extends HttpServlet {
                 break;
             case "/delete":
                 deleteUser(request, response);
+                break;
+            case "/deleteProduct":
+                deleteProduct(request, response);
                 break;
             case "/checkPermission":
                 checkPermission(request, response);
@@ -176,6 +192,12 @@ public class adminServlet extends HttpServlet {
     private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("idUser"));
         userModel.delete(id);
+        servletUtils.redirect("/admin/index", request, response);
+    }
+
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("idProduct"));
+        productModel.delete(id);
         servletUtils.redirect("/admin/index", request, response);
     }
 

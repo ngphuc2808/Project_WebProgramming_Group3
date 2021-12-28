@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>Auction Web Application</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/styles.css" />
 </head>
 <body>
@@ -72,6 +72,30 @@
                         Quản lý danh sách sản phẩm
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer bg-footer mt-5">
+        <div class="container-fluid">
+            <div class="contact">
+
+                <h3>Liên hệ với chúng tôi</h3>
+                <ul>
+                    <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                    <li><a href=""><i class="fas fa-phone-alt"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="designBy">
+                <span>Design by</span>
+                <ul>
+                    <li>Quynh Nhut</li>
+                    <li>Hoang Phuc</li>
+                    <li>Bich Tram</li>
+                    <li>Nguyen Huy</li>
+                </ul>
             </div>
         </div>
     </div>

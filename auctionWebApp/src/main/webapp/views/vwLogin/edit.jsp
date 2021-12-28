@@ -40,13 +40,9 @@
         <div class="collapse navbar-collapse" style="margin-right: 230px" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                        Danh mục quản lý
+                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/index">
+                        Back
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <button class="dropdown-item" onclick="showInformation()">Quản lý dannh sách người dùng</button>
-                        <button class="dropdown-item" onclick="showPermission()">Đơn xin đăng bán</button>
-                    </div>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -60,14 +56,10 @@
             <div class="col-sm-3">
                 <div class="card">
                     <h4 class="card-header">
-                        Danh mục quản lý
+                        <a href="${pageContext.request.contextPath}/admin/index">
+                            Back
+                        </a>
                     </h4>
-                    <button class="list-group-item list-group-item-action" onclick="showInformation()">
-                        Quản lý danh sách người dùng
-                    </button>
-                    <button class="list-group-item list-group-item-action" onclick="showPermission()">
-                        Đơn xin đăng bán
-                    </button>
                 </div>
             </div>
             <div class="col-sm-9" style="display: block" id="information">
