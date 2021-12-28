@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <title>Auction Web Application</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/styles.css" />
     <style>
         #pagination {
@@ -114,7 +114,7 @@
                                         <td>${u.queue}</td>
                                         <td class="text-right">
                                             <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/admin/edit?id=${u.idUser}" role="button">
-                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                <i class="fa fa-pen" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -151,7 +151,7 @@
                                         <td>${u1.queue}</td>
                                         <td class="text-right">
                                             <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/admin/edit?id=${u1.idUser}" role="button">
-                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                <i class="fa fa-pen" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -180,7 +180,7 @@
                                                     </h5>
                                                 </div>
                                                 <div class="card-footer text-muted">
-                                                    <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                                                    <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/admin/adminDetails?id=${p.idProduct}" role="button">
                                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                                         Details
                                                     </a>
@@ -223,6 +223,30 @@
                         </div>
                     </div>
                 </div>
+        </div>
+    </div>
+    <div class="footer bg-footer mt-5">
+        <div class="container-fluid">
+            <div class="contact">
+
+                <h3>Liên hệ với chúng tôi</h3>
+                <ul>
+                    <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                    <li><a href=""><i class="fas fa-phone-alt"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="designBy">
+                <span>Design by</span>
+                <ul>
+                    <li>Quynh Nhut</li>
+                    <li>Hoang Phuc</li>
+                    <li>Bich Tram</li>
+                    <li>Nguyen Huy</li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

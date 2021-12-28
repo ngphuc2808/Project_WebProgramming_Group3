@@ -151,7 +151,7 @@
                                         <td>${u1.queue}</td>
                                         <td class="text-right">
                                             <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/admin/edit?id=${u1.idUser}" role="button">
-                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                <i class="fa fa-pen" aria-hidden="true"></i>
                                             </a>
                                         </td>
                                     </tr>
