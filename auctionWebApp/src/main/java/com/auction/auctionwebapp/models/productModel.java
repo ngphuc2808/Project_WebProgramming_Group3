@@ -127,4 +127,13 @@ public class productModel {
                     .executeUpdate();
         }
     }
+    public static void update_highPrice(Product p) {
+        String sql = "update products set  price =:price where idProduct = :idProduct";
+        try (Connection con = dbUtils.getConnection()) {
+            con.createQuery(sql)
+                    .addParameter("idProduct", p.getIdProduct())
+                    .addParameter("price", p.getPrice())
+                    .executeUpdate();
+        }
+    }
 }
