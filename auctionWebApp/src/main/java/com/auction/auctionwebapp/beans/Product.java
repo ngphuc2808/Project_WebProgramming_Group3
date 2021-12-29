@@ -20,7 +20,9 @@ public class Product {
     private Date startDate;
     private Date endDate;
 
-    public Product() {
+    public Product(int idProduct, int price) {
+        this.idProduct = idProduct;
+        this.price = price;
     }
 
     public Product(int idProduct, int idCategory, int idUser, String nameProduct, int price, int priceStep, int buyNowPrice, String detail, String image1, String image2, String image3, String image4, int timeInserted, Date startDate, Date endDate) {

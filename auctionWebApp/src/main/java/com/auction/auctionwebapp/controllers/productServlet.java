@@ -86,11 +86,17 @@ public class productServlet extends HttpServlet {
             case "/upload":
                 uploadProduct(request, response);
                 break;
+            case "/details":
+                System.out.println("details post");
+                upBid(request,response);
+
+                break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
                 break;
         }
     }
+
     private void uploadProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -137,6 +143,27 @@ public class productServlet extends HttpServlet {
             request.setAttribute("Error", true);
             servletUtils.redirect("/product/upload", request, response);
         }
+    }
+
+    private void upBid(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int idProduct = Integer.parseInt(request.getParameter("id"));
+        int price = Integer.parseInt(request.getParameter("current_price"));
+
+        Product product = new Product(idProduct,price);
+        Product p = productModel.findById(idProduct);
+
+        if(p!=null)
+        {
+            System.out.println("succeed");
+            productModel.update_highPrice(product);
+            servletUtils.redirect("/details", request, response);
+        }
+        else {
+            System.out.println("fail");
+            request.setAttribute("Error", true);
+            servletUtils.redirect("/home", request, response);
+        }
+
     }
 
     public String toBase64(InputStream inputStream) {
