@@ -169,7 +169,7 @@
                         <div class="card-body d-flex " style="flex-wrap: wrap">
                             <c:forEach items="${products}" var="p">
                                 <c:choose>
-                                    <c:when test="${p.timeInserted < 100}">
+                                    <c:when test="${p.timeInserted < 3}">
                                         <div class="col-sm-4 mb-3 " style="color: red" >
                                             <div class="card h-100 contentPage">
                                                 <div class="card-body">

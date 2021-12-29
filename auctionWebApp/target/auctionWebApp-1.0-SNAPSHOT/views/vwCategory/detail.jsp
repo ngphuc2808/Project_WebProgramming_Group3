@@ -28,6 +28,50 @@
         <!-- JS tạo nút bấm di chuyển trang start -->
         <script src="http://1892.yn.lt/blogger/JQuery/Pagging/js/jquery.twbsPagination.js" type="text/javascript"></script>
         <!-- JS tạo nút bấm di chuyển trang end -->
+         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            var currentPrice = parseInt($('.currentPrice').val());
+            var priceStep = parseInt($('.val_priceStep').val());
+            var intialPrice = currentPrice;
+            var buyNowPrice = parseInt($('.currentPrice').attr('max'));
+
+            $(document).ready(function () {
+                $("#decrease").click(function (e) {
+                    e.preventDefault();
+                    if(currentPrice === intialPrice)
+                    {
+                        currentPrice= intialPrice;
+                    }
+                    else {
+                        currentPrice-=priceStep;
+                    }
+                    $('.currentPrice').val(currentPrice);
+                });
+                $("#increase").click(function (e) {
+                    e.preventDefault();
+
+                    if ( currentPrice === buyNowPrice)
+                    {
+                        currentPrice === buyNowPrice;
+                        swal({
+                            title: "Chúc mừng bạn!",
+                            text: "Bạn đã ra giá có thể mua liền!",
+                            icon: "success",
+                            button: "OK!",
+                        });
+                    }
+                    else {
+                        currentPrice += priceStep;
+                        $('.currentPrice').val(currentPrice);
+                    }
+                });
+                $(".btn_bid").click(function (e) {
+                    // e.preventDefault();
+                    var currentPrice = currentPrice;
+                    $('.currentPrice').value(currentPrice);
+                });
+            });
+        </script>
     </jsp:attribute>
 
     <jsp:body>
@@ -67,31 +111,52 @@
                     </div>
                 </div>
                 <div class="col-sm-7">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>${product.nameProduct}</h3>
+                    <form method="post">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3>${product.nameProduct}</h3>
+                            </div>
+                            <div class="card-body" style="font-size: 18px">
+                                <h4>Thoi gian con lai <br>
+
+                                </h4>
+
+                                <p>
+                                    Gia hien tai <br>
+                                    <fmt:formatNumber value="${product.price}" type="number" />
+                                </p>
+                                <p>
+                                    Nguoi giu gia <br>
+
+                                </p>
+                                <div class="action" style="display: flex;">
+
+                                    <div class="priceBid" >
+                                        <button id="decrease" class="val_priceStep"  style="padding: 10px;
+	cursor: pointer;
+	color: white;
+	border: 1px solid #007bff;
+	border-radius: 5px;
+	background-color: #007bff;" value="${product.priceStep}"><i class="fas fa-minus"></i></button>
+                                        <input type="number" class="currentPrice" name="current_price" style="padding: 10px;
+	border: transparent;
+	background-color: whitesmoke;" value="${product.price}"  max="${product.buyNowPrice}" disabled>
+                                        <button id="increase" class="val_priceStep" style="padding: 10px;
+	cursor: pointer;
+	color: white;
+	border: 1px solid #007bff;
+	border-radius: 5px;
+	background-color: #007bff;" value="${product.priceStep}"><i class="fas fa-plus"></i></button>
+                                    </div>
+
+                                    <button class="btn btn_bid btn-primary" style="font-size: 20px; margin-left: 15px;" type="submit">
+                                        <img src="${pageContext.request.contextPath}/public/image/daugia.png" alt="" >
+                                        Đấu giá
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body" style="font-size: 18px">
-                            <h4>Thoi gian con lai <br>
-
-                            </h4>
-
-                            <p>
-                                Gia hien tai <br>
-                                <fmt:formatNumber value="${product.price}" type="number" />
-                            </p>
-                            <p>
-                                Nguoi giu gia <br>
-
-                            </p>
-
-                            <button class="btn btn-primary" style="font-size: 20px">
-                                <img src="${pageContext.request.contextPath}/public/image/daugia.png" alt="" >
-                                Đấu giá
-                            </button>
-                        </div>
-
-                    </div>
+                    </form>
                 </div>
             </div>
 
@@ -107,23 +172,23 @@
                     </thead>
                     <tbody style="background: white">
                     <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <th scope="row">1.${authUser.username}</th>
+                        <td></td>
+                        <td>1</td>
+                        <td>00:00</td>
                     </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+<%--                    <tr>--%>
+<%--                        <th scope="row">2</th>--%>
+<%--                        <td>Jacob</td>--%>
+<%--                        <td>Thornton</td>--%>
+<%--                        <td>@fat</td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <th scope="row">3</th>--%>
+<%--                        <td>Larry</td>--%>
+<%--                        <td>the Bird</td>--%>
+<%--                        <td>@twitter</td>--%>
+<%--                    </tr>--%>
                     </tbody>
                 </table>
             </div>

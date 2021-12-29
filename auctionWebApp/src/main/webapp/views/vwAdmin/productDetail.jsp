@@ -121,11 +121,6 @@
                         <p>
                             Người giữ giá <br>
                         </p>
-
-                        <button class="btn btn-primary" style="font-size: 20px">
-                            <img src="${pageContext.request.contextPath}/public/image/daugia.png" alt="" >
-                            Đấu giá
-                        </button>
                     </div>
                 </div>
                 <div class="detail" style="font-size: 16px">
