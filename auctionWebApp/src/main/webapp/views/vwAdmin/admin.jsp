@@ -62,8 +62,8 @@
                     </div>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" style="width: 51vw" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/admin/search" method="get">
+                <input class="form-control mr-sm-2" style="width: 51vw" type="search" name="txtSearch" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
@@ -169,7 +169,7 @@
                         <div class="card-body d-flex " style="flex-wrap: wrap">
                             <c:forEach items="${products}" var="p">
                                 <c:choose>
-                                    <c:when test="${p.timeInserted < 100}">
+                                    <c:when test="${p.timeInserted < 3}">
                                         <div class="col-sm-4 mb-3 " style="color: red" >
                                             <div class="card h-100 contentPage">
                                                 <div class="card-body">

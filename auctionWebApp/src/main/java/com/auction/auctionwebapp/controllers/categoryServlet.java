@@ -29,6 +29,20 @@ public class categoryServlet extends HttpServlet {
                 request.setAttribute("products", productList);
                 servletUtils.forward("/views/vwCategory/category.jsp", request, response);
                 break;
+            case "/search":
+                List<category> list1 = categoryModel.findAll();
+                request.setAttribute("categories", list1);
+                String txtSearch = request.getParameter("txtSearch");
+                List<Product> p = productModel.searchProduct(txtSearch);
+                List<Product> p1 = productModel.searchProductDetail(txtSearch);
+                if (p != null || p1 != null) {
+                    request.setAttribute("products", p);
+                    request.setAttribute("products", p1);
+                    servletUtils.forward("/views/vwCategory/category.jsp", request, response);
+                } else {
+                    servletUtils.redirect("/category/index", request, response);
+                }
+                break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
                 break;

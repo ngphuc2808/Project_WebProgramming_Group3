@@ -72,16 +72,16 @@
                             <h3>${product.nameProduct}</h3>
                         </div>
                         <div class="card-body" style="font-size: 18px">
-                            <h4>Thoi gian con lai <br>
+                            <h4>Thời gian còn lại <br>
 
                             </h4>
 
                             <p>
-                                Gia hien tai <br>
+                                Giá hiện tại <br>
                                 <fmt:formatNumber value="${product.price}" type="number" />
                             </p>
                             <p>
-                                Nguoi giu gia <br>
+                                Người giữ giá <br>
 
                             </p>
 

@@ -47,6 +47,32 @@ public class productModel {
         }
     }
 
+    public static List<Product> searchProduct(String nameProduct) {
+        final String query = "SELECT * FROM products WHERE MATCH(nameProduct) AGAINST(:nameProduct);";
+        try (Connection con = dbUtils.getConnection()) {
+            List<Product> list = con.createQuery(query)
+                    .addParameter("nameProduct", nameProduct)
+                    .executeAndFetch(Product.class);
+            if (list.size() == 0) {
+                return null;
+            }
+            return list;
+        }
+    }
+
+    public static List<Product> searchProductDetail(String detail) {
+        final String query = "SELECT * FROM products WHERE MATCH(detail) AGAINST(:detail);";
+        try (Connection con = dbUtils.getConnection()) {
+            List<Product> list = con.createQuery(query)
+                    .addParameter("detail", detail)
+                    .executeAndFetch(Product.class);
+            if (list.size() == 0) {
+                return null;
+            }
+            return list;
+        }
+    }
+
     public static List<Product> findAllProduct() {
         final String query = "select * from products order by timeInserted";
         try (Connection con = dbUtils.getConnection()) {

@@ -76,7 +76,36 @@ public class adminServlet extends HttpServlet {
                     request.setAttribute("product", p);
                     servletUtils.forward("/views/vwAdmin/productDetail.jsp", request, response);
                 } else {
-                    servletUtils.redirect("/views/404.jsp",request,response);
+                    servletUtils.redirect("/admin/index", request, response);
+                }
+                break;
+            case "/search":
+                List<category> listCat = categoryModel.findAll();
+                request.setAttribute("categories", listCat);
+                String txtSearch = request.getParameter("txtSearch");
+                List<Product> pp = productModel.searchProduct(txtSearch);
+                List<Product> pp1 = productModel.searchProductDetail(txtSearch);
+                if (pp != null || pp1 != null) {
+                    request.setAttribute("products", pp);
+                    request.setAttribute("products", pp1);
+                    servletUtils.forward("/views/vwAdmin/search.jsp", request, response);
+                } else {
+                    servletUtils.redirect("/admin/index", request, response);
+                }
+                break;
+            case "/byCatAdmin":
+                List<category> pl = categoryModel.findAll();
+                request.setAttribute("categories", pl);
+                int idCat = 0;
+                try {
+                    idCat = Integer.parseInt(request.getParameter("id"));
+                } catch (NumberFormatException e) {}
+                List<Product> ppl = productModel.findByCatID(idCat);
+                if (ppl != null) {
+                    request.setAttribute("products", ppl);
+                    servletUtils.forward("/views/vwAdmin/byCatAdmin.jsp", request, response);
+                } else {
+                    servletUtils.redirect("/admin/index", request, response);
                 }
                 break;
             default:

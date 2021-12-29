@@ -111,7 +111,7 @@ public class productServlet extends HttpServlet {
         Date now = new Date();
         Calendar ca = Calendar.getInstance();
         ca.setTime(now);
-        ca.add(Calendar.DATE, 3);
+        ca.add(Calendar.DATE, 7);
         Date endDate = ca.getTime();
         user c = userModel.findByUsername(username);
         int id = c.getIdUser();

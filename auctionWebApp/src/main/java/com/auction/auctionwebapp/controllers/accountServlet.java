@@ -324,7 +324,5 @@ public class accountServlet extends HttpServlet {
         }
 
 
-
-
     }
 }

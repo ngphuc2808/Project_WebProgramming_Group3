@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap; }
+
+button {
+  text-decoration: none;
+  border: none;
+  outline: none;
+  background: #537b35;
+   }
+
+i {
+  list-style: none; }
+
+ol, ul, li, a {
+  text-decoration: none;
+  list-style: none; }
+
+input {
+  border: none;
+  outline: none; }
+
+body {
+  background: url(../image/bg-login1.jpg) no-repeat;
+  background-size: cover;
+  color: #fff; }
+
+h1 {
+  font-size: 45px;
+  letter-spacing: 10px;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  margin-top: 30px; }
+
+.login {
+  display: flex;
+  justify-content: center;
+  background-position: center;
+  align-items: center;
+  height: 80vh; }
+  .login h3 {
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Raleway', sans-serif; }
+  .login .form {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 50px 40px; }
+    .login .form form input {
+      display: block;
+      width: 350px;
+      padding: 15px 10px;
+      border: 2px solid #537b35;
+      margin-top: 30px;
+      background: none; }
+      .login .form form input::placeholder {
+        color: #fff; }
+    .login .form form a {
+      display: block;
+      text-align: right;
+      margin-top: 10px;
+      color: #fff; }
+  .login p {
+    text-align: center; }
+
+    .login p button {
+      cursor: pointer;
+      display: inline-block;
+    color: white;
+
+      padding: 15px 40px;
+      text-align: center;
+      transition: all .5s;
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 20px auto; }
+      .login p button:hover {
+        background: #fff;
+        color: #537b35; }
+  .login .register {
+    margin-top: 20px;
+    letter-spacing: 1px; }
+    .login .register button {
+      cursor: pointer
+    ;
+      color: #fff;
+      font-size: 20px;
+      margin-left: 30px;
+      border: 2px solid #fff;
+      padding: 10px 15px;
+      transition: all .5s;
+      background: none; }
+      .login .register button:hover {
+        color: #537b35;
+        border-color: #537b35; }
+
+/*# sourceMappingURL=login.css.map */
