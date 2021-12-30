@@ -141,7 +141,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer bg-footer">
+        <div class="footer bg-footer" style="margin-top: 50px">
             <div class="container-fluid">
                 <div class="contact">
 

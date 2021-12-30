@@ -254,7 +254,6 @@ public class productServlet extends HttpServlet {
             request.setAttribute("Error", true);
             servletUtils.redirect("/home", request, response);
         }
-        servletUtils.redirect("/category", request, response);
     }
 
     public String toBase64(InputStream inputStream) {
@@ -266,26 +265,4 @@ public class productServlet extends HttpServlet {
             return "";
         }
     }
-
-//    public void checkTime(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        int id = Integer.parseInt(request.getParameter("idCategory"));
-//        Product p = productModel.findById(id);
-//        if (p == null) {
-//            myPermission newPms = new myPermission(id, 0, null, null);
-//            permissionModel.update(newPms);
-//        }
-//
-//        Date now = new Date();
-//
-//        if (p.getEndDate() == null || now.getTime() > p.getEndDate().getTime()) {
-//            myPermission newPms = new myPermission(id, 0, null, null);
-//            permissionModel.update(newPms);
-//            user c = new user();
-//            c.setRole(1);
-//            c.setQueue(1);
-//            userModel.update(c);
-//        }
-//
-//        servletUtils.redirect("/category", request, response);
-//    }
 }

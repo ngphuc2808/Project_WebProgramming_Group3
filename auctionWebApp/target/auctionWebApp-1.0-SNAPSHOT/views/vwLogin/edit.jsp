@@ -113,6 +113,30 @@
             </div>
         </div>
     </div>
+    <div class="footer bg-footer">
+        <div class="container-fluid">
+            <div class="contact">
+
+                <h3>Liên hệ với chúng tôi</h3>
+                <ul>
+                    <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                    <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                    <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                    <li><a href=""><i class="fas fa-phone-alt"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="designBy">
+                <span>Design by</span>
+                <ul>
+                    <li>Quynh Nhut</li>
+                    <li>Hoang Phuc</li>
+                    <li>Bich Tram</li>
+                    <li>Nguyen Huy</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>

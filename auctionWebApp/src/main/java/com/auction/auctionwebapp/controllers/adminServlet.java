@@ -72,8 +72,10 @@ public class adminServlet extends HttpServlet {
                     id = Integer.parseInt(request.getParameter("id"));
                 } catch (NumberFormatException e) {}
                 Product p = productModel.findById(id);
-                if (p != null) {
+                List<auction> au = auctionModel.findByProductID(id);
+                if (p != null && au != null) {
                     request.setAttribute("product", p);
+                    request.setAttribute("auctions",au);
                     servletUtils.forward("/views/vwAdmin/productDetail.jsp", request, response);
                 } else {
                     servletUtils.redirect("/admin/index", request, response);

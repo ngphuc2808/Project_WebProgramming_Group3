@@ -141,5 +141,29 @@
                 </div>
             </div>
         </div>
+        <div class="footer bg-footer" style="margin-top: 50px">
+            <div class="container-fluid">
+                <div class="contact">
+
+                    <h3>Liên hệ với chúng tôi</h3>
+                    <ul>
+                        <li><a href=""><i class="fab fa-facebook"></i></a></li>
+                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                        <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fas fa-phone-alt"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="designBy">
+                    <span>Design by</span>
+                    <ul>
+                        <li>Quynh Nhut</li>
+                        <li>Hoang Phuc</li>
+                        <li>Bich Tram</li>
+                        <li>Nguyen Huy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </jsp:body>
 </i:main>
