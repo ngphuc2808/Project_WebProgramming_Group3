@@ -7,7 +7,7 @@ public class auction {
     private int idUser;
     private int idProduct;
     private String username;
-    private int idAuction;
+    private  int idAuction;
 
 
     public auction(int idUser,int idProduct,int priceBidder, LocalDateTime timeBid, String username, int idAuction)
