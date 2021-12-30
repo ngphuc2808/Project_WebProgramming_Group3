@@ -3,6 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="i" tagdir="/WEB-INF/tags" %>
 
+<jsp:useBean id="product" scope="request" type="com.auction.auctionwebapp.beans.Product" />
+<jsp:useBean id="authUser" scope="session" type="com.auction.auctionwebapp.beans.user" />
+<jsp:useBean id="auction" scope="request" type="com.auction.auctionwebapp.beans.auction"/>
+
 <i:main>
     <jsp:attribute name="css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -34,7 +38,7 @@
             var priceStep = parseInt($('.val_priceStep').val());
             var intialPrice = currentPrice;
             var buyNowPrice = parseInt($('.currentPrice').attr('max'));
-
+            // var buyNowPrice = 20000000;
             $(document).ready(function () {
                 $("#decrease").click(function (e) {
                     e.preventDefault();
@@ -63,18 +67,26 @@
                     else {
                         currentPrice += priceStep;
                         $('.currentPrice').val(currentPrice);
+
                     }
                 });
-                $(".btn_bid").click(function (e) {
-                    // e.preventDefault();
-                    var currentPrice = currentPrice;
-                    $('.currentPrice').value(currentPrice);
-                });
+                // $(".btn_bid").click(function (e) {
+                //     // e.preventDefault();
+                // });
             });
         </script>
     </jsp:attribute>
 
     <jsp:body>
+<%--        <sql:setDataSource--%>
+<%--                var="list"--%>
+<%--                driver="com.mysql.jdbc.Driver"--%>
+<%--                url="jdbc:mysql://localhost:3306/daugiatructuyen"--%>
+<%--                user="root" password="roor"--%>
+<%--        />--%>
+<%--        <sql:query var="auction"   dataSource="${list}">--%>
+<%--            SELECT * FROM auction;--%>
+<%--        </sql:query>--%>
         <div class="container-fluid mt-3" >
             <div class="row mt-3">
                 <div class="col-sm-5">
@@ -118,30 +130,27 @@
                             </div>
                             <div class="card-body" style="font-size: 18px">
                                 <h4>Thoi gian con lai <br>
-
                                 </h4>
-
                                 <p>
                                     Gia hien tai <br>
                                     <fmt:formatNumber value="${product.price}" type="number" />
                                 </p>
                                 <p>
                                     Nguoi giu gia <br>
-
                                 </p>
                                 <div class="action" style="display: flex;">
 
                                     <div class="priceBid" >
-                                        <button id="decrease" class="val_priceStep"  style="padding: 10px;
+                                        <button onclick="return false;" id="decrease" class="val_priceStep"  style="padding: 10px;
 	cursor: pointer;
 	color: white;
 	border: 1px solid #007bff;
 	border-radius: 5px;
 	background-color: #007bff;" value="${product.priceStep}"><i class="fas fa-minus"></i></button>
-                                        <input type="number" class="currentPrice" name="current_price" style="padding: 10px;
+                                        <input type="text" class="currentPrice" name="currentPrice" style="padding: 10px;
 	border: transparent;
-	background-color: whitesmoke;" value="${product.price}"  max="${product.buyNowPrice}" disabled>
-                                        <button id="increase" class="val_priceStep" style="padding: 10px;
+	background-color: whitesmoke;" value="${product.price}"  max="${product.buyNowPrice}" readonly>
+                                        <button onclick="return false;" id="increase" class="val_priceStep" style="padding: 10px;
 	cursor: pointer;
 	color: white;
 	border: 1px solid #007bff;
@@ -149,10 +158,13 @@
 	background-color: #007bff;" value="${product.priceStep}"><i class="fas fa-plus"></i></button>
                                     </div>
 
-                                    <button class="btn btn_bid btn-primary" style="font-size: 20px; margin-left: 15px;" type="submit">
+                                    <button class="btn btn_bid btn-primary" style="font-size: 20px; margin-left: 15px;" type="submit" >
                                         <img src="${pageContext.request.contextPath}/public/image/daugia.png" alt="" >
                                         Đấu giá
                                     </button>
+
+                                    <input type="text" name="idUser" value="${authUser.idUser}" style="display: none;" readonly>
+
                                 </div>
                             </div>
                         </div>
@@ -160,35 +172,26 @@
                 </div>
             </div>
 
+
             <div class="row mt-3">
                 <table class="table">
                     <thead class="thead-light">
                     <tr>
                         <th scope="col">Người dùng</th>
                         <th scope="col">Giá</th>
-                        <th scope="col">Số lượng</th>
                         <th scope="col">Thời gian</th>
                     </tr>
                     </thead>
                     <tbody style="background: white">
-                    <tr>
-                        <th scope="row">1.${authUser.username}</th>
-                        <td></td>
-                        <td>1</td>
-                        <td>00:00</td>
-                    </tr>
-<%--                    <tr>--%>
-<%--                        <th scope="row">2</th>--%>
-<%--                        <td>Jacob</td>--%>
-<%--                        <td>Thornton</td>--%>
-<%--                        <td>@fat</td>--%>
-<%--                    </tr>--%>
-<%--                    <tr>--%>
-<%--                        <th scope="row">3</th>--%>
-<%--                        <td>Larry</td>--%>
-<%--                        <td>the Bird</td>--%>
-<%--                        <td>@twitter</td>--%>
-<%--                    </tr>--%>
+
+                    <c:forEach var="c" items="${auction}" >
+                        <tr>
+                            <th scope="row">${c.idUser}</th>
+                            <td>${c.priceBidder}</td>
+                            <td>${c.timeBid}</td>
+                        </tr>
+                    </c:forEach>
+
                     </tbody>
                 </table>
             </div>

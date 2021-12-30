@@ -2,15 +2,18 @@ package com.auction.auctionwebapp.controllers;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.auction.auctionwebapp.beans.Product;
+import com.auction.auctionwebapp.beans.auction;
 import com.auction.auctionwebapp.beans.category;
 import com.auction.auctionwebapp.beans.myPermission;
 import com.auction.auctionwebapp.beans.user;
 import com.auction.auctionwebapp.models.categoryModel;
 import com.auction.auctionwebapp.models.permissionModel;
 import com.auction.auctionwebapp.models.productModel;
+import com.auction.auctionwebapp.models.auctionModel;
 import com.auction.auctionwebapp.models.userModel;
 import com.auction.auctionwebapp.utils.servletUtils;
 import org.apache.commons.io.IOUtils;
+
 
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
@@ -61,8 +64,10 @@ public class productServlet extends HttpServlet {
                     id = Integer.parseInt(request.getParameter("id"));
                 } catch (NumberFormatException e) {}
                 Product p = productModel.findById(id);
+                auction au = auctionModel.byFindIdProductAuction(id);
                 if (p != null) {
                     request.setAttribute("product", p);
+                   request.setAttribute("auction",au);
                     servletUtils.forward("/views/vwCategory/detail.jsp", request, response);
                 } else {
                     servletUtils.redirect("/views/404.jsp",request,response);
@@ -88,8 +93,7 @@ public class productServlet extends HttpServlet {
                 break;
             case "/details":
                 System.out.println("details post");
-                upBid(request,response);
-
+                updatePrice(request,response);
                 break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
@@ -145,17 +149,45 @@ public class productServlet extends HttpServlet {
         }
     }
 
-    private void upBid(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int idProduct = Integer.parseInt(request.getParameter("id"));
-        int price = Integer.parseInt(request.getParameter("current_price"));
+    private void updatePrice(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+        System.out.println("load update price");
 
+        int idProduct = Integer.parseInt(request.getParameter("id"));
+        System.out.println(idProduct);
+
+        int idUser = Integer.parseInt(request.getParameter("idUser"));
+        System.out.println(idUser);
+
+        int price = Integer.parseInt(request.getParameter("currentPrice"));
+        System.out.println(price);
+
+       LocalDateTime timeBid = LocalDateTime.now();
+       System.out.println(timeBid);
+
+
+
+        auction au = auctionModel.byFindIdProductAuction(idProduct);
         Product product = new Product(idProduct,price);
         Product p = productModel.findById(idProduct);
 
+
         if(p!=null)
         {
-            System.out.println("succeed");
             productModel.update_highPrice(product);
+            System.out.println(" update succeed price");
+        //    request.setAttribute("auction",p);
+            auction a = new auction(idUser,idProduct,price,timeBid);
+            if(au == null)
+            {
+                auctionModel.add(a);
+                System.out.println("not find id  product");
+            }
+            else {
+                System.out.println("find by id product");
+                auctionModel.updateAuction(a);
+            }
+
+            System.out.println("update succed auction");
             servletUtils.redirect("/details", request, response);
         }
         else {
@@ -163,7 +195,6 @@ public class productServlet extends HttpServlet {
             request.setAttribute("Error", true);
             servletUtils.redirect("/home", request, response);
         }
-
     }
 
     public String toBase64(InputStream inputStream) {
