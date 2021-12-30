@@ -76,6 +76,12 @@
                             </a>
                         </li>
                         <li class="trading-history">
+                            <a href="${pageContext.request.contextPath}/account/favorite?id=${authUser.idUser}" style="text-decoration: none; color: black;">
+                                <i class="fas fa-heart"></i>
+                                <span>Danh sách yêu thích</span>
+                            </a>
+                        </li>
+                        <li class="trading-history">
                             <a>
                                 <i class="fas fa-history"></i>
                                 <span>Lịch sử giao dịch</span>

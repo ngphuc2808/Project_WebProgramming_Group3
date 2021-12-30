@@ -144,9 +144,6 @@
                                     Giá hiện tại <br>
                                     <fmt:formatNumber value="${product.price}" type="number" />
                                 </p>
-                                <p>
-                                    Người giữ giá <br>
-                                </p>
                                 <div class="action" style="display: flex;">
 
                                     <div class="priceBid" >

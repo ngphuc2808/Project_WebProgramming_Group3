@@ -7,15 +7,17 @@ public class auction {
     private int idUser;
     private int idProduct;
     private String username;
+    private int idAuction;
 
 
-    public auction(int idUser,int idProduct,int priceBidder, LocalDateTime timeBid, String username)
+    public auction(int idUser,int idProduct,int priceBidder, LocalDateTime timeBid, String username, int idAuction)
     {
         this.idUser = idUser;
         this.idProduct=idProduct;
         this.priceBidder = priceBidder;
         this.timeBid = timeBid;
         this.username = username;
+        this.idAuction = idAuction;
     }
     public auction(int idUser,int idProduct,int priceBidder)
     {
@@ -62,5 +64,13 @@ public class auction {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public int getIdAuction() {
+        return idAuction;
+    }
+
+    public void setIdAuction(int idAuction) {
+        this.idAuction = idAuction;
     }
 }

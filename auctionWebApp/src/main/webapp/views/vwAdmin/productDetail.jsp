@@ -118,9 +118,6 @@
                             Giá hiện tại <br>
                             <fmt:formatNumber value="${product.price}" type="number" />
                         </p>
-                        <p>
-                            Người giữ giá <br>
-                        </p>
                     </div>
                 </div>
                 <div class="detail" style="font-size: 16px">
@@ -134,35 +131,27 @@
             </div>
         </div>
 
-        <div class="row mt-3">
-            <table class="table">
-                <thead class="thead-light">
+        <div class="card-body" style="background-color: white">
+            <table class="table table-hover">
+                <thead>
                 <tr>
-                    <th scope="col">Người dùng</th>
-                    <th scope="col">Giá</th>
-                    <th scope="col">Số lượng</th>
-                    <th scope="col">Thời gian</th>
+                    <th>Product Id</th>
+                    <th>User Id</th>
+                    <th>Username</th>
+                    <th>Giá</th>
+                    <th>Thời gian</th>
                 </tr>
                 </thead>
-                <tbody style="background: white">
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                <tbody>
+                <c:forEach items="${auctions}" var="a">
+                    <tr>
+                        <td>${a.idProduct}</td>
+                        <td>${a.idUser}</td>
+                        <td>${a.username}</td>
+                        <td>${a.priceBidder}</td>
+                        <td>${a.timeBid.dayOfMonth} / ${a.timeBid.month.value} / ${a.timeBid.year}</td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
