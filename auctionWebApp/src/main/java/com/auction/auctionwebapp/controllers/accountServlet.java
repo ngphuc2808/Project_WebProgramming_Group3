@@ -2,10 +2,12 @@ package com.auction.auctionwebapp.controllers;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.auction.auctionwebapp.beans.Product;
+import com.auction.auctionwebapp.beans.favorite;
 import com.auction.auctionwebapp.beans.category;
 import com.auction.auctionwebapp.beans.user;
 import com.auction.auctionwebapp.models.categoryModel;
 import com.auction.auctionwebapp.models.permissionModel;
+import com.auction.auctionwebapp.models.favoriteModel;
 import com.auction.auctionwebapp.beans.myPermission;
 import com.auction.auctionwebapp.models.productModel;
 import com.auction.auctionwebapp.models.userModel;
@@ -99,6 +101,19 @@ public class accountServlet extends HttpServlet {
                 response.setCharacterEncoding("utf-8");
                 outl.print(isAvailableEmail);
                 outl.flush();
+                break;
+            case "/favorite":
+                id = 0;
+                try {
+                    id = Integer.parseInt(request.getParameter("id"));
+                } catch (NumberFormatException e) {}
+                List<favorite> listFavorite = favoriteModel.findByUserID(id);
+                if (listFavorite != null) {
+                    request.setAttribute("favorites", listFavorite);
+                    servletUtils.forward("/views/vwAccount/favoriteProduct.jsp", request, response);
+                } else {
+                    servletUtils.redirect("/account/profile", request, response);
+                }
                 break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);

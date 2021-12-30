@@ -127,6 +127,15 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3>${product.nameProduct}</h3>
+                                <form action="" method="post">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="txtProductID" name="idProduct" style="margin-top:10px;width: 90px" readonly value="${product.idProduct}">
+                                    </div>
+                                    <button type="submit" class="btn btn-success" formaction="${pageContext.request.contextPath}/product/addFavorite">
+                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                        Favorite
+                                    </button>
+                                </form>
                             </div>
                             <div class="card-body" style="font-size: 18px">
                                 <h4>Thời gian còn lại <br>

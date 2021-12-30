@@ -2,6 +2,7 @@ package com.auction.auctionwebapp.controllers;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.auction.auctionwebapp.beans.Product;
+import com.auction.auctionwebapp.beans.favorite;
 import com.auction.auctionwebapp.beans.auction;
 import com.auction.auctionwebapp.beans.category;
 import com.auction.auctionwebapp.beans.myPermission;
@@ -9,6 +10,7 @@ import com.auction.auctionwebapp.beans.user;
 import com.auction.auctionwebapp.models.categoryModel;
 import com.auction.auctionwebapp.models.permissionModel;
 import com.auction.auctionwebapp.models.productModel;
+import com.auction.auctionwebapp.models.favoriteModel;
 import com.auction.auctionwebapp.models.auctionModel;
 import com.auction.auctionwebapp.models.userModel;
 import com.auction.auctionwebapp.utils.servletUtils;
@@ -128,11 +130,25 @@ public class productServlet extends HttpServlet {
             case "/delete":
                 deleteUser(request, response);
                 break;
+            case "/addFavorite":
+                getFavorite(request, response);
+                break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
                 break;
         }
     }
+    private void getFavorite(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int idUser = Integer.parseInt(request.getParameter("idUser"));
+        int idProduct = Integer.parseInt(request.getParameter("idProduct"));
+        Product p = productModel.findById(idProduct);
+        if(p != null){
+            favorite f = new favorite(idProduct, idUser, p.getNameProduct(), p.getBuyNowPrice(), p.getDetail(), p.getImage1(), p.getImage2(), p.getImage3(), p.getImage4());
+            favoriteModel.add(f);
+        }
+        servletUtils.redirect("/home", request, response);
+    }
+
     private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("idUser"));
         auctionModel.delete(id);
