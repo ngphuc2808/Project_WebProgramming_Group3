@@ -5,7 +5,7 @@
 
 <jsp:useBean id="product" scope="request" type="com.auction.auctionwebapp.beans.Product" />
 <jsp:useBean id="authUser" scope="session" type="com.auction.auctionwebapp.beans.user" />
-<jsp:useBean id="auction" scope="request" type="com.auction.auctionwebapp.beans.auction"/>
+<jsp:useBean id="auctions" scope="request" type="java.util.List<com.auction.auctionwebapp.beans.auction>"/>
 
 <i:main>
     <jsp:attribute name="css">
@@ -129,14 +129,14 @@
                                 <h3>${product.nameProduct}</h3>
                             </div>
                             <div class="card-body" style="font-size: 18px">
-                                <h4>Thoi gian con lai <br>
+                                <h4>Thời gian còn lại <br>
                                 </h4>
                                 <p>
-                                    Gia hien tai <br>
+                                    Giá hiện tại <br>
                                     <fmt:formatNumber value="${product.price}" type="number" />
                                 </p>
                                 <p>
-                                    Nguoi giu gia <br>
+                                    Người giữ giá <br>
                                 </p>
                                 <div class="action" style="display: flex;">
 
@@ -167,33 +167,10 @@
 
                                 </div>
                             </div>
+
                         </div>
                     </form>
                 </div>
-            </div>
-
-
-            <div class="row mt-3">
-                <table class="table">
-                    <thead class="thead-light">
-                    <tr>
-                        <th scope="col">Người dùng</th>
-                        <th scope="col">Giá</th>
-                        <th scope="col">Thời gian</th>
-                    </tr>
-                    </thead>
-                    <tbody style="background: white">
-
-                    <c:forEach var="c" items="${auction}" >
-                        <tr>
-                            <th scope="row">${c.idUser}</th>
-                            <td>${c.priceBidder}</td>
-                            <td>${c.timeBid}</td>
-                        </tr>
-                    </c:forEach>
-
-                    </tbody>
-                </table>
             </div>
 
             <div class="detail" style="font-size: 16px">
@@ -203,6 +180,30 @@
                 <p>
                         ${product.detail}
                 </p>
+            </div>
+            <div class="card-body" style="background-color: white">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Product Id</th>
+                        <th>User Id</th>
+                        <th>Username</th>
+                        <th>Giá</th>
+                        <th>Thời gian</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${auctions}" var="a">
+                        <tr>
+                            <td>${a.idProduct}</td>
+                            <td>${a.idUser}</td>
+                            <td>${a.username}</td>
+                            <td>${a.priceBidder}</td>
+                            <td>${a.timeBid.dayOfMonth} / ${a.timeBid.month.value} / ${a.timeBid.year}</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
             </div>
         </div>
 

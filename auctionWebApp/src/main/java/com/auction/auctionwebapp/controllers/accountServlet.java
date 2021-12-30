@@ -17,6 +17,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -157,7 +158,7 @@ public class accountServlet extends HttpServlet {
         int role = 0;
         int queue = 0;
 
-        user c = new user(0, username, bcryptHashString, name, email, address, dob, point, role, queue);
+        user c = new user(0, username, bcryptHashString, name, email, address, dob, point, role, queue, null);
         userModel.add(c);
         user createdUser = userModel.findByUsername(username);
 

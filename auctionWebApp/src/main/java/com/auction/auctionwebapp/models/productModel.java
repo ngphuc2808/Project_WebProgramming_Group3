@@ -34,18 +34,6 @@ public class productModel {
         }
     }
 
-    public static List<Product> findAllProductByCategory(int idCategory) {
-        final String query = "select * from products where products.idCategory = :category";
-        try (Connection con = dbUtils.getConnection()) {
-            List<Product> list = con.createQuery(query)
-                    .addParameter("idCategory", idCategory)
-                    .executeAndFetch(Product.class);
-            if (list.size() == 0) {
-                return null;
-            }
-            return list;
-        }
-    }
 
     public static List<Product> searchProduct(String nameProduct) {
         final String query = "SELECT * FROM products WHERE MATCH(nameProduct) AGAINST(:nameProduct);";

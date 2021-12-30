@@ -48,7 +48,7 @@
         </c:otherwise>
     </c:choose>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
-        <a class="navbar-brand" style="margin-left: 230px" href="${pageContext.request.contextPath}/home">Auction.com</a>
+        <a class="navbar-brand" style="margin-left: 230px" href="${pageContext.request.contextPath}/admin/index">Auction.com</a>
         <div class="collapse navbar-collapse" style="margin-right: 230px" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
@@ -203,7 +203,7 @@
                                                     </h5>
                                                 </div>
                                                 <div class="card-footer text-muted">
-                                                    <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                                                    <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/admin/adminDetails?id=${p.idProduct}" role="button">
                                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                                         Details
                                                     </a>

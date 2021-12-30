@@ -64,13 +64,43 @@ public class productServlet extends HttpServlet {
                     id = Integer.parseInt(request.getParameter("id"));
                 } catch (NumberFormatException e) {}
                 Product p = productModel.findById(id);
-                auction au = auctionModel.byFindIdProductAuction(id);
-                if (p != null) {
+                List<auction> au = auctionModel.findByProductID(id);
+                if (p != null && au != null) {
                     request.setAttribute("product", p);
-                   request.setAttribute("auction",au);
+                    request.setAttribute("auctions",au);
                     servletUtils.forward("/views/vwCategory/detail.jsp", request, response);
                 } else {
-                    servletUtils.redirect("/views/404.jsp",request,response);
+                    servletUtils.redirect("/category/index", request, response);
+                }
+                break;
+            case "/editProduct":
+                id = 0;
+                try {
+                    id = Integer.parseInt(request.getParameter("id"));
+                } catch (NumberFormatException e) {}
+                p = productModel.findById(id);
+                au = auctionModel.findByProductID(id);
+                if (p != null && au != null) {
+                    request.setAttribute("product", p);
+                    request.setAttribute("auctions",au);
+                    servletUtils.forward("/views/vwAccount/editProduct.jsp", request, response);
+                } else {
+                    servletUtils.redirect("/category/index", request, response);
+                }
+                break;
+            case "/deleteBidder":
+                id = 0;
+                try {
+                    id = Integer.parseInt(request.getParameter("id"));
+                } catch (NumberFormatException e) {}
+                p = productModel.findById(id);
+                au = auctionModel.findByProductID(id);
+                if (p != null && au != null) {
+                    request.setAttribute("product", p);
+                    request.setAttribute("auctions",au);
+                    servletUtils.forward("/views/vwAccount/deleteBidder.jsp", request, response);
+                } else {
+                    servletUtils.redirect("/category/index", request, response);
                 }
                 break;
             case "/upload":
@@ -95,10 +125,18 @@ public class productServlet extends HttpServlet {
                 System.out.println("details post");
                 updatePrice(request,response);
                 break;
+            case "/delete":
+                deleteUser(request, response);
+                break;
             default:
                 servletUtils.forward("/views/404.jsp", request, response);
                 break;
         }
+    }
+    private void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("idUser"));
+        auctionModel.delete(id);
+        servletUtils.redirect("/home", request, response);
     }
 
     private void uploadProduct(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -164,31 +202,36 @@ public class productServlet extends HttpServlet {
        LocalDateTime timeBid = LocalDateTime.now();
        System.out.println(timeBid);
 
-
-
-        auction au = auctionModel.byFindIdProductAuction(idProduct);
+        auction au = auctionModel.findByIdProductAuction(idProduct);
         Product product = new Product(idProduct,price);
         Product p = productModel.findById(idProduct);
 
 
-        if(p!=null)
-        {
+        if(p!=null) {
             productModel.update_highPrice(product);
             System.out.println(" update succeed price");
-        //    request.setAttribute("auction",p);
-            auction a = new auction(idUser,idProduct,price,timeBid);
-            if(au == null)
-            {
-                auctionModel.add(a);
-                System.out.println("not find id  product");
+            user c = userModel.findById(idUser);
+            if (c != null){
+                String name = c.getUsername();
+                auction a = new auction(idUser,idProduct,price,timeBid,name);
+                if(au == null)
+                {
+                    auctionModel.add(a);
+                    System.out.println("not find id  product");
+                }
+                else {
+                    System.out.println("find by id product");
+                    auctionModel.updateAuction(a);
+                }
+
+                System.out.println("update succed auction");
+                servletUtils.redirect("/category", request, response);
             }
             else {
-                System.out.println("find by id product");
-                auctionModel.updateAuction(a);
+                System.out.println("fail");
+                request.setAttribute("Error", true);
+                servletUtils.redirect("/home", request, response);
             }
-
-            System.out.println("update succed auction");
-            servletUtils.redirect("/details", request, response);
         }
         else {
             System.out.println("fail");

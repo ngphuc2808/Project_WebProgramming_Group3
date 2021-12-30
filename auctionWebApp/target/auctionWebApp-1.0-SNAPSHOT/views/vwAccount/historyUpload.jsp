@@ -90,7 +90,7 @@
                                                     </h5>
                                                 </div>
                                                 <div class="card-footer text-muted">
-                                                    <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                                                    <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/product/editProduct?id=${p.idProduct}" role="button">
                                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                                         Details
                                                     </a>
@@ -115,7 +115,7 @@
                                                     </h5>
                                                 </div>
                                                 <div class="card-footer text-muted">
-                                                    <a class="btn btn-sm btn-outline-primary" href="#" role="button">
+                                                    <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/product/editProduct?id=${p.idProduct}" role="button">
                                                         <i class="fa fa-eye" aria-hidden="true"></i>
                                                         Details
                                                     </a>

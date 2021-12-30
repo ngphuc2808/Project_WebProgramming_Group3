@@ -11,7 +11,7 @@ public class user {
     public user() {
     }
 
-    public user(int idUser, String username, String password, String name, String email, String address, LocalDateTime dob, int point, int role, int queue) {
+    public user(int idUser, String username, String password, String name, String email, String address, LocalDateTime dob, int point, int role, int queue, String image) {
         this.idUser = idUser;
         this.username = username;
         this.password = password;
@@ -22,6 +22,7 @@ public class user {
         this.point = point;
         this.role = role;
         this.queue = queue;
+        this.image = image;
     }
     public  user(int idUser, String name, String email)
     {

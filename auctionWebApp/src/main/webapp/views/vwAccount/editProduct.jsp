@@ -78,15 +78,15 @@
     </jsp:attribute>
 
     <jsp:body>
-<%--        <sql:setDataSource--%>
-<%--                var="list"--%>
-<%--                driver="com.mysql.jdbc.Driver"--%>
-<%--                url="jdbc:mysql://localhost:3306/daugiatructuyen"--%>
-<%--                user="root" password="roor"--%>
-<%--        />--%>
-<%--        <sql:query var="auction"   dataSource="${list}">--%>
-<%--            SELECT * FROM auction;--%>
-<%--        </sql:query>--%>
+        <%--        <sql:setDataSource--%>
+        <%--                var="list"--%>
+        <%--                driver="com.mysql.jdbc.Driver"--%>
+        <%--                url="jdbc:mysql://localhost:3306/daugiatructuyen"--%>
+        <%--                user="root" password="roor"--%>
+        <%--        />--%>
+        <%--        <sql:query var="auction"   dataSource="${list}">--%>
+        <%--            SELECT * FROM auction;--%>
+        <%--        </sql:query>--%>
         <div class="container-fluid mt-3" >
             <div class="row mt-3">
                 <div class="col-sm-5">
@@ -138,36 +138,10 @@
                                 <p>
                                     Người giữ giá <br>
                                 </p>
-                                <div class="action" style="display: flex;">
-
-                                    <div class="priceBid" >
-                                        <button onclick="return false;" id="decrease" class="val_priceStep"  style="padding: 10px;
-	cursor: pointer;
-	color: white;
-	border: 1px solid #007bff;
-	border-radius: 5px;
-	background-color: #007bff;" value="${product.priceStep}"><i class="fas fa-minus"></i></button>
-                                        <input type="text" class="currentPrice" name="currentPrice" style="padding: 10px;
-	border: transparent;
-	background-color: whitesmoke;" value="${product.price}"  max="${product.buyNowPrice}" readonly>
-                                        <button onclick="return false;" id="increase" class="val_priceStep" style="padding: 10px;
-	cursor: pointer;
-	color: white;
-	border: 1px solid #007bff;
-	border-radius: 5px;
-	background-color: #007bff;" value="${product.priceStep}"><i class="fas fa-plus"></i></button>
-                                    </div>
-
-                                    <button class="btn btn_bid btn-primary" style="font-size: 20px; margin-left: 15px;" type="submit" >
-                                        <img src="${pageContext.request.contextPath}/public/image/daugia.png" alt="" >
-                                        Đấu giá
-                                    </button>
-
-                                    <input type="text" name="idUser" value="${authUser.idUser}" style="display: none;" readonly>
-
-                                </div>
+<%--                                <div class="action" style="display: flex;">--%>
+<%--                                    <input type="text" name="idUser" value="${authUser.idUser}" readonly>--%>
+<%--                                </div>--%>
                             </div>
-
                         </div>
                     </form>
                 </div>
@@ -190,6 +164,7 @@
                         <th>Username</th>
                         <th>Giá</th>
                         <th>Thời gian</th>
+                        <th>&nbsp;</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -200,6 +175,11 @@
                             <td>${a.username}</td>
                             <td>${a.priceBidder}</td>
                             <td>${a.timeBid.dayOfMonth} / ${a.timeBid.month.value} / ${a.timeBid.year}</td>
+                            <td class="text-right">
+                                <a class="btn btn-sm btn-outline-primary" href="${pageContext.request.contextPath}/product/deleteBidder?id=${product.idProduct}" role="button">
+                                    <i class="fa fa-pen" aria-hidden="true"></i>
+                                </a>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
