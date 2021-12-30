@@ -85,6 +85,7 @@ public class productServlet extends HttpServlet {
                 if (p != null && au != null) {
                     request.setAttribute("product", p);
                     request.setAttribute("auctions",au);
+                    request.setAttribute("auction",au);
                     servletUtils.forward("/views/vwAccount/editProduct.jsp", request, response);
                 } else {
                     servletUtils.redirect("/category/index", request, response);
@@ -215,9 +216,14 @@ public class productServlet extends HttpServlet {
         int price = Integer.parseInt(request.getParameter("currentPrice"));
         System.out.println(price);
 
+        String username = request.getParameter("username");
+
        LocalDateTime timeBid = LocalDateTime.now();
        System.out.println(timeBid);
 
+       int idAuction = (idUser*5) + idProduct ;
+
+        auction findIdAuction = auctionModel.findByIdAuction(idAuction);
         auction au = auctionModel.findByIdProductAuction(idProduct);
         Product product = new Product(idProduct,price);
         Product p = productModel.findById(idProduct);
@@ -226,34 +232,29 @@ public class productServlet extends HttpServlet {
         if(p!=null) {
             productModel.update_highPrice(product);
             System.out.println(" update succeed price");
-            user c = userModel.findById(idUser);
-            if (c != null){
-                String name = c.getUsername();
-                auction a = new auction(idUser,idProduct,price,timeBid,name);
-                if(au == null)
+
+
+                auction a = new auction(idUser,idProduct,price,timeBid,username,idAuction);
+                if(findIdAuction == null)
                 {
                     auctionModel.add(a);
-                    System.out.println("not find id  product");
+                    System.out.println("not find id  auction");
                 }
                 else {
-                    System.out.println("find by id product");
+                    System.out.println("find by id auction");
                     auctionModel.updateAuction(a);
                 }
 
                 System.out.println("update succed auction");
                 servletUtils.redirect("/category", request, response);
-            }
-            else {
-                System.out.println("fail");
-                request.setAttribute("Error", true);
-                servletUtils.redirect("/home", request, response);
-            }
+
         }
         else {
             System.out.println("fail");
             request.setAttribute("Error", true);
             servletUtils.redirect("/home", request, response);
         }
+        servletUtils.redirect("/category", request, response);
     }
 
     public String toBase64(InputStream inputStream) {

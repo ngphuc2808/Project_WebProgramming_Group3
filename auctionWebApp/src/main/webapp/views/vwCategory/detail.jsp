@@ -173,6 +173,8 @@
                                     </button>
 
                                     <input type="text" name="idUser" value="${authUser.idUser}" style="display: none;" readonly>
+                                    <input type="text" name="username" value="${authUser.username}"  style="display: none;" readonly>
+<%--                                    <input type="text" name="idUser" value="${authUser.idUser}" style="display: none;" readonly>--%>
 
                                 </div>
                             </div>
